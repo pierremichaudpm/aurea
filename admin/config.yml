@@ -1,0 +1,78 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: uploads
+public_folder: /uploads
+
+locale: fr
+
+collections:
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: content/articles
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: Titre
+        name: title
+        widget: string
+        hint: "Le titre complet de l'article"
+
+      - label: Identifiant URL
+        name: slug
+        widget: string
+        hint: "Mots séparés par des tirets, sans accents. Ex: securite-psychologique"
+        pattern:
+          - "^[a-z0-9-]+$"
+          - "Lettres minuscules et tirets uniquement"
+
+      - label: Date de publication
+        name: date
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: DD/MM/YYYY
+        time_format: false
+
+      - label: Catégorie
+        name: category
+        widget: select
+        options:
+          - "Leadership · Prévention"
+          - "Médiation · Émotions"
+          - "Gestion · Climat de travail"
+          - "Climat · Prévention"
+          - "Prévention · RH"
+          - "Enquête · Rigueur"
+          - "Formation · Leadership"
+          - "Médiation"
+          - "Prévention"
+
+      - label: Extrait
+        name: excerpt
+        widget: text
+        hint: "2-3 phrases résumant l'article (affiché sur la carte)"
+
+      - label: Image principale
+        name: image
+        widget: image
+        hint: "Photo horizontale, minimum 1200×675 px"
+
+      - label: Série / Type
+        name: series
+        widget: string
+        default: "Article"
+        hint: "Ex: Article, Série · 8 volets, Dossier"
+
+      - label: Temps de lecture
+        name: readTime
+        widget: string
+        default: "5 min de lecture"
+
+      - label: Contenu
+        name: body
+        widget: markdown
+        hint: "Utilisez ## pour les sous-titres, **texte** pour le gras, > pour les citations"
