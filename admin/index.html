@@ -5,8 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Auréa RH — Administration</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    body { background: #1a2332; margin: 0; }
+    .cms-branding {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 0 1rem;
+    }
+    .cms-branding svg {
+      width: 80px;
+      height: auto;
+      color: #c8a44e;
+      margin-bottom: 1rem;
+    }
+    .cms-branding-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #c8a44e;
+      letter-spacing: 0.02em;
+    }
+    .cms-branding-sub {
+      font-family: -apple-system, sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c8a44e;
+      opacity: 0.5;
+      margin-top: 0.3rem;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="cms-branding">
+    <svg viewBox="0 0 44 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="h" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+          <line x1="0" y1="0" x2="0" y2="3" stroke="currentColor" stroke-width="1"/>
+        </pattern>
+        <mask id="m"><circle cx="29" cy="14.5" r="13" fill="white"/></mask>
+        <clipPath id="c"><circle cx="15" cy="14.5" r="13"/></clipPath>
+      </defs>
+      <circle cx="15" cy="14.5" r="13" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="29" cy="14.5" r="13" stroke="currentColor" stroke-width="1.8"/>
+      <g clip-path="url(#c)"><rect width="44" height="29" fill="url(#h)" mask="url(#m)"/></g>
+    </svg>
+    <div class="cms-branding-name">Auréa</div>
+    <div class="cms-branding-sub">Administration</div>
+  </div>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>

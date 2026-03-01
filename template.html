@@ -154,20 +154,27 @@ nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--n
 
 .nav-burger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  width: 32px;
+  height: 22px;
   cursor: pointer;
   background: none;
   border: none;
   padding: 8px;
+  position: relative;
+  box-sizing: content-box;
 }
 
 .nav-burger span {
-  width: 24px;
-  height: 1.5px;
+  position: absolute;
+  left: 8px;
+  width: 32px;
+  height: 3px;
   background: var(--cream);
-  transition: all 0.3s;
+  border-radius: 1px;
 }
+.nav-burger span:nth-child(1) { top: 8px; }
+.nav-burger span:nth-child(2) { top: 18px; }
+.nav-burger span:nth-child(3) { top: 28px; }
 
 nav.scrolled .nav-burger span {
   background: var(--navy);
@@ -1570,14 +1577,16 @@ section.hero {
 
 @media (max-width: 768px) {
   .blog-article-panel {
-    top: auto;
+    top: 56px;
     bottom: 0;
     left: 0;
-    transform: translateY(100%);
+    right: 0;
     width: 100vw;
-    max-height: 95dvh;
-    border-radius: 16px 16px 0 0;
+    max-height: none;
+    height: calc(100dvh - 56px);
+    border-radius: 0;
     opacity: 1;
+    transform: translateY(100%);
   }
   .blog-article-panel.active { transform: translateY(0); }
   .article-content { padding: 1.75rem 1.5rem 2.5rem; }
@@ -1891,6 +1900,9 @@ footer {
   .hero-actions { flex-direction: column; align-items: flex-start; }
   .founder-photo-caption { margin-top: 1.5rem; }
   .founder-photo-wrap { margin-bottom: 1.5rem; }
+  .nav-logo { font-size: 1.68rem; gap: 0.44rem; }
+  .nav-logo-icon { width: 37px; height: 24px; }
+  .hero-tag { font-size: 0.58rem; letter-spacing: 0.2em; }
 }
 
 /* ═══════════ MOBILE NAV ═══════════ */
@@ -1899,7 +1911,7 @@ footer {
   position: fixed;
   inset: 0;
   background: var(--cream);
-  z-index: 99;
+  z-index: 400;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1925,9 +1937,37 @@ footer {
   right: 1.5rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--navy);
   cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+}
+
+.mobile-nav-brand {
+  position: absolute;
+  top: 1rem;
+  left: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.44rem;
+  color: var(--gold);
+  text-decoration: none;
+}
+.mobile-nav-logo {
+  width: 37px;
+  height: 24px;
+}
+.mobile-nav-name {
+  font-family: var(--serif);
+  font-size: 1.68rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+.mobile-nav-name span {
+  font-weight: 300;
+  opacity: 0.85;
 }
 
 /* ═══════════ SERVICE MODALS ═══════════ */
@@ -2193,6 +2233,21 @@ footer {
 <!-- MOBILE NAV -->
 <div class="mobile-nav" id="mobileNav">
   <button class="mobile-nav-close" onclick="this.parentElement.classList.remove('open')">✕</button>
+  <a href="#" class="mobile-nav-brand" onclick="this.closest('.mobile-nav').classList.remove('open')">
+    <svg class="mobile-nav-logo" viewBox="0 0 44 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <pattern id="mobileHatch" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+          <line x1="0" y1="0" x2="0" y2="3" stroke="currentColor" stroke-width="1"/>
+        </pattern>
+        <mask id="mobileMask"><circle cx="29" cy="14.5" r="13" fill="white"/></mask>
+        <clipPath id="mobileClip"><circle cx="15" cy="14.5" r="13"/></clipPath>
+      </defs>
+      <circle cx="15" cy="14.5" r="13" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="29" cy="14.5" r="13" stroke="currentColor" stroke-width="1.8"/>
+      <g clip-path="url(#mobileClip)"><rect width="44" height="29" fill="url(#mobileHatch)" mask="url(#mobileMask)"/></g>
+    </svg>
+    <span class="mobile-nav-name">Auréa <span>RH Conseil</span></span>
+  </a>
   <a href="#philosophie" onclick="this.parentElement.classList.remove('open')">Philosophie</a>
   <a href="#services" onclick="this.parentElement.classList.remove('open')">Services</a>
   <a href="#approche" onclick="this.parentElement.classList.remove('open')">Approche</a>
