@@ -1761,17 +1761,17 @@ footer {
 
 .footer-brand {
   font-family: var(--serif);
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.7rem;
+  font-weight: 600;
   color: var(--gold);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
 }
 
 .footer-logo {
-  width: 44px;
+  width: 50px;
   height: auto;
   color: var(--gold);
 }
@@ -2509,8 +2509,8 @@ footer {
                 <circle cx="15" cy="14.5" r="13"/>
               </clipPath>
             </defs>
-            <circle cx="15" cy="14.5" r="13" stroke="currentColor" stroke-width="1.2"/>
-            <circle cx="29" cy="14.5" r="13" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="15" cy="14.5" r="13" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="29" cy="14.5" r="13" stroke="currentColor" stroke-width="1.8"/>
             <g clip-path="url(#footerClip)">
               <rect width="44" height="29" fill="url(#footerHatch)" mask="url(#footerMask)"/>
             </g>
@@ -3001,6 +3001,17 @@ function copyArticleLink(btn) {
     setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 2000);
   });
 }
+</script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
 </script>
 </body>
 </html>
