@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auréa RH — Signatures courriel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #2a3a50;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 56px;
+      padding: 72px 48px;
+      font-family: -apple-system, sans-serif;
+    }
+
+    .sig-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sig-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── The actual signature ── */
+    .sig {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 32px;
+      background: #1a2332;
+      border-radius: 3px;
+    }
+
+    .sig-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .sig-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: #c8a44e;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .sig-name span {
+      font-weight: 300;
+      opacity: 0.65;
+    }
+
+    .sig-tagline {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 9.5px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(200, 164, 78, 0.55);
+      margin-top: 7px;
+    }
+
+    /* divider between the two blocks */
+    .divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VERSION 1 — avec tagline -->
+  <div class="sig-block">
+    <div class="sig-label">Avec tagline</div>
+    <div class="sig" id="sig-with">
+      <svg width="54" height="36" viewBox="0 0 44 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="h1" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+            <line x1="0" y1="0" x2="0" y2="3" stroke="#c8a44e" stroke-width="1"/>
+          </pattern>
+          <mask id="m1">
+            <circle cx="29" cy="14.5" r="13" fill="white"/>
+          </mask>
+          <clipPath id="c1">
+            <circle cx="15" cy="14.5" r="13"/>
+          </clipPath>
+        </defs>
+        <circle cx="15" cy="14.5" r="13" stroke="#c8a44e" stroke-width="1.4"/>
+        <circle cx="29" cy="14.5" r="13" stroke="#c8a44e" stroke-width="1.4"/>
+        <g clip-path="url(#c1)">
+          <rect width="44" height="29" fill="url(#h1)" mask="url(#m1)"/>
+        </g>
+      </svg>
+      <div class="sig-text">
+        <div class="sig-name">Auréa <span>RH Conseil</span></div>
+        <div class="sig-tagline">Médiation — Enquête — Prévention</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VERSION 2 — sans tagline -->
+  <div class="sig-block">
+    <div class="sig-label">Sans tagline</div>
+    <div class="sig" id="sig-without">
+      <svg width="54" height="36" viewBox="0 0 44 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="h2" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+            <line x1="0" y1="0" x2="0" y2="3" stroke="#c8a44e" stroke-width="1"/>
+          </pattern>
+          <mask id="m2">
+            <circle cx="29" cy="14.5" r="13" fill="white"/>
+          </mask>
+          <clipPath id="c2">
+            <circle cx="15" cy="14.5" r="13"/>
+          </clipPath>
+        </defs>
+        <circle cx="15" cy="14.5" r="13" stroke="#c8a44e" stroke-width="1.4"/>
+        <circle cx="29" cy="14.5" r="13" stroke="#c8a44e" stroke-width="1.4"/>
+        <g clip-path="url(#c2)">
+          <rect width="44" height="29" fill="url(#h2)" mask="url(#m2)"/>
+        </g>
+      </svg>
+      <div class="sig-text">
+        <div class="sig-name">Auréa <span>RH Conseil</span></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

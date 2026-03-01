@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Auréa RH Conseil — Médiation · Enquête · Prévention</title>
+<title>Auréa RH Conseil — Enquête · Médiation · Prévention · Relations de travail</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
@@ -13,8 +13,8 @@
   --navy-deep: #0f1720;
   --navy-light: #2a3a50;
   --gold: #c8a44e;
-  --gold-light: #dfc77a;
-  --gold-muted: #b89a47;
+  --gold-light: #c8a44e;
+  --gold-muted: #c8a44e;
   --cream: #faf8f4;
   --cream-warm: #f5f0e8;
   --stone: #e8e2d8;
@@ -79,6 +79,9 @@ nav.scrolled {
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: color 0.5s var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
 }
 
 nav.scrolled .nav-logo { color: var(--gold-muted); }
@@ -86,6 +89,13 @@ nav.scrolled .nav-logo { color: var(--gold-muted); }
 .nav-logo span {
   font-weight: 300;
   opacity: 0.7;
+}
+
+.nav-logo-icon {
+  width: 40px;
+  height: 26px;
+  flex-shrink: 0;
+  display: block;
 }
 
 .nav-links {
@@ -193,6 +203,7 @@ nav.scrolled .nav-burger span {
   content: '';
   position: absolute;
   inset: 0;
+  z-index: 1;
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   pointer-events: none;
@@ -203,9 +214,9 @@ nav.scrolled .nav-burger span {
   position: absolute;
   left: calc(50% - 160px); /* left edge of 320px circle */
   top: -12rem;              /* extend above into hero padding */
-  height: calc(100% + 16rem);
+  height: calc(100% + 30rem);
   width: 1px;
-  background: linear-gradient(to bottom, transparent 5%, var(--gold) 20%, var(--gold) 52%, transparent 68%);
+  background: linear-gradient(to bottom, transparent 0%, var(--gold) 15%, var(--gold) 60%, transparent 82%);
   opacity: 0.18;
   pointer-events: none;
 }
@@ -432,6 +443,39 @@ nav.scrolled .nav-burger span {
   min-height: 380px;
 }
 
+/* Background photo inside diagram area */
+.hero-right-bg {
+  position: absolute;
+  inset: -16px;
+  z-index: 0;
+  overflow: hidden;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, black 20%, black 80%, transparent),
+    linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-composite: destination-in;
+  mask-image:
+    linear-gradient(to right, transparent, black 20%, black 80%, transparent),
+    linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  mask-composite: intersect;
+}
+
+.hero-right-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.6);
+}
+
+/* Navy overlay on top of the photo */
+.hero-right-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 35, 50, 0.35);
+  z-index: 1;
+}
+
 .hero-emblem {
   position: relative;
   width: 320px;
@@ -470,12 +514,13 @@ nav.scrolled .nav-burger span {
 
 .hero-emblem-a {
   font-family: var(--serif);
-  font-size: 5.5rem;
+  font-size: 3rem;
   font-weight: 300;
   color: var(--gold);
   opacity: 0.45;
   line-height: 1;
   display: block;
+  letter-spacing: 0.08em;
 }
 
 .hero-emblem-tagline {
@@ -510,27 +555,28 @@ nav.scrolled .nav-burger span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2.5rem;
+  margin-top: 1rem;
 }
 
 .founder-photo-ring {
   position: relative;
-  width: 220px;
-  height: 220px;
+  width: 275px;
+  height: 275px;
 }
 
 .founder-photo-ring::before {
   content: '';
   position: absolute;
-  inset: -10px;
+  inset: -12px;
   border: 1px solid var(--gold);
   border-radius: 50%;
   opacity: 0.3;
 }
 
 .founder-photo {
-  width: 220px;
-  height: 220px;
+  width: 275px;
+  height: 275px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center top;
@@ -538,7 +584,7 @@ nav.scrolled .nav-burger span {
 }
 
 .founder-photo-caption {
-  margin-top: 1rem;
+  margin-top: 3rem;
   text-align: center;
 }
 
@@ -678,8 +724,8 @@ section.hero {
 
 .philosophy-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 6rem;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 5rem;
   align-items: start;
   margin-top: 3rem;
 }
@@ -897,11 +943,18 @@ section.hero {
   position: relative;
 }
 
+.approach-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  margin-top: 4rem;
+  align-items: center;
+}
+
 .approach-steps {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 1px;
-  margin-top: 4rem;
   background: var(--stone);
   border: 1px solid var(--stone);
   border-radius: 3px;
@@ -917,6 +970,43 @@ section.hero {
 
 .approach-step:hover {
   background: var(--white);
+}
+
+/* Brand mark in approche section */
+.approach-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.approach-logo {
+  width: 250px;
+  height: auto;
+  color: var(--gold);
+  opacity: 1;
+}
+
+.approach-brand-name {
+  font-family: var(--serif);
+  font-size: 4.4rem;
+  font-weight: 300;
+  color: var(--gold);
+  opacity: 1;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.approach-brand-sub {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+  margin-top: -0.5rem;
 }
 
 .step-number {
@@ -1673,8 +1763,17 @@ footer {
   font-family: var(--serif);
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--cream);
+  color: var(--gold);
   margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-logo {
+  width: 44px;
+  height: auto;
+  color: var(--gold);
 }
 
 .footer-brand span { color: var(--gold); }
@@ -1761,7 +1860,8 @@ footer {
   .hero-stats { flex-wrap: wrap; }
   .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .approach-steps { grid-template-columns: 1fr 1fr; }
+  .approach-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .approach-brand { display: none; }
   .blog-grid { grid-template-columns: 1fr 1fr; }
   .blog-card:first-child { grid-column: 1 / -1; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -1784,10 +1884,13 @@ footer {
   .hero-stats { flex-direction: column; }
   .services-grid { grid-template-columns: 1fr; }
   .approach-steps { grid-template-columns: 1fr; }
+  .approach-layout { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
+  .founder-photo-caption { margin-top: 1.5rem; }
+  .founder-photo-wrap { margin-bottom: 1.5rem; }
 }
 
 /* ═══════════ MOBILE NAV ═══════════ */
@@ -2054,7 +2157,27 @@ footer {
 
 <!-- NAVIGATION -->
 <nav id="mainNav">
-  <a href="#" class="nav-logo">Auréa <span>RH Conseil</span></a>
+  <a href="#" class="nav-logo">
+    <svg class="nav-logo-icon" viewBox="0 0 44 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <defs>
+        <pattern id="logoHatch" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+          <line x1="0" y1="0" x2="0" y2="3" stroke="currentColor" stroke-width="1"/>
+        </pattern>
+        <mask id="logoMask">
+          <circle cx="29" cy="14.5" r="13" fill="white"/>
+        </mask>
+        <clipPath id="logoClip">
+          <circle cx="15" cy="14.5" r="13"/>
+        </clipPath>
+      </defs>
+      <circle cx="15" cy="14.5" r="13" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="29" cy="14.5" r="13" stroke="currentColor" stroke-width="1.4"/>
+      <g clip-path="url(#logoClip)">
+        <rect width="44" height="29" fill="url(#logoHatch)" mask="url(#logoMask)"/>
+      </g>
+    </svg>
+    Auréa <span>RH Conseil</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#philosophie">Philosophie</a></li>
     <li><a href="#services">Services</a></li>
@@ -2083,24 +2206,15 @@ footer {
     <div class="hero-left">
       <div class="hero-tag">Médiation · Enquête · Prévention</div>
       <h1 class="hero-title">Des milieux de travail <em>sains,</em> par l'écoute et la&nbsp;rigueur</h1>
-      <p class="hero-subtitle">Consultat · Enquête · Médiation · Climat de travail · Prévention. Auréa RH Conseil accompagne les organisations et leurs leaders pour prévenir les conflits, résoudre les situations sensibles et bâtir des milieux de travail sains et cohérents.</p>
+      <p class="hero-subtitle">Auréa RH Conseil accompagne les directions et les équipes RH dans la prévention du harcèlement, la résolution des conflits et la gestion des situations sensibles — pour des organisations plus saines, plus équitables et plus durables.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Planifier un échange <span class="btn-arrow"></span></a>
         <a href="#services" class="btn-secondary">Découvrir nos services <span class="btn-arrow"></span></a>
       </div>
     </div>
     <div class="hero-right">
-      <div class="hero-line"></div>
-      <div class="hero-cross"></div>
-      <div class="hero-emblem">
-        <div class="hero-dot hero-dot-1"></div>
-        <div class="hero-dot hero-dot-2"></div>
-        <div class="hero-dot hero-dot-3"></div>
-        <div class="hero-dot hero-dot-4"></div>
-        <div class="hero-emblem-text">
-          <span class="hero-emblem-a">A</span>
-          <span class="hero-emblem-tagline">RH Conseil</span>
-        </div>
+      <div class="hero-right-bg">
+        <img src="vitaly-gariev-ek9VJwUNNA4-unsplash.jpg" alt="">
       </div>
     </div>
   </div>
@@ -2139,8 +2253,8 @@ footer {
       <p>Les conflits ne naissent pas par hasard. Ils suivent une logique émotionnelle que trop peu de leaders savent lire. On valorise les compétences techniques — mais la compétence qui prévient réellement les conflits est souvent la moins développée.</p>
       <p>Chez Auréa RH Conseil, nous croyons qu'avant les règles, il y a les humains. La prévention repose d'abord sur la capacité des leaders à comprendre ce qui se joue émotionnellement dans leurs équipes. Un climat de travail sain ne se décrète pas — il se construit, par l'écoute, la cohérence et des processus rigoureux.</p>
       <div class="philosophy-quote">
-        <blockquote>On peut gagner un argument et perdre une relation. La vraie question, c'est ce qu'on choisit de préserver.</blockquote>
-        <cite>— Hugues Thibault, CRIA · Fondateur</cite>
+        <blockquote>Grâce à une expertise indépendante et rigoureuse, je soutiens les directions et les équipes RH dans la prise de décision, la prévention des risques humains, l'amélioration des pratiques de gestion et la mise en place de stratégies durables favorisant un climat de travail sain, respectueux et performant.</blockquote>
+        <cite>— Hugues Thibault, CRIA · Médiateur accrédité · Fondateur</cite>
       </div>
     </div>
     <div class="philosophy-values reveal">
@@ -2194,38 +2308,38 @@ footer {
     <div class="services-grid">
       <div class="service-card reveal" data-modal="modal-01" style="cursor:pointer;">
         <div class="service-number">01</div>
-        <h3 class="service-title">Enquête en harcèlement</h3>
-        <p class="service-desc">Enquêtes indépendantes et impartiales en harcèlement psychologique, discrimination et inconduites. Rapports rigoureux avec recommandations concrètes.</p>
+        <h3 class="service-title">Enquête en harcèlement et incivilité</h3>
+        <p class="service-desc">Enquêtes indépendantes et impartiales en harcèlement psychologique, incivilité, discrimination et inconduites. Rapports rigoureux avec recommandations concrètes.</p>
         <span class="service-link">En savoir plus <span class="btn-arrow"></span></span>
       </div>
       <div class="service-card reveal" data-modal="modal-02" style="cursor:pointer;">
         <div class="service-number">02</div>
-        <h3 class="service-title">Médiation</h3>
-        <p class="service-desc">La médiation n'est pas un dernier recours — c'est un soutien stratégique. En créant un espace où les émotions peuvent être déposées, nommées et entendues sans jugement, elle devient le levier qui permet aux personnes de réfléchir, écouter et coconstruire leurs solutions.</p>
+        <h3 class="service-title">Médiation et résolution des différends</h3>
+        <p class="service-desc">La médiation n'est pas un dernier recours — c'est un soutien stratégique. En créant un espace où les émotions peuvent être déposées et entendues sans jugement, elle permet aux parties de coconstruire leurs solutions.</p>
         <span class="service-link">En savoir plus <span class="btn-arrow"></span></span>
       </div>
       <div class="service-card reveal" data-modal="modal-03" style="cursor:pointer;">
         <div class="service-number">03</div>
-        <h3 class="service-title">Diagnostic de climat</h3>
-        <p class="service-desc">Évaluation approfondie du climat organisationnel. Identifier les sources de tension, mesurer l'engagement et proposer un plan d'action ciblé.</p>
+        <h3 class="service-title">Relations de travail et situations sensibles</h3>
+        <p class="service-desc">Accompagnement dans les dossiers disciplinaires, les situations complexes et les décisions RH délicates. Un regard externe rigoureux pour protéger l'organisation et traiter chaque personne avec équité.</p>
         <span class="service-link">En savoir plus <span class="btn-arrow"></span></span>
       </div>
       <div class="service-card reveal" data-modal="modal-04" style="cursor:pointer;">
         <div class="service-number">04</div>
-        <h3 class="service-title">Prévention</h3>
-        <p class="service-desc">Les procédures ne suffisent pas à prévenir les tensions. Nous aidons à mettre en place des politiques claires, des critères objectifs et documentés, et des pratiques de gestion prévisibles qui protègent la confiance et la sécurité psychologique.</p>
+        <h3 class="service-title">Prévention du harcèlement et des RPS</h3>
+        <p class="service-desc">Les procédures ne suffisent pas à prévenir les tensions. Nous aidons à mettre en place des politiques claires, des pratiques de gestion prévisibles et une culture qui protège la sécurité psychologique.</p>
         <span class="service-link">En savoir plus <span class="btn-arrow"></span></span>
       </div>
       <div class="service-card reveal" data-modal="modal-05" style="cursor:pointer;">
         <div class="service-number">05</div>
         <h3 class="service-title">Formation en leadership</h3>
-        <p class="service-desc">La littératie émotionnelle est la compétence clé des leaders qui préviennent les conflits. Nos formations outillent les gestionnaires à repérer les tensions tôt, décoder les signaux faibles et intervenir avant l'escalade — sans attendre que la situation dérape.</p>
+        <p class="service-desc">La littératie émotionnelle est la compétence clé des leaders qui préviennent les conflits. Nos formations outillent les gestionnaires à repérer les tensions tôt et intervenir avant l'escalade.</p>
         <span class="service-link">En savoir plus <span class="btn-arrow"></span></span>
       </div>
       <div class="service-card reveal" data-modal="modal-06" style="cursor:pointer;">
         <div class="service-number">06</div>
-        <h3 class="service-title">Impartition RH</h3>
-        <p class="service-desc">Soutien stratégique en ressources humaines pour les organisations qui n'ont pas de département RH interne ou qui souhaitent un regard externe.</p>
+        <h3 class="service-title">Conseil stratégique</h3>
+        <p class="service-desc">Accompagnement-conseil en ressources humaines et en relations de travail pour les organisations qui ont besoin d'une expertise senior, ponctuelle ou continue, avec un regard externe et indépendant.</p>
         <span class="service-link">En savoir plus <span class="btn-arrow"></span></span>
       </div>
     </div>
@@ -2237,26 +2351,50 @@ footer {
   <div class="section-tag">Notre approche</div>
   <h2 class="section-title">Un processus structuré,<br>des résultats durables</h2>
   <p class="section-intro">Chaque intervention suit un cadre méthodologique éprouvé, adapté à la réalité unique de votre organisation.</p>
-  <div class="approach-steps">
-    <div class="approach-step reveal">
-      <div class="step-number">01</div>
-      <h3 class="step-title">Écoute et analyse</h3>
-      <p class="step-desc">Prise de contact confidentielle. Nous prenons le temps de comprendre votre situation dans toute sa complexité.</p>
+  <div class="approach-layout">
+    <div class="approach-steps">
+      <div class="approach-step reveal">
+        <div class="step-number">01</div>
+        <h3 class="step-title">Écoute et analyse</h3>
+        <p class="step-desc">Prise de contact confidentielle. Nous prenons le temps de comprendre votre situation dans toute sa complexité.</p>
+      </div>
+      <div class="approach-step reveal">
+        <div class="step-number">02</div>
+        <h3 class="step-title">Cadrage et mandat</h3>
+        <p class="step-desc">Définition claire des objectifs, du périmètre d'intervention et des règles de confidentialité applicables.</p>
+      </div>
+      <div class="approach-step reveal">
+        <div class="step-number">03</div>
+        <h3 class="step-title">Intervention</h3>
+        <p class="step-desc">Mise en œuvre rigoureuse du mandat, dans le respect des personnes et des meilleures pratiques professionnelles.</p>
+      </div>
+      <div class="approach-step reveal">
+        <div class="step-number">04</div>
+        <h3 class="step-title">Recommandations</h3>
+        <p class="step-desc">Rapport détaillé avec constats, conclusions et recommandations concrètes pour l'avenir de votre organisation.</p>
+      </div>
     </div>
-    <div class="approach-step reveal">
-      <div class="step-number">02</div>
-      <h3 class="step-title">Cadrage et mandat</h3>
-      <p class="step-desc">Définition claire des objectifs, du périmètre d'intervention et des règles de confidentialité applicables.</p>
-    </div>
-    <div class="approach-step reveal">
-      <div class="step-number">03</div>
-      <h3 class="step-title">Intervention</h3>
-      <p class="step-desc">Mise en œuvre rigoureuse du mandat, dans le respect des personnes et des meilleures pratiques professionnelles.</p>
-    </div>
-    <div class="approach-step reveal">
-      <div class="step-number">04</div>
-      <h3 class="step-title">Recommandations</h3>
-      <p class="step-desc">Rapport détaillé avec constats, conclusions et recommandations concrètes pour l'avenir de votre organisation.</p>
+    <div class="approach-brand">
+      <svg class="approach-logo" viewBox="0 0 44 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <pattern id="approachHatch" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+            <line x1="0" y1="0" x2="0" y2="3" stroke="currentColor" stroke-width="1"/>
+          </pattern>
+          <mask id="approachMask">
+            <circle cx="29" cy="14.5" r="13" fill="white"/>
+          </mask>
+          <clipPath id="approachClip">
+            <circle cx="15" cy="14.5" r="13"/>
+          </clipPath>
+        </defs>
+        <circle cx="15" cy="14.5" r="13" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="29" cy="14.5" r="13" stroke="currentColor" stroke-width="1.2"/>
+        <g clip-path="url(#approachClip)">
+          <rect width="44" height="29" fill="url(#approachHatch)" mask="url(#approachMask)"/>
+        </g>
+      </svg>
+      <span class="approach-brand-name">Auréa</span>
+      <span class="approach-brand-sub">RH Conseil</span>
     </div>
   </div>
 </section>
@@ -2335,12 +2473,12 @@ footer {
         <label for="service">Service recherché</label>
         <select id="service" name="service">
           <option value="">Sélectionner un service</option>
-          <option value="enquete">Enquête en harcèlement</option>
-          <option value="mediation">Médiation</option>
-          <option value="diagnostic">Diagnostic de climat</option>
-          <option value="prevention">Prévention et politique</option>
-          <option value="coaching">Coaching et formation</option>
-          <option value="impartition">Impartition RH</option>
+          <option value="enquete">Enquête en harcèlement et incivilité</option>
+          <option value="mediation">Médiation et résolution des différends</option>
+          <option value="relations">Relations de travail et situations sensibles</option>
+          <option value="prevention">Prévention du harcèlement et des RPS</option>
+          <option value="formation">Formation en leadership</option>
+          <option value="conseil">Conseil stratégique</option>
           <option value="autre">Autre</option>
         </select>
       </div>
@@ -2358,7 +2496,27 @@ footer {
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-brand">Auréa<span>.</span></div>
+        <div class="footer-brand">
+          <svg class="footer-logo" viewBox="0 0 44 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <pattern id="footerHatch" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+                <line x1="0" y1="0" x2="0" y2="3" stroke="currentColor" stroke-width="1"/>
+              </pattern>
+              <mask id="footerMask">
+                <circle cx="29" cy="14.5" r="13" fill="white"/>
+              </mask>
+              <clipPath id="footerClip">
+                <circle cx="15" cy="14.5" r="13"/>
+              </clipPath>
+            </defs>
+            <circle cx="15" cy="14.5" r="13" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="29" cy="14.5" r="13" stroke="currentColor" stroke-width="1.2"/>
+            <g clip-path="url(#footerClip)">
+              <rect width="44" height="29" fill="url(#footerHatch)" mask="url(#footerMask)"/>
+            </g>
+          </svg>
+          Auréa<span>.</span>
+        </div>
         <p class="footer-desc">Accompagnement spécialisé et indépendant en ressources humaines et en relations de travail.</p>
       </div>
       <div>
@@ -2366,9 +2524,10 @@ footer {
         <ul class="footer-links">
           <li><a href="#services">Enquête en harcèlement</a></li>
           <li><a href="#services">Médiation</a></li>
-          <li><a href="#services">Diagnostic de climat</a></li>
+          <li><a href="#services">Relations de travail</a></li>
           <li><a href="#services">Prévention</a></li>
-          <li><a href="#services">Coaching</a></li>
+          <li><a href="#services">Formation · Leadership</a></li>
+          <li><a href="#services">Conseil stratégique</a></li>
         </ul>
       </div>
       <div>
@@ -2398,7 +2557,8 @@ footer {
   </div>
 </footer>
 
-<!-- BLOG_ARTICLE_MODALS -->
+
+<!-- ARTICLE_PANELS -->
 
 <!-- ARTICLES LISTING PANEL -->
 <div class="articles-listing-panel" id="articles-listing">
@@ -2424,7 +2584,7 @@ footer {
   <div class="modal-header">
     <div class="modal-header-text">
       <div class="modal-num">01</div>
-      <div class="modal-ttl">Enquête en harcèlement</div>
+      <div class="modal-ttl">Enquête en matière de harcèlement et d'incivilité</div>
     </div>
     <button class="modal-close" aria-label="Fermer">✕</button>
   </div>
@@ -2434,10 +2594,10 @@ footer {
       <div class="modal-section-label">Ce que couvre une enquête</div>
       <ul class="modal-list">
         <li>Harcèlement psychologique au travail</li>
+        <li>Incivilité et comportements irrespectueux persistants</li>
         <li>Harcèlement sexuel et comportements inappropriés</li>
         <li>Discrimination et traitement différentiel</li>
         <li>Inconduites professionnelles et abus de pouvoir</li>
-        <li>Violence au travail et intimidation</li>
       </ul>
     </div>
     <hr class="modal-divider">
@@ -2475,7 +2635,7 @@ footer {
   <div class="modal-header">
     <div class="modal-header-text">
       <div class="modal-num">02</div>
-      <div class="modal-ttl">Médiation</div>
+      <div class="modal-ttl">Médiation et résolution des différends</div>
     </div>
     <button class="modal-close" aria-label="Fermer">✕</button>
   </div>
@@ -2519,35 +2679,36 @@ footer {
   </div>
 </div>
 
-<!-- MODAL 03 — Diagnostic de climat -->
+<!-- MODAL 03 — Relations de travail -->
 <div class="modal-panel" id="modal-03">
   <div class="modal-header">
     <div class="modal-header-text">
       <div class="modal-num">03</div>
-      <div class="modal-ttl">Diagnostic de climat</div>
+      <div class="modal-ttl">Relations de travail et gestion des situations sensibles</div>
     </div>
     <button class="modal-close" aria-label="Fermer">✕</button>
   </div>
   <div class="modal-body">
-    <p class="modal-intro">Avant d'intervenir, il faut comprendre. Un diagnostic de climat organisationnel donne une image claire et objective de ce qui se passe réellement dans vos équipes — les tensions latentes, les dynamiques positives et les zones de risque que peu de dirigeants voient de l'intérieur.</p>
+    <p class="modal-intro">Certaines situations RH exigent un regard externe, rigoureux et sans angles morts. Hugues Thibault accompagne les directions et les équipes RH dans la gestion de dossiers délicats — en protégeant à la fois l'organisation et les personnes impliquées.</p>
     <div class="modal-section">
-      <div class="modal-section-label">Ce que comprend le diagnostic</div>
+      <div class="modal-section-label">Ce que comprend cet accompagnement</div>
       <ul class="modal-list">
-        <li>Entretiens individuels confidentiels avec dirigeants, gestionnaires et employés</li>
-        <li>Analyse documentaire des politiques, procédures et pratiques existantes</li>
-        <li>Identification des sources de tensions et des facteurs de risque psychosocial</li>
-        <li>Mesure de l'engagement, de la confiance et de la sécurité psychologique</li>
-        <li>Cartographie des dynamiques relationnelles dans l'organisation</li>
+        <li>Soutien dans les dossiers disciplinaires et les mesures administratives</li>
+        <li>Accompagnement lors de plaintes internes ou de situations conflictuelles</li>
+        <li>Conseil en gestion de la performance et des comportements problématiques</li>
+        <li>Appui lors de restructurations, de changements organisationnels ou de crises</li>
+        <li>Diagnostic de climat : identification des sources de tensions et des risques psychosociaux</li>
+        <li>Révision des pratiques disciplinaires et des processus d'évaluation</li>
       </ul>
     </div>
     <hr class="modal-divider">
     <div class="modal-section">
-      <div class="modal-section-label">Livrables</div>
+      <div class="modal-section-label">Pourquoi un regard externe</div>
       <ul class="modal-list">
-        <li>Rapport diagnostique complet avec constats détaillés</li>
-        <li>Tableau de priorités d'intervention classées par urgence et impact</li>
-        <li>Plan d'action ciblé, réaliste et adapté à votre réalité organisationnelle</li>
-        <li>Présentation aux parties prenantes sur demande</li>
+        <li>Objectivité et indépendance — sans les biais internes ni les pressions hiérarchiques</li>
+        <li>Réduction du risque légal et disciplinaire pour l'organisation</li>
+        <li>Décisions mieux documentées, plus équitables et défendables</li>
+        <li>Confidentialité totale pour toutes les parties</li>
       </ul>
     </div>
     <hr class="modal-divider">
@@ -2557,13 +2718,14 @@ footer {
         <span class="modal-tag">Direction générale</span>
         <span class="modal-tag">RH</span>
         <span class="modal-tag">Conseil d'administration</span>
-        <span class="modal-tag">Organisations en transformation</span>
+        <span class="modal-tag">Secteur public</span>
+        <span class="modal-tag">OBNL</span>
       </div>
     </div>
   </div>
   <div class="modal-footer">
     <span class="modal-footer-note">Approche confidentielle et rigoureuse</span>
-    <a href="#contact" class="modal-cta">Planifier un diagnostic <span class="btn-arrow"></span></a>
+    <a href="#contact" class="modal-cta">Discuter d'un mandat <span class="btn-arrow"></span></a>
   </div>
 </div>
 
@@ -2572,7 +2734,7 @@ footer {
   <div class="modal-header">
     <div class="modal-header-text">
       <div class="modal-num">04</div>
-      <div class="modal-ttl">Prévention</div>
+      <div class="modal-ttl">Prévention du harcèlement et des risques psychosociaux</div>
     </div>
     <button class="modal-close" aria-label="Fermer">✕</button>
   </div>
@@ -2666,35 +2828,35 @@ footer {
   </div>
 </div>
 
-<!-- MODAL 06 — Impartition RH -->
+<!-- MODAL 06 — Conseil stratégique -->
 <div class="modal-panel" id="modal-06">
   <div class="modal-header">
     <div class="modal-header-text">
       <div class="modal-num">06</div>
-      <div class="modal-ttl">Impartition RH</div>
+      <div class="modal-ttl">Conseil stratégique</div>
     </div>
     <button class="modal-close" aria-label="Fermer">✕</button>
   </div>
   <div class="modal-body">
-    <p class="modal-intro">Toutes les organisations n'ont pas la taille d'un département RH interne — mais toutes ont besoin d'une expertise RH de qualité aux moments critiques. L'impartition RH vous donne accès à un expert senior, avec le recul et l'objectivité d'un regard externe, au moment précis où vous en avez besoin.</p>
+    <p class="modal-intro">Les décisions RH les plus importantes méritent un regard extérieur, indépendant et expérimenté. Le conseil stratégique d'Auréa RH Conseil soutient les directions dans la prise de décision, l'amélioration des pratiques de gestion et la mise en place de stratégies durables pour des milieux de travail sains.</p>
     <div class="modal-section">
-      <div class="modal-section-label">Ce que comprend l'impartition RH</div>
+      <div class="modal-section-label">Ce que comprend le conseil stratégique</div>
       <ul class="modal-list">
-        <li>Soutien stratégique ponctuel ou continu selon vos besoins</li>
-        <li>Rédaction et révision de politiques RH et de codes de conduite</li>
-        <li>Accompagnement dans les situations sensibles et les dossiers complexes</li>
-        <li>Conseil en droit du travail, relations de travail et gestion des conflits</li>
-        <li>Soutien lors de changements organisationnels, restructurations ou crises</li>
-        <li>Révision des pratiques disciplinaires et des processus d'évaluation</li>
+        <li>Accompagnement-conseil en ressources humaines et en relations de travail</li>
+        <li>Soutien à la prise de décision dans les dossiers sensibles ou complexes</li>
+        <li>Révision et rédaction de politiques RH, codes de conduite et procédures internes</li>
+        <li>Amélioration des pratiques de gestion et des processus d'évaluation</li>
+        <li>Appui stratégique lors de restructurations, fusions ou transformations organisationnelles</li>
+        <li>Prévention des risques humains et juridiques pour l'organisation</li>
       </ul>
     </div>
     <hr class="modal-divider">
     <div class="modal-section">
-      <div class="modal-section-label">Les avantages</div>
+      <div class="modal-section-label">La valeur d'un regard indépendant</div>
       <ul class="modal-list">
-        <li>Expertise senior sans les coûts d'un poste RH permanent</li>
-        <li>Regard externe objectif, sans les angles morts internes</li>
-        <li>Disponibilité flexible — ponctuelle ou récurrente selon vos besoins</li>
+        <li>Objectivité sans les biais internes ni les pressions hiérarchiques</li>
+        <li>Expertise senior accessible ponctuellement ou de façon continue</li>
+        <li>Décisions mieux ancrées, documentées et défendables</li>
         <li>Confidentialité totale et indépendance complète</li>
       </ul>
     </div>
@@ -2702,17 +2864,17 @@ footer {
     <div class="modal-section">
       <div class="modal-section-label">Pour qui</div>
       <div class="modal-tags">
+        <span class="modal-tag">Direction générale</span>
+        <span class="modal-tag">RH</span>
         <span class="modal-tag">PME</span>
         <span class="modal-tag">OBNL</span>
-        <span class="modal-tag">Coopératives</span>
-        <span class="modal-tag">Organisations en transition</span>
-        <span class="modal-tag">Sans département RH</span>
+        <span class="modal-tag">Conseils d'administration</span>
       </div>
     </div>
   </div>
   <div class="modal-footer">
-    <span class="modal-footer-note">Flexible · Sur mesure</span>
-    <a href="#contact" class="modal-cta">Explorer cette option <span class="btn-arrow"></span></a>
+    <span class="modal-footer-note">Indépendant · Sur mesure · Confidentiel</span>
+    <a href="#contact" class="modal-cta">Planifier un échange <span class="btn-arrow"></span></a>
   </div>
 </div>
 
