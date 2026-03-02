@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Auréa RH Conseil — Enquête · Médiation · Prévention · Relations de travail</title>
+<link rel="icon" type="image/svg+xml" href="/icons/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/icons/site.webmanifest">
+<meta name="msapplication-TileColor" content="#1a2332">
+<meta name="theme-color" content="#1a2332">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
@@ -154,27 +161,28 @@ nav.scrolled .nav-cta:hover { background: var(--gold) !important; color: var(--n
 
 .nav-burger {
   display: none;
-  width: 32px;
-  height: 22px;
   cursor: pointer;
   background: none;
   border: none;
-  padding: 8px;
+  padding: 10px;
   position: relative;
-  box-sizing: content-box;
+  width: 48px;
+  height: 38px;
+  box-sizing: border-box;
 }
 
 .nav-burger span {
+  display: block;
   position: absolute;
   left: 8px;
-  width: 32px;
+  right: 8px;
   height: 3px;
   background: var(--cream);
   border-radius: 1px;
 }
-.nav-burger span:nth-child(1) { top: 8px; }
+.nav-burger span:nth-child(1) { top: 9px; }
 .nav-burger span:nth-child(2) { top: 18px; }
-.nav-burger span:nth-child(3) { top: 28px; }
+.nav-burger span:nth-child(3) { top: 27px; }
 
 nav.scrolled .nav-burger span {
   background: var(--navy);
@@ -680,8 +688,8 @@ section {
   padding: 7rem 3rem;
   max-width: 1400px;
   margin: 0 auto;
-  scroll-margin-top: 80px;
 }
+
 
 section.hero {
   max-width: 100%;
@@ -1698,6 +1706,25 @@ section.hero {
 
 .contact-value a:hover { border-color: var(--gold); }
 
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+.form-success {
+  padding: 1.5rem;
+  background: rgba(200, 164, 78, 0.1);
+  border: 1px solid var(--gold);
+  border-radius: 3px;
+  color: var(--navy);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -2507,7 +2534,9 @@ footer {
         <div class="contact-value"><a href="https://www.linkedin.com/company/aur%C3%A9a-rh-conseil/" target="_blank">Auréa RH Conseil</a></div>
       </div>
     </div>
-    <form class="contact-form reveal" onsubmit="event.preventDefault(); alert('Merci pour votre message. Nous vous recontacterons dans les 24 heures.');">
+    <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="visually-hidden"><label>Ne pas remplir : <input name="bot-field"></label></p>
       <div class="form-row">
         <div class="form-group">
           <label for="name">Nom complet</label>
@@ -2546,6 +2575,9 @@ footer {
         <textarea id="message" name="message" placeholder="Décrivez brièvement votre situation ou vos besoins…"></textarea>
       </div>
       <button type="submit" class="btn-primary" style="align-self: flex-start;">Envoyer le message <span class="btn-arrow"></span></button>
+      <div class="form-success" id="formSuccess" style="display:none;">
+        <p>Merci pour votre message. Nous vous recontacterons dans les 24 heures.</p>
+      </div>
     </form>
   </div>
 </section>
@@ -2610,7 +2642,7 @@ footer {
     <div class="footer-bottom">
       <div class="footer-copy">© 2026 Auréa RH Conseil. Tous droits réservés.</div>
       <div class="footer-socials">
-        <a href="#">Politique de confidentialité</a>
+        <a href="#" data-modal="modal-privacy">Politique de confidentialité</a>
       </div>
     </div>
   </div>
@@ -2631,6 +2663,91 @@ footer {
   <div class="listing-scroll">
     <div class="listing-grid">
       <!-- LISTING_CARDS -->
+    </div>
+  </div>
+</div>
+
+<!-- POLITIQUE DE CONFIDENTIALITÉ -->
+<div class="modal-panel" id="modal-privacy">
+  <div class="modal-header">
+    <div class="modal-header-text">
+      <div class="modal-ttl">Politique de confidentialité</div>
+    </div>
+    <button class="modal-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="modal-body">
+    <p class="modal-intro">Auréa RH Conseil s'engage à protéger la confidentialité des renseignements personnels recueillis dans le cadre de ses activités, conformément à la <em>Loi sur la protection des renseignements personnels dans le secteur privé</em> du Québec (Loi 25) et à la <em>Loi 64</em> modernisant les dispositions législatives en matière de protection des renseignements personnels.</p>
+
+    <div class="modal-section">
+      <div class="modal-section-label">Renseignements recueillis</div>
+      <p>Nous recueillons uniquement les renseignements que vous nous fournissez volontairement via notre formulaire de contact :</p>
+      <ul class="modal-list">
+        <li>Nom complet</li>
+        <li>Nom de l'organisation</li>
+        <li>Adresse courriel</li>
+        <li>Numéro de téléphone</li>
+        <li>Nature de la demande et message</li>
+      </ul>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <div class="modal-section-label">Utilisation des renseignements</div>
+      <p>Les renseignements recueillis sont utilisés exclusivement pour :</p>
+      <ul class="modal-list">
+        <li>Répondre à votre demande de renseignements ou de services</li>
+        <li>Assurer le suivi de nos communications avec vous</li>
+        <li>Vous fournir les services professionnels demandés</li>
+      </ul>
+      <p>Vos renseignements ne sont jamais vendus, échangés ou transmis à des tiers sans votre consentement explicite, sauf si la loi l'exige.</p>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <div class="modal-section-label">Conservation et sécurité</div>
+      <ul class="modal-list">
+        <li>Les renseignements sont conservés aussi longtemps que nécessaire pour remplir les fins pour lesquelles ils ont été recueillis</li>
+        <li>Des mesures de sécurité appropriées sont en place pour protéger vos données contre l'accès non autorisé, la perte ou la divulgation</li>
+        <li>Les données du formulaire de contact sont transmises de façon sécurisée via les serveurs de Netlify (hébergeur)</li>
+      </ul>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <div class="modal-section-label">Vos droits</div>
+      <p>Conformément à la législation québécoise, vous avez le droit de :</p>
+      <ul class="modal-list">
+        <li>Accéder aux renseignements personnels que nous détenons à votre sujet</li>
+        <li>Demander la rectification de renseignements inexacts</li>
+        <li>Demander la suppression de vos renseignements personnels</li>
+        <li>Retirer votre consentement à tout moment</li>
+      </ul>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <div class="modal-section-label">Témoins de navigation (cookies)</div>
+      <p>Ce site n'utilise pas de témoins de navigation (cookies) à des fins de suivi ou de marketing. Seuls les témoins strictement nécessaires au fonctionnement du site et de l'authentification administrative peuvent être utilisés.</p>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <div class="modal-section-label">Personne responsable</div>
+      <p>Pour toute question relative à la protection de vos renseignements personnels, vous pouvez communiquer avec :</p>
+      <p><strong>Hugues Thibault, CRIA</strong><br>
+      Fondateur, Auréa RH Conseil<br>
+      <a href="mailto:hugues.thibault@aurearhconseil.ca" style="color: var(--gold);">hugues.thibault@aurearhconseil.ca</a></p>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <p style="color: var(--text-muted); font-size: 0.85rem;">Dernière mise à jour : mars 2026</p>
     </div>
   </div>
 </div>
@@ -2966,7 +3083,12 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     if (target) {
       e.preventDefault();
       closeModal();
-      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+      const nav = document.getElementById('mainNav');
+      const offset = nav ? nav.offsetHeight + 12 : 80;
+      setTimeout(() => {
+        const y = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }, 50);
     }
   });
 });
@@ -3069,6 +3191,25 @@ function copyArticleLink(btn) {
           document.location.href = "/admin/";
         });
       }
+    });
+  }
+
+  // Netlify Forms AJAX submit
+  const contactForm = document.querySelector('form[name="contact"]');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      }).then(() => {
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      }).catch(() => {
+        alert('Une erreur est survenue. Veuillez réessayer ou nous écrire directement à hugues.thibault@aurearhconseil.ca');
+      });
     });
   }
 </script>

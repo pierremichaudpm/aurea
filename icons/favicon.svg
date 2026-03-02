@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7.04" fill="#1a2332"/>
+  <g transform="translate(5.76, 9.25090909090909) scale(0.46545454545454545)">
+    <defs>
+      <pattern id="h" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+        <line x1="0" y1="0" x2="0" y2="3" stroke="#c8a44e" stroke-width="1"/>
+      </pattern>
+      <mask id="m"><circle cx="29" cy="14.5" r="13" fill="white"/></mask>
+      <clipPath id="c"><circle cx="15" cy="14.5" r="13"/></clipPath>
+    </defs>
+    <circle cx="15" cy="14.5" r="13" stroke="#c8a44e" stroke-width="1.8" fill="none"/>
+    <circle cx="29" cy="14.5" r="13" stroke="#c8a44e" stroke-width="1.8" fill="none"/>
+    <g clip-path="url(#c)"><rect width="44" height="29" fill="url(#h)" mask="url(#m)"/></g>
+  </g>
+</svg>
