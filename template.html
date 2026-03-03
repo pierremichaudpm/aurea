@@ -97,6 +97,22 @@
   "inLanguage": "fr-CA"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Comment se déroule une enquête en harcèlement?", "acceptedAnswer": {"@type": "Answer", "text": "L'enquête débute par une prise de contact confidentielle pour comprendre la situation. Nous définissons ensuite le mandat, recueillons les témoignages de façon impartiale, analysons les faits à la lumière des critères juridiques applicables, et produisons un rapport détaillé avec des constats, conclusions et recommandations concrètes."}},
+    {"@type": "Question", "name": "Est-ce que vos services sont vraiment indépendants?", "acceptedAnswer": {"@type": "Answer", "text": "Absolument. L'indépendance est au cœur de notre pratique. Nous n'avons aucun lien d'emploi avec les organisations que nous accompagnons, ce qui garantit une objectivité totale. Nos rapports et recommandations sont fondés uniquement sur les faits et les meilleures pratiques professionnelles."}},
+    {"@type": "Question", "name": "Quelle est la différence entre médiation et enquête?", "acceptedAnswer": {"@type": "Answer", "text": "L'enquête vise à établir les faits et à déterminer si une situation constitue du harcèlement au sens de la loi. La médiation est un processus volontaire qui permet aux parties de coconstruire une solution durable, dans un espace confidentiel et sans jugement."}},
+    {"@type": "Question", "name": "Combien de temps dure une intervention typique?", "acceptedAnswer": {"@type": "Answer", "text": "La durée varie selon la complexité du dossier. Une médiation peut se compléter en quelques séances sur deux à quatre semaines. Une enquête requiert généralement de quatre à huit semaines, selon le nombre de témoins et la portée du mandat."}},
+    {"@type": "Question", "name": "Pouvez-vous intervenir partout au Québec?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Bien que basés à Montréal, nous accompagnons des organisations dans l'ensemble du Québec. Plusieurs étapes du processus peuvent se faire à distance tout en maintenant la rigueur et la confidentialité qui caractérisent notre pratique."}},
+    {"@type": "Question", "name": "En quoi la prévention est-elle différente d'une simple politique?", "acceptedAnswer": {"@type": "Answer", "text": "Une politique est un document. La prévention est une culture. Nous aidons les organisations à aller au-delà des obligations légales en développant la capacité des leaders à lire les signaux faibles et en créant un climat où les tensions se résolvent avant de s'enraciner."}},
+    {"@type": "Question", "name": "Qu'est-ce que la littératie émotionnelle en leadership?", "acceptedAnswer": {"@type": "Answer", "text": "C'est la capacité d'un leader à reconnaître, comprendre et répondre adéquatement aux dynamiques émotionnelles dans son équipe. Nos formations outillent les gestionnaires à repérer les tensions tôt et à créer un environnement où la sécurité psychologique est réelle."}},
+    {"@type": "Question", "name": "Comment assurer la confidentialité tout au long du processus?", "acceptedAnswer": {"@type": "Answer", "text": "La confidentialité est encadrée dès le début du mandat par des règles claires, communiquées à toutes les parties. Les documents sont transmis de façon sécurisée, les entrevues se déroulent en privé, et seules les personnes autorisées ont accès au rapport final."}}
+  ]
+}
+</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
 <style>
@@ -1039,100 +1055,96 @@ section.hero {
 
 .service-link:hover { color: var(--gold-light); }
 
-/* ═══════════ APPROACH ═══════════ */
-.approach {
+/* ═══════════ FAQ ═══════════ */
+.faq {
   position: relative;
 }
 
-.approach-layout {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 4rem;
-  margin-top: 4rem;
-  align-items: center;
-}
-
-.approach-steps {
+.faq-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--stone);
-  border: 1px solid var(--stone);
-  border-radius: 3px;
-  overflow: hidden;
+  gap: 0 3.5rem;
+  margin-top: 4rem;
 }
 
-.approach-step {
-  background: var(--cream);
-  padding: 2.5rem 2rem;
-  transition: background 0.4s;
-  position: relative;
+.faq-item {
+  border-bottom: 1px solid var(--stone);
 }
 
-.approach-step:hover {
-  background: var(--white);
-}
-
-/* Brand mark in approche section */
-.approach-brand {
+.faq-question {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: var(--navy);
+  line-height: 1.35;
+  transition: color 0.3s var(--ease-gentle);
+}
+
+.faq-question:hover {
+  color: var(--gold);
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--stone);
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  transition: all 0.4s var(--ease-gentle);
 }
 
-.approach-logo {
-  width: 250px;
-  height: auto;
-  color: var(--gold);
-  opacity: 1;
-}
-
-.approach-brand-name {
-  font-family: var(--serif);
-  font-size: 4.4rem;
-  font-weight: 300;
-  color: var(--gold);
-  opacity: 1;
-  letter-spacing: 0.08em;
-  line-height: 1;
-}
-
-.approach-brand-sub {
+.faq-icon::before {
+  content: '+';
   font-family: var(--sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0.7;
-  margin-top: -0.5rem;
-}
-
-.step-number {
-  font-family: var(--serif);
-  font-size: 3rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--gold);
-  opacity: 0.25;
   line-height: 1;
-  margin-bottom: 1.2rem;
+  transition: transform 0.4s var(--ease-gentle);
+  display: block;
 }
 
-.step-title {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--navy);
-  margin-bottom: 0.8rem;
+.faq-item.open .faq-icon {
+  background: var(--navy);
+  border-color: var(--navy);
 }
 
-.step-desc {
-  font-size: 0.85rem;
-  line-height: 1.7;
+.faq-item.open .faq-icon::before {
+  content: '−';
+  color: var(--gold-light);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-gentle), padding 0.5s var(--ease-gentle);
+  padding: 0 0;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding: 0 0 1.6rem 0;
+}
+
+.faq-answer p {
+  font-size: 0.9rem;
+  line-height: 1.8;
   font-weight: 300;
   color: var(--text-muted);
+  max-width: 540px;
 }
 
 /* ═══════════ BLOG ═══════════ */
@@ -1982,8 +1994,7 @@ footer {
   .hero-stats { flex-wrap: wrap; }
   .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
   .services-grid { grid-template-columns: 1fr 1fr; }
-  .approach-layout { grid-template-columns: 1fr; gap: 3rem; }
-  .approach-brand { display: none; }
+  .faq-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr 1fr; }
   .blog-card:first-child { grid-column: 1 / -1; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -2005,8 +2016,7 @@ footer {
   .hero-bottom { padding: 2rem 1.5rem; }
   .hero-stats { flex-direction: column; }
   .services-grid { grid-template-columns: 1fr; }
-  .approach-steps { grid-template-columns: 1fr; }
-  .approach-layout { grid-template-columns: 1fr; }
+  .faq-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
@@ -2337,7 +2347,7 @@ footer {
   <ul class="nav-links">
     <li><a href="#philosophie">Philosophie</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#approche">Approche</a></li>
+    <li><a href="#faq">FAQ</a></li>
     <li><a href="#blogue">Blogue</a></li>
     <li><a href="#contact" class="nav-cta">Nous joindre</a></li>
   </ul>
@@ -2366,7 +2376,7 @@ footer {
   </a>
   <a href="#philosophie" onclick="this.parentElement.classList.remove('open')">Philosophie</a>
   <a href="#services" onclick="this.parentElement.classList.remove('open')">Services</a>
-  <a href="#approche" onclick="this.parentElement.classList.remove('open')">Approche</a>
+  <a href="#faq" onclick="this.parentElement.classList.remove('open')">FAQ</a>
   <a href="#blogue" onclick="this.parentElement.classList.remove('open')">Blogue</a>
   <a href="#contact" onclick="this.parentElement.classList.remove('open')">Nous joindre</a>
 </div>
@@ -2518,55 +2528,83 @@ footer {
   </div>
 </div>
 
-<!-- APPROACH -->
-<section class="approach" id="approche">
-  <div class="section-tag">Notre approche</div>
-  <h2 class="section-title">Un processus structuré,<br>des résultats durables</h2>
-  <p class="section-intro">Chaque intervention suit un cadre méthodologique éprouvé, adapté à la réalité unique de votre organisation.</p>
-  <div class="approach-layout">
-    <div class="approach-steps">
-      <div class="approach-step reveal">
-        <div class="step-number">01</div>
-        <h3 class="step-title">Écoute et analyse</h3>
-        <p class="step-desc">Prise de contact confidentielle. Nous prenons le temps de comprendre votre situation dans toute sa complexité.</p>
-      </div>
-      <div class="approach-step reveal">
-        <div class="step-number">02</div>
-        <h3 class="step-title">Cadrage et mandat</h3>
-        <p class="step-desc">Définition claire des objectifs, du périmètre d'intervention et des règles de confidentialité applicables.</p>
-      </div>
-      <div class="approach-step reveal">
-        <div class="step-number">03</div>
-        <h3 class="step-title">Intervention</h3>
-        <p class="step-desc">Mise en œuvre rigoureuse du mandat, dans le respect des personnes et des meilleures pratiques professionnelles.</p>
-      </div>
-      <div class="approach-step reveal">
-        <div class="step-number">04</div>
-        <h3 class="step-title">Recommandations</h3>
-        <p class="step-desc">Rapport détaillé avec constats, conclusions et recommandations concrètes pour l'avenir de votre organisation.</p>
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-tag">Questions fréquentes</div>
+  <h2 class="section-title">Ce que nos clients<br>nous demandent souvent</h2>
+  <p class="section-intro">Chaque situation est unique, mais certaines questions reviennent régulièrement. Voici les réponses aux plus courantes.</p>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Comment se déroule une enquête en harcèlement?
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <p>L'enquête débute par une prise de contact confidentielle pour comprendre la situation. Nous définissons ensuite le mandat, recueillons les témoignages de façon impartiale, analysons les faits à la lumière des critères juridiques applicables, et produisons un rapport détaillé avec des constats, conclusions et recommandations concrètes.</p>
       </div>
     </div>
-    <div class="approach-brand">
-      <svg class="approach-logo" viewBox="0 0 44 29" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <defs>
-          <pattern id="approachHatch" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
-            <line x1="0" y1="0" x2="0" y2="3" stroke="currentColor" stroke-width="1"/>
-          </pattern>
-          <mask id="approachMask">
-            <circle cx="29" cy="14.5" r="13" fill="white"/>
-          </mask>
-          <clipPath id="approachClip">
-            <circle cx="15" cy="14.5" r="13"/>
-          </clipPath>
-        </defs>
-        <circle cx="15" cy="14.5" r="13" stroke="currentColor" stroke-width="1.2"/>
-        <circle cx="29" cy="14.5" r="13" stroke="currentColor" stroke-width="1.2"/>
-        <g clip-path="url(#approachClip)">
-          <rect width="44" height="29" fill="url(#approachHatch)" mask="url(#approachMask)"/>
-        </g>
-      </svg>
-      <span class="approach-brand-name">Auréa</span>
-      <span class="approach-brand-sub">RH Conseil</span>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Est-ce que vos services sont vraiment indépendants?
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <p>Absolument. L'indépendance est au cœur de notre pratique. Nous n'avons aucun lien d'emploi avec les organisations que nous accompagnons, ce qui garantit une objectivité totale. Nos rapports et recommandations sont fondés uniquement sur les faits et les meilleures pratiques professionnelles.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Quelle est la différence entre médiation et enquête?
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <p>L'enquête vise à établir les faits et à déterminer si une situation constitue du harcèlement au sens de la loi. La médiation, elle, est un processus volontaire qui permet aux parties de coconstruire une solution durable, dans un espace confidentiel et sans jugement. Les deux démarches répondent à des besoins différents et peuvent parfois être complémentaires.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Combien de temps dure une intervention typique?
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <p>La durée varie selon la complexité du dossier. Une médiation peut se compléter en quelques séances sur deux à quatre semaines. Une enquête requiert généralement de quatre à huit semaines, selon le nombre de témoins et la portée du mandat. Nous établissons un échéancier réaliste dès le cadrage du mandat.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Pouvez-vous intervenir partout au Québec?
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <p>Oui. Bien que basés à Montréal, nous accompagnons des organisations dans l'ensemble du Québec. Plusieurs étapes du processus peuvent se faire à distance — entrevues par visioconférence, échanges sécurisés — tout en maintenant la rigueur et la confidentialité qui caractérisent notre pratique.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        En quoi la prévention est-elle différente d'une simple politique?
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <p>Une politique est un document. La prévention est une culture. Nous aidons les organisations à aller au-delà des obligations légales en développant la capacité des leaders à lire les signaux faibles, en instaurant des pratiques de gestion prévisibles et en créant un climat où les tensions se résolvent avant de s'enraciner.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Qu'est-ce que la littératie émotionnelle en leadership?
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <p>C'est la capacité d'un leader à reconnaître, comprendre et répondre adéquatement aux dynamiques émotionnelles dans son équipe. Nos formations outillent les gestionnaires à repérer les tensions tôt, à désamorcer les conflits avant l'escalade et à créer un environnement où la sécurité psychologique est réelle — pas seulement déclarée.</p>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" aria-expanded="false">
+        Comment assurer la confidentialité tout au long du processus?
+        <span class="faq-icon" aria-hidden="true"></span>
+      </button>
+      <div class="faq-answer">
+        <p>La confidentialité est encadrée dès le début du mandat par des règles claires, communiquées à toutes les parties. Les documents sont transmis de façon sécurisée, les entrevues se déroulent en privé, et seules les personnes autorisées ont accès au rapport final. Nous suivons les normes de l'Ordre des CRHA en matière de protection des renseignements.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -2713,7 +2751,7 @@ footer {
         <div class="footer-heading">Entreprise</div>
         <ul class="footer-links">
           <li><a href="#philosophie">Notre philosophie</a></li>
-          <li><a href="#approche">Notre approche</a></li>
+          <li><a href="#faq">Questions fréquentes</a></li>
           <li><a href="#blogue">Blogue</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -3163,6 +3201,16 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
 reveals.forEach(el => observer.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    item.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', !isOpen);
+  });
+});
 
 // Smooth scroll for nav links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
