@@ -1056,8 +1056,15 @@ section.hero {
 .service-link:hover { color: var(--gold-light); }
 
 /* ═══════════ FAQ ═══════════ */
-.faq {
-  position: relative;
+.faq-section {
+  background: var(--cream);
+  max-width: 100%;
+  padding: 7rem 3rem;
+}
+
+.faq-inner {
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .faq-grid {
@@ -2007,7 +2014,7 @@ footer {
   .nav-links { display: none; }
   .nav-burger { display: flex; }
   section { padding: 4rem 1.5rem; }
-  .services-section, .blog-section { padding: 4rem 1.5rem; }
+  .services-section, .blog-section, .faq-section { padding: 4rem 1.5rem; }
   .cta-band { padding: 3rem 1.5rem; }
   footer { padding: 3rem 1.5rem 2rem; }
   .hero { min-height: auto; padding-top: 0; }
@@ -2529,7 +2536,8 @@ footer {
 </div>
 
 <!-- FAQ -->
-<section class="faq" id="faq">
+<div class="faq-section" id="faq">
+  <div class="faq-inner">
   <div class="section-tag">Questions fréquentes</div>
   <h2 class="section-title">Ce que nos clients<br>nous demandent souvent</h2>
   <p class="section-intro">Chaque situation est unique, mais certaines questions reviennent régulièrement. Voici les réponses aux plus courantes.</p>
@@ -2607,7 +2615,8 @@ footer {
       </div>
     </div>
   </div>
-</section>
+  </div>
+</div>
 
 <!-- BLOG -->
 <div class="blog-section" id="blogue">
