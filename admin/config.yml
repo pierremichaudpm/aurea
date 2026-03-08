@@ -76,3 +76,72 @@ collections:
         name: body
         widget: markdown
         hint: "Utilisez ## pour les sous-titres, **texte** pour le gras, > pour les citations"
+
+  - name: articles-en
+    label: Articles (English)
+    label_singular: Article (EN)
+    folder: content/articles-en
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: "The full article title"
+
+      - label: URL Identifier
+        name: slug
+        widget: string
+        hint: "Words separated by hyphens, lowercase. E.g.: psychological-safety"
+        pattern:
+          - "^[a-z0-9-]+$"
+          - "Lowercase letters and hyphens only"
+
+      - label: Publication date
+        name: date
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: DD/MM/YYYY
+        time_format: false
+
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - "Leadership · Prevention"
+          - "Mediation · Emotions"
+          - "Management · Workplace Climate"
+          - "Climate · Prevention"
+          - "Prevention · HR"
+          - "Investigation · Rigour"
+          - "Training · Leadership"
+          - "Mediation"
+          - "Prevention"
+
+      - label: Excerpt
+        name: excerpt
+        widget: text
+        hint: "2-3 sentences summarizing the article (displayed on the card)"
+
+      - label: Main image
+        name: image
+        widget: image
+        hint: "Horizontal photo, minimum 1200×675 px"
+
+      - label: Series / Type
+        name: series
+        widget: string
+        default: "Article"
+        hint: "E.g.: Article, Series · 8 parts, Feature"
+
+      - label: Read time
+        name: readTime
+        widget: string
+        default: "5 min read"
+
+      - label: Content
+        name: body
+        widget: markdown
+        hint: "Use ## for subtitles, **text** for bold, > for quotes"

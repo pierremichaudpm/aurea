@@ -158,23 +158,42 @@ function formatDateFr(dateStr) {
   return `${day} ${month} ${year}`;
 }
 
+// ── English date formatter ───────────────────────────────────────────────
+const ENGLISH_MONTHS = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
+
+function formatDateEn(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  const month = ENGLISH_MONTHS[d.getMonth()];
+  const day = d.getDate();
+  const year = d.getFullYear();
+  return `${month} ${day}, ${year}`;
+}
+
 // ── SVG icons ─────────────────────────────────────────────────────────────
 const svgLinkedin = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>';
 const svgFacebook = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>';
 const svgLink = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
 
-// ── Read & parse articles ─────────────────────────────────────────────────
-const articlesDir = path.join(__dirname, 'content', 'articles');
-const articles = fs.readdirSync(articlesDir)
-  .filter(f => f.endsWith('.md'))
-  .map(file => {
-    const raw = fs.readFileSync(path.join(articlesDir, file), 'utf8');
-    const { data, content } = parseFrontmatter(raw);
-    const slug = data.slug || file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
-    const bodyHtml = markdownToHtml(content);
-    return { ...data, slug, bodyHtml };
-  })
-  .sort((a, b) => (b.date || '').localeCompare(a.date || '')); // newest first
+// ── Read & parse articles (generic) ──────────────────────────────────────
+function readArticles(dir) {
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => f.endsWith('.md'))
+    .map(file => {
+      const raw = fs.readFileSync(path.join(dir, file), 'utf8');
+      const { data, content } = parseFrontmatter(raw);
+      const slug = data.slug || file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+      const bodyHtml = markdownToHtml(content);
+      return { ...data, slug, bodyHtml };
+    })
+    .sort((a, b) => (b.date || '').localeCompare(a.date || '')); // newest first
+}
+
+const articles = readArticles(path.join(__dirname, 'content', 'articles'));
+const articlesEn = readArticles(path.join(__dirname, 'content', 'articles-en'));
 
 // ── HTML generators ───────────────────────────────────────────────────────
 function blogCard(a) {
@@ -191,13 +210,17 @@ function blogCard(a) {
 </div>`;
 }
 
-function articlePanel(a) {
+function articlePanel(a, lang) {
+  const closeLabel = lang === 'en' ? 'Close' : 'Fermer';
+  const bylineCreds = lang === 'en' ? 'CRIA \u00b7 Founder of Aur\u00e9a RH Conseil' : 'CRIA \u00b7 Fondateur d\u2019Aur\u00e9a RH Conseil';
+  const shareLabel = lang === 'en' ? 'Share' : 'Partager';
+  const copyLabel = lang === 'en' ? 'Copy link' : 'Copier le lien';
   return `<div class="blog-article-panel" id="article-${a.slug}">
   <div class="article-hero">
     <img src="${a.image}?auto=compress&cs=tinysrgb&w=760&h=428&fit=crop" alt="${escapeAttr(a.title)}">
     <div class="article-hero-overlay">
       <span class="article-category-badge">${a.category}</span>
-      <button class="blog-modal-close" aria-label="Fermer">\u2715</button>
+      <button class="blog-modal-close" aria-label="${closeLabel}">\u2715</button>
     </div>
   </div>
   <div class="article-content">
@@ -208,24 +231,24 @@ function articlePanel(a) {
     <h1 class="article-title">${a.title}</h1>
     <div class="article-byline">
       <span class="byline-name">Hugues Thibault</span>
-      <span class="byline-creds">CRIA \u00b7 Fondateur d\u2019Aur\u00e9a RH Conseil</span>
+      <span class="byline-creds">${bylineCreds}</span>
     </div>
     <div class="article-body">${a.bodyHtml}</div>
 
     <div class="article-share">
-      <span class="share-label">Partager</span>
+      <span class="share-label">${shareLabel}</span>
       <div class="share-buttons">
         <a href="#" onclick="shareLinkedIn(event)" class="share-btn">${svgLinkedin} LinkedIn</a>
         <a href="#" onclick="shareFacebook(event)" class="share-btn">${svgFacebook} Facebook</a>
-        <button class="share-btn" onclick="copyArticleLink(this)">${svgLink} Copier le lien</button>
+        <button class="share-btn" onclick="copyArticleLink(this)">${svgLink} ${copyLabel}</button>
       </div>
     </div>
   </div>
 </div>`;
 }
 
-function listingCard(a) {
-  const formattedDate = formatDateFr(a.date);
+function listingCard(a, lang) {
+  const formattedDate = lang === 'en' ? formatDateEn(a.date) : formatDateFr(a.date);
   return `<div class="listing-card" data-modal="article-${a.slug}">
   <div class="listing-card-img"><img src="${a.image}?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop" alt=""></div>
   <div class="listing-card-body">
@@ -236,17 +259,29 @@ function listingCard(a) {
 </div>`;
 }
 
-// ── Read template & inject ────────────────────────────────────────────────
-const template = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
+// ── Build helper ─────────────────────────────────────────────────────────
+function buildSite(templateFile, outputFile, siteArticles, lang) {
+  const tpl = fs.readFileSync(path.join(__dirname, templateFile), 'utf8');
 
-const blogCardsHtml = articles.slice(0, 3).map(blogCard).join('\n\n');
-const articlePanelsHtml = articles.map(articlePanel).join('\n\n');
-const listingCardsHtml = articles.map(listingCard).join('\n\n');
+  const blogCardsHtml = siteArticles.slice(0, 3).map(a => blogCard(a)).join('\n\n');
+  const articlePanelsHtml = siteArticles.map(a => articlePanel(a, lang)).join('\n\n');
+  const listingCardsHtml = siteArticles.map(a => listingCard(a, lang)).join('\n\n');
 
-const output = template
-  .replace('<!-- BLOG_CARDS -->', blogCardsHtml)
-  .replace('<!-- ARTICLE_PANELS -->', articlePanelsHtml)
-  .replace('<!-- LISTING_CARDS -->', listingCardsHtml);
+  const result = tpl
+    .replace('<!-- BLOG_CARDS -->', blogCardsHtml)
+    .replace('<!-- ARTICLE_PANELS -->', articlePanelsHtml)
+    .replace('<!-- LISTING_CARDS -->', listingCardsHtml);
 
-fs.writeFileSync(path.join(__dirname, 'index.html'), output, 'utf8');
-console.log(`Built index.html with ${articles.length} articles`);
+  // Ensure output directory exists
+  const outputDir = path.dirname(path.join(__dirname, outputFile));
+  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
+
+  fs.writeFileSync(path.join(__dirname, outputFile), result, 'utf8');
+  console.log(`Built ${outputFile} with ${siteArticles.length} articles`);
+}
+
+// ── Build FR ─────────────────────────────────────────────────────────────
+buildSite('template.html', 'index.html', articles, 'fr');
+
+// ── Build EN ─────────────────────────────────────────────────────────────
+buildSite('template-en.html', 'en/index.html', articlesEn, 'en');
