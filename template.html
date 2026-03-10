@@ -2459,7 +2459,7 @@ footer {
         <div class="founder-photo-caption">
           <div class="founder-photo-name">Hugues Thibault</div>
           <div class="founder-photo-creds">CRIA · Médiateur accrédité · Fondateur</div>
-          <a href="#contact" class="founder-bio-cta" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--sans);font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:0.6rem 1.2rem;border:1px solid var(--gold);border-radius:2px;transition:all 0.3s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--white)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Qui suis-je <span class="btn-arrow"></span></a>
+          <a href="#" data-modal="modal-bio" class="founder-bio-cta" style="margin-top:1rem;display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--sans);font-size:0.75rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:0.6rem 1.2rem;border:1px solid var(--gold);border-radius:2px;transition:all 0.3s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--white)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">Qui suis-je <span class="btn-arrow"></span></a>
         </div>
       </div>
       <div class="value-item">
@@ -2690,10 +2690,6 @@ footer {
         <div class="contact-label">LinkedIn</div>
         <div class="contact-value"><a href="https://www.linkedin.com/company/aur%C3%A9a-rh-conseil/" target="_blank">Auréa RH Conseil</a></div>
       </div>
-      <div class="contact-bio" style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--stone);">
-        <h3 style="font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--text-dark);margin-bottom:0.75rem;">Qui suis-je</h3>
-        <p style="font-size:0.95rem;line-height:1.7;color:var(--text-body);">Conseiller en ressources humaines agréé (CRIA) et médiateur accrédité, je cumule plus de 25 années d'expérience en ressources humaines et en relations de travail. Membre de l'Ordre des CRHA depuis 1999, j'ai œuvré dans des milieux syndiqués variés — secteurs public, parapublic et privé — avant de fonder Auréa RH Conseil. Mon approche allie rigueur professionnelle, écoute authentique et indépendance, afin d'offrir aux organisations un accompagnement sur mesure dans leurs enjeux humains les plus sensibles. Je suis également médiateur bénévole à la Clinique de médiation civile de l'Université de Sherbrooke.</p>
-      </div>
     </div>
     <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="contact">
@@ -2915,6 +2911,62 @@ footer {
     <div class="modal-section">
       <p style="color: var(--text-muted); font-size: 0.85rem;">Dernière mise à jour : mars 2026</p>
     </div>
+  </div>
+</div>
+
+<!-- MODAL BIO -->
+<div class="modal-panel" id="modal-bio">
+  <div class="modal-header">
+    <div class="modal-header-text">
+      <div class="modal-ttl">Qui suis-je</div>
+    </div>
+    <button class="modal-close" aria-label="Fermer">✕</button>
+  </div>
+  <div class="modal-body">
+    <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:2rem;">
+      <div style="flex-shrink:0;">
+        <img src="Hugues_photo.jpeg" alt="Hugues Thibault" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);">
+      </div>
+      <div>
+        <div style="font-family:var(--serif);font-size:1.4rem;font-weight:600;color:var(--text-dark);">Hugues Thibault</div>
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-top:0.25rem;">CRIA · Médiateur accrédité · Fondateur</div>
+      </div>
+    </div>
+
+    <div class="modal-section">
+      <div class="modal-section-label">Parcours</div>
+      <p>Conseiller en ressources humaines agréé (CRIA) et médiateur accrédité, je cumule plus de 25 années d'expérience en ressources humaines et en relations de travail. Membre de l'Ordre des CRHA depuis 1999, j'ai œuvré dans des milieux syndiqués variés — secteurs public, parapublic et privé — avant de fonder Auréa RH Conseil.</p>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <div class="modal-section-label">Approche</div>
+      <p>Mon approche allie rigueur professionnelle, écoute authentique et indépendance, afin d'offrir aux organisations un accompagnement sur mesure dans leurs enjeux humains les plus sensibles. Chaque démarche est menée avec sensibilité, transparence et méthode.</p>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <div class="modal-section-label">Engagement</div>
+      <p>Médiateur bénévole à la Clinique de médiation civile de l'Université de Sherbrooke, je contribue activement à rendre la médiation accessible au plus grand nombre.</p>
+    </div>
+
+    <hr class="modal-divider">
+
+    <div class="modal-section">
+      <div class="modal-section-label">Affiliations</div>
+      <div class="modal-tags">
+        <span class="modal-tag">Ordre des CRHA</span>
+        <span class="modal-tag">Médiateur accrédité</span>
+        <span class="modal-tag">Université de Sherbrooke</span>
+        <span class="modal-tag">Bilingue FR / EN</span>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <span class="modal-footer-note">25+ ans d'expérience</span>
+    <a href="#contact" class="modal-cta">Me joindre <span class="btn-arrow"></span></a>
   </div>
 </div>
 
