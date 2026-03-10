@@ -2009,6 +2009,24 @@ footer {
   .blog-card:first-child { grid-column: 1 / -1; }
   .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
   .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+  /* Reduce fonts for smaller screens (tablet + landscape) */
+  .section-title { font-size: clamp(1.5rem, 3vw, 2.2rem); }
+  .section-intro { font-size: 0.92rem; }
+  .section-tag { font-size: 0.62rem; }
+  .service-title { font-size: 1.2rem; }
+  .service-desc { font-size: 0.84rem; }
+  .faq-question { font-size: 1rem; padding: 1.3rem 0; }
+  .faq-answer p { font-size: 0.9rem; }
+  .cta-title { font-size: clamp(1.4rem, 2.5vw, 1.8rem); }
+  .cta-text { font-size: 0.88rem; }
+  .contact-value { font-size: 1.02rem; }
+  .contact-label { font-size: 0.65rem; }
+  .value-title { font-size: 0.9rem; }
+  .value-desc { font-size: 0.84rem; }
+  .footer-desc { font-size: 0.84rem; }
+  .footer-heading { font-size: 0.62rem; }
+  .footer-links a { font-size: 0.88rem; }
 }
 
 @media (max-width: 768px) {
@@ -2022,7 +2040,7 @@ footer {
   footer { padding: 3rem 1.5rem 2rem; }
   .hero { min-height: auto; padding-top: 0; }
   .hero-content { padding: 6rem 1.5rem 0; }
-  .hero-right { display: none; } /* auto-hides hero-line and hero-cross too */
+  .hero-right { display: none; }
   .hero-bottom { padding: 2rem 1.5rem; }
   .hero-stats { flex-direction: column; }
   .services-grid { grid-template-columns: 1fr; }
@@ -2037,23 +2055,13 @@ footer {
   .nav-logo-icon { width: 37px; height: 24px; }
   .hero-tag { font-size: 0.58rem; letter-spacing: 0.2em; }
 
-  /* Reduce fonts for lower sections on mobile */
-  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); }
-  .section-intro { font-size: 0.9rem; }
-  .section-tag { font-size: 0.62rem; }
-  .service-title { font-size: 1.15rem; }
-  .service-desc { font-size: 0.82rem; }
-  .faq-question { font-size: 0.98rem; padding: 1.2rem 0; }
-  .faq-answer p { font-size: 0.88rem; }
-  .cta-title { font-size: clamp(1.3rem, 2.2vw, 1.7rem); }
-  .cta-text { font-size: 0.85rem; }
-  .contact-value { font-size: 1rem; }
-  .contact-label { font-size: 0.65rem; }
-  .value-title { font-size: 0.88rem; }
-  .value-desc { font-size: 0.82rem; }
-  .footer-desc { font-size: 0.82rem; }
-  .footer-heading { font-size: 0.6rem; }
-  .footer-links a { font-size: 0.85rem; }
+  /* Further reduce on portrait mobile */
+  .section-title { font-size: clamp(1.4rem, 3vw, 1.8rem); }
+  .service-title { font-size: 1.1rem; }
+  .service-desc { font-size: 0.8rem; }
+  .faq-question { font-size: 0.95rem; padding: 1.1rem 0; }
+  .faq-answer p { font-size: 0.86rem; }
+  .cta-title { font-size: clamp(1.2rem, 2.2vw, 1.5rem); }
 }
 
 /* ═══════════ MOBILE NAV ═══════════ */
