@@ -27,7 +27,7 @@ Specialized support in workplace harassment investigations, mediation, preventio
 - Services
 - FAQ
 - Blog
-- Contact us
+- Contact me
 
 ---
 
@@ -40,7 +40,7 @@ Specialized support in workplace harassment investigations, mediation, preventio
 **Subtitle:** Auréa RH Conseil supports management, HR teams and employees in harassment prevention, conflict resolution and sensitive situation management — for healthier, fairer and more sustainable organizations.
 
 **CTA primary:** Schedule a consultation
-**CTA secondary:** Discover our services
+**CTA secondary:** Discover my services
 
 **Stats bar:**
 | Value | Label |
@@ -54,37 +54,81 @@ Specialized support in workplace harassment investigations, mediation, preventio
 
 ## PHILOSOPHY
 
-**Section tag:** Our philosophy
+**Section tag:** My philosophy
 **Section title:** An outside perspective, compassionate and rigorously impartial
 
-**Paragraph 1:** Workplaces thrive when people feel heard, respected and safe. Every engagement we undertake aims to create the conditions necessary for organizations to move forward with clarity, and for individuals to express themselves without fear.
+**Paragraph 1:** Workplaces thrive when people feel heard, respected and safe. Every engagement I undertake aims to create the conditions necessary for organizations to move forward with clarity, and for individuals to express themselves without fear.
 
-**Paragraph 2:** At Auréa RH Conseil, we believe that every situation is unique and every person deserves to be received with sensitivity. We take the time to understand the realities experienced, the nuances, the emotions and the dynamics that influence workplace relationships. This attention allows us to build a climate of trust, essential for obtaining accurate information and fostering lasting solutions.
+**Paragraph 2:** At Auréa RH Conseil, I believe that every situation is unique and every person deserves to be received with sensitivity. I take the time to understand the realities experienced, the nuances, the emotions and the dynamics that influence workplace relationships. This attention allows me to build a climate of trust, essential for obtaining accurate information and fostering lasting solutions.
 
-**Quote:** Through independent and rigorous expertise, I support management and HR teams in decision-making, human risk prevention, improvement of management practices and the implementation of sustainable strategies that foster a healthy, respectful and high-performing workplace.
+**Paragraph 3:** All our interventions comply with the professional standards of the Ordre des CRHA and the expectations of the CNESST regarding investigations, dispute resolution and prevention.
+
+**Quote:** Understanding people deeply, analyzing situations with rigour and acting with integrity — that is how I help organizations make decisions that are fair, humane and fully assumed.
 **Attribution:** — Hugues Thibault, CRIA · Accredited Mediator · Founder
+
+**Founder photo caption:**
+- Name: Hugues Thibault
+- Credentials: CRIA · Accredited Mediator · Founder
+- Button: About me
 
 **Values:**
 
 | Icon | Title | Description |
 |------|-------|-------------|
 | L | Listening | Welcoming each person with attention, sensitivity and respect to truly understand their experience. |
-| N | Neutrality | We analyze situations with objectivity and independence, without bias, to preserve the integrity of every process. |
-| R | Rigour | Our processes follow best practices and the standards of the Ordre des CRHA. Clear, documented and consistent criteria. |
+| N | Neutrality | I analyze situations with objectivity and independence, without bias, to preserve the integrity of every process. |
+| R | Rigour | Our processes follow best practices and the standards of the Ordre des CRHA. Clear, documented and consistent criteria, in compliance with the professional code of ethics. |
 | I | Integrity | Acting with consistency, honesty and responsibility, respecting people as much as principles. |
+
+---
+
+## ABOUT ME (Bio Modal)
+
+**Modal title:** About me
+
+**Name:** Hugues Thibault
+**Credentials:** CRIA · Accredited Mediator · Founder
+
+**Background:** A Certified Human Resources Professional (CRIA) and accredited mediator, I bring over 25 years of experience in human resources and labour relations. A member of the Ordre des CRHA since 1999, I have worked in diverse unionized environments — public, parapublic and private sectors — before founding Auréa RH Conseil.
+
+**Approach:** My approach combines professional rigour, authentic listening and independence, providing organizations with tailored support for their most sensitive human challenges. Every engagement is conducted with sensitivity, transparency and method.
+
+**Community involvement:** As a volunteer mediator at the Université de Sherbrooke Civil Mediation Clinic, I actively contribute to making mediation accessible to all.
+
+**Affiliations:** Ordre des CRHA · Accredited Mediator · Université de Sherbrooke · Bilingual FR / EN
+
+**Footer note:** 25+ years of experience
+**CTA:** Contact me
 
 ---
 
 ## SERVICES
 
-**Section tag:** Our services
+**Section tag:** My services
 **Section title:** Comprehensive expertise in human resources and labour relations management
 **Section intro:** Concrete interventions to prevent conflicts, support difficult situations and strengthen leadership within your teams. Because a healthy workplace is built — not decreed.
+
+### Intervening early saves significantly (highlight block)
+
+**Title:** Intervening early saves significantly
+
+**Paragraph 1:** Unresolved conflicts, persistent tensions or poorly managed situations always end up costing dearly — in energy, time, productivity and financial resources.
+
+**Paragraph 2:** A neutral and structured approach allows you to:
+- quickly restore a healthy workplace climate
+- reduce absenteeism and burnout
+- prevent formal complaints and costly grievances
+- avoid heavy disciplinary interventions
+- support managers before the situation escalates
+
+**Closing statement:** **Every hour invested today saves you weeks of crisis management tomorrow.**
 
 ### Service 01 — Harassment and incivility investigation
 **Card:** Independent and impartial investigations into psychological harassment, incivility, discrimination and misconduct. Rigorous reports with concrete recommendations.
 
-**Modal intro:** A workplace investigation demands rigour, impartiality and sensitivity. We conduct independent investigations according to best practices and the standards of the Ordre des CRHA, so that the facts are established with clarity and the parties are treated with dignity.
+**Modal intro:** A workplace investigation demands rigour, impartiality and sensitivity. I conduct independent investigations according to best practices and the standards of the Ordre des CRHA, so that the facts are established with clarity and the parties are treated with dignity.
+
+**Additional paragraph:** An investigation conducted according to best practices reduces legal risks, protects individuals and enables the organization to make fair and defensible decisions.
 
 **What an investigation covers:**
 - Psychological harassment in the workplace
@@ -130,15 +174,15 @@ Specialized support in workplace harassment investigations, mediation, preventio
 ### Service 03 — Climate analysis
 **Card:** Deeply understanding what teams experience to inform decisions, guide fair actions and sustainably strengthen the workplace climate.
 
-**Modal intro:** Certain HR situations require an external perspective — rigorous and without blind spots. We aim to deeply understand what teams experience to inform decisions, guide fair actions and sustainably strengthen the workplace climate.
+**Modal intro:** Certain HR situations require an external perspective — rigorous and without blind spots. I aim to deeply understand what teams experience to inform decisions, guide fair actions and sustainably strengthen the workplace climate.
 
 **What this engagement includes:**
-- We lay the groundwork by clearly explaining the process, ensuring confidentiality and identifying areas of tension or priority questions.
-- We collect information using three complementary tools: an anonymous survey, individual interviews and focus groups.
-- We analyze the findings by identifying recurring themes, strengths, irritants, risks and areas of conflict, and verifying whether perceptions are shared or isolated.
-- We present a clear picture highlighting what works well, what is problematic, what is urgent and what is important but less pressing.
-- We formulate recommendations, because a diagnosis is only valuable if it leads to realistic and actionable steps.
-- We include the assessment of psychosocial risks
+- I lay the groundwork by clearly explaining the process, ensuring confidentiality and identifying areas of tension or priority questions.
+- I collect information using three complementary tools: an anonymous survey, individual interviews and focus groups.
+- I analyze the findings by identifying recurring themes, strengths, irritants, risks and areas of conflict, and verifying whether perceptions are shared or isolated.
+- I present a clear picture highlighting what works well, what is problematic, what is urgent and what is important but less pressing.
+- I formulate recommendations, because a diagnosis is only valuable if it leads to realistic and actionable steps.
+- I include the assessment of psychosocial risks
 
 **Why an outside perspective:**
 - Objectivity and independence, free from internal biases and hierarchical pressures
@@ -175,7 +219,7 @@ Specialized support in workplace harassment investigations, mediation, preventio
 ### Service 05 — Labour relations and sensitive situation management
 **Card:** Strategically supporting managers in their sensitive decisions and helping them communicate with clarity, consistency and respect.
 
-**Modal intro:** We support managers in their day-to-day sensitive decisions and help them communicate with clarity, consistency and respect.
+**Modal intro:** I support managers in their day-to-day sensitive decisions and help them communicate with clarity, consistency and respect.
 
 **What this engagement includes:**
 - Collective bargaining, including issue analysis, mandate preparation, drafting of the collective agreement, on an outsourced basis or in support of management teams
@@ -199,7 +243,7 @@ Specialized support in workplace harassment investigations, mediation, preventio
 ### Service 06 — Strategic consulting in human issues
 **Card:** Helping organizations see clearly through their human challenges, make structuring decisions and take actions that truly transform their culture.
 
-**Modal intro:** The most important HR decisions deserve an outside, independent and experienced perspective. We help organizations see clearly through their human challenges, make structuring decisions and take actions that truly transform their culture.
+**Modal intro:** The most important HR decisions deserve an outside, independent and experienced perspective. I help organizations see clearly through their human challenges, make structuring decisions and take actions that truly transform their culture.
 
 **What strategic consulting includes:**
 - HR advisory services
@@ -224,14 +268,14 @@ Specialized support in workplace harassment investigations, mediation, preventio
 ## FAQ
 
 **Section tag:** Frequently asked questions
-**Section title:** What our clients often ask us
-**Section intro:** Every situation is unique, but some questions come up regularly. Here are the answers to the most common ones.
+**Section title:** What my clients often ask me
+**Section intro:** Before starting a process, it's natural to want to understand how it works, what it involves and what it delivers. Here are the answers to the most frequently asked questions to help you make an informed decision.
 
 **Q1:** What is your role during a harassment investigation?
 **A1:** I conduct an independent and impartial process aimed at establishing the facts with rigour. My role is to listen to each person with respect, analyze information objectively and present clear conclusions that enable the organization to make informed decisions.
 
 **Q2:** How does mediation work?
-**A2:** Mediation is a confidential space where individuals can express themselves freely. I help clarify the issues, identify each party's interests and explore realistic solutions. The goal is to restore a respectful and lasting dialogue.
+**A2:** Mediation is a confidential, structured and reassuring space where individuals can finally express what they are experiencing, without fear of judgment. My role is to help each person clarify their needs, understand the real issues behind the conflict and find common ground. Through a guided, respectful and solution-focused process, mediation restores authentic dialogue, reduces tensions and helps co-create lasting agreements. It is a humane, fast and effective approach to preventing escalation and preserving working relationships.
 
 **Q3:** What is the difference between an investigation and mediation?
 **A3:** An investigation aims to establish the facts and determine whether a situation constitutes harassment under the law. Mediation is a voluntary process that allows the parties to co-create a lasting solution in a confidential, non-judgmental space. Both approaches address different needs and can be complementary.
@@ -240,9 +284,9 @@ Specialized support in workplace harassment investigations, mediation, preventio
 **A4:** A climate analysis helps understand what teams are truly experiencing: tensions, strengths, irritants and relational dynamics. It provides a clear picture that helps the organization act wisely and make lasting improvements to the workplace.
 
 **Q5:** How do you ensure neutrality and independence in your interventions?
-**A5:** Neutrality rests on a constant posture of fairness, non-judgmental listening and transparency. I clarify the steps, boundaries and protections from the outset, so that each person knows they are treated with the same consideration. Furthermore, independence is at the core of our professional obligations.
+**A5:** Neutrality rests on a constant posture of fairness, non-judgmental listening and transparency. I clarify the steps, boundaries and protections from the outset, so that each person knows they are treated with the same consideration. Furthermore, independence is at the core of my professional obligations.
 
-**Q6:** Can you help us update our harassment policy?
+**Q6:** Can you help me update our harassment policy?
 **A6:** Yes. I review the existing policy, ensure its compliance with legal obligations and rewrite it so it is clear, accessible and consistent with your internal practices. I can also support its implementation with your teams.
 
 **Q7:** How do you support managers in sensitive situations?
@@ -252,10 +296,10 @@ Specialized support in workplace harassment investigations, mediation, preventio
 **A8:** My approach combines extensive experience in diverse unionized environments — public, parapublic, private — with a deeply human and rigorous posture. I place central importance on authentic listening, active neutrality and clarity in communications. Every engagement is conducted with sensitivity, transparency and method, in order to offer realistic, consistent and lasting solutions that respect both people and organizations.
 
 **Q9:** How do you handle confidentiality in your interventions?
-**A9:** Confidentiality is at the heart of my practice. I specify from the outset what can be shared, with whom and for what purpose, so that each person understands the protections in place. The information gathered is handled with respect, caution and transparency, in strict compliance with legal obligations and agreed-upon boundaries.
+**A9:** Confidentiality is at the heart of my practice. I specify from the outset what can be shared, with whom and for what purpose, so that each person understands the protections in place. The information gathered is handled with caution and transparency, in strict compliance with legal obligations and agreed-upon boundaries.
 
-**Q10:** Can you work anywhere in Quebec?
-**A10:** Yes. Although based in the Montreal area, we support organizations across all of Quebec. Several steps of the process can be conducted remotely — video conference interviews, secure exchanges — while maintaining the rigour and confidentiality that characterize our practice.
+**Q10:** How much do your services cost?
+**A10:** Costs vary depending on the type of mandate, the number of people involved and the complexity of the situation. We always provide a clear estimate before the mandate begins, including the planned steps, deliverables and terms. Our goal: to offer you a rigorous, transparent approach proportionate to your needs.
 
 ---
 
@@ -263,6 +307,8 @@ Specialized support in workplace harassment investigations, mediation, preventio
 
 **Section tag:** Blog
 **Section title:** Insights and resources
+**Listing eyebrow:** Insights & Resources
+**Listing title:** All articles
 **Button:** All articles
 
 ---
@@ -270,8 +316,8 @@ Specialized support in workplace harassment investigations, mediation, preventio
 ## CTA BAND
 
 **Title:** Act before the situation escalates
-**Text:** Workplace tensions don't resolve themselves. Let's talk before positions harden — in complete confidentiality.
-**CTA:** Schedule a consultation
+**Text:** Workplace tensions don't resolve themselves. Let's talk in complete confidentiality, before positions become entrenched.
+**CTA:** Schedule a free consultation
 
 ---
 
@@ -289,6 +335,7 @@ Specialized support in workplace harassment investigations, mediation, preventio
 - Organization (placeholder: Your organization's name)
 - Email (placeholder: your@email.com)
 - Phone (placeholder: 514 000-0000)
+- Extension (placeholder: Ext.)
 - Service needed (placeholder: Select a service)
 - Message (placeholder: Briefly describe your situation or needs…)
 
@@ -302,7 +349,7 @@ Specialized support in workplace harassment investigations, mediation, preventio
 7. Other
 
 **Submit button:** Send message
-**Success message:** Thank you for your message. We will get back to you within 24 hours.
+**Success message:** Thank you for your message. I will get back to you within 24 hours.
 
 ---
 
@@ -314,7 +361,7 @@ Specialized support in workplace harassment investigations, mediation, preventio
 Harassment investigation · Mediation · Workplace climate · Prevention · Labour relations · Strategic consulting
 
 **Company column:**
-Our philosophy · FAQ · Blog · Contact
+My philosophy · FAQ · Blog · Contact
 
 **Contact info column:**
 514 458-4661 · hugues.thibault@aurearhconseil.ca · LinkedIn
@@ -330,7 +377,7 @@ Our philosophy · FAQ · Blog · Contact
 
 **Intro:** Auréa RH Conseil is committed to protecting the confidentiality of personal information collected in the course of its activities, in accordance with Quebec's *Act respecting the protection of personal information in the private sector* (Bill 25) and *Bill 64* modernizing legislative provisions regarding the protection of personal information.
 
-**Information collected:** We only collect information that you voluntarily provide through our contact form:
+**Information collected:** I only collect information that you voluntarily provide through my contact form:
 - Full name
 - Organization name
 - Email address
@@ -339,7 +386,7 @@ Our philosophy · FAQ · Blog · Contact
 
 **Use of information:** The information collected is used exclusively to:
 - Respond to your information or service request
-- Follow up on our communications with you
+- Follow up on my communications with you
 - Provide the professional services requested
 
 Your information is never sold, exchanged or disclosed to third parties without your explicit consent, unless required by law.
@@ -350,13 +397,13 @@ Your information is never sold, exchanged or disclosed to third parties without 
 - Contact form data is transmitted securely through Netlify's servers (hosting provider)
 
 **Your rights:** In accordance with Quebec legislation, you have the right to:
-- Access the personal information we hold about you
+- Access the personal information I hold about you
 - Request the correction of inaccurate information
 - Request the deletion of your personal information
 - Withdraw your consent at any time
 
 **Cookies:** This website does not use cookies for tracking or marketing purposes. Only cookies strictly necessary for the operation of the site and administrative authentication may be used.
 
-**Responsible person:** Hugues Thibault, CRIA — Founder, Auréa RH Conseil — hugues.thibault@aurearhconseil.ca
+**Responsible person:** For any questions regarding the protection of your personal information, you may contact: Hugues Thibault, CRIA — Founder, Auréa RH Conseil — hugues.thibault@aurearhconseil.ca
 
 Last updated: March 2026
