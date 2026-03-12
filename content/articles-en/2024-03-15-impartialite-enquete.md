@@ -2,13 +2,14 @@
 title: "Impartiality in Investigations: Why It's Difficult — and How to Achieve It"
 slug: impartiality-investigation
 date: 2024-03-15
-category: "Investigation · Rigour"
-excerpt: "Impartiality is the foundation of any credible investigation. Without it, conclusions are contestable, recommendations are ignored, and the trust of all parties is lost."
-image: "https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg"
-series: "Article"
-readTime: "6 min read"
+category: Investigation · Rigour
+excerpt: Impartiality is the foundation of any credible investigation. Without
+  it, conclusions are contestable, recommendations are ignored, and the trust of
+  all parties is lost.
+image: https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg
+series: Article
+readTime: 6 min read
 ---
-
 Impartiality is the foundation of any credible investigation. Without it, conclusions are contestable, recommendations are ignored, and the trust of all parties — and the organization — is lost. Yet maintaining genuine impartiality is one of the most difficult challenges in workplace investigations.
 
 ## Why it's so difficult
@@ -21,10 +22,11 @@ Add to that organizational pressure. The internal investigator knows the parties
 
 ## The principles of an impartial investigation
 
-- **Independence** — the investigator must have no significant hierarchical or personal ties to the parties
-- **Procedural fairness** — all parties have the right to be heard, to know the allegations, and to present their version
-- **Factual rigour** — conclusions rest on established facts, not impressions or probabilities
-- **Transparency of reasoning** — every conclusion is substantiated, explainable, and defensible before a third party
+* **Independence** — the investigator must have no significant hierarchical or personal ties to the parties
+* **Factual rigour** — conclusions rest on established facts, not impressions or probabilities
+* **Transparency of reasoning**
+
+   — every conclusion is substantiated, explainable, and defensible before a third party
 
 ## Why engage an external investigator
 
