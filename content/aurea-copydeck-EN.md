@@ -89,13 +89,13 @@ Specialized support in workplace harassment investigations, mediation, preventio
 **Name:** Hugues Thibault
 **Credentials:** CRIA · Accredited Mediator · Founder
 
-**Background:** A Certified Human Resources Professional (CRIA) and accredited mediator, I bring over 25 years of experience in human resources and labour relations. A member of the Ordre des CRHA since 1999, I have worked in diverse unionized environments — public, parapublic and private sectors — before founding Auréa RH Conseil.
+**Background:** For over 25 years, I have been supporting organizations and individuals at the heart of their workplace human challenges. A Certified Human Resources Professional (CRIA) and accredited mediator, I have worked in diverse unionized environments — from the public to the private sector — where I learned to navigate with nuance through often demanding contexts. In founding Auréa RH Conseil, I chose to put this experience in service of a practice grounded in my core values: people, clarity and the quality of relationships.
 
-**Approach:** My approach combines professional rigour, authentic listening and independence, providing organizations with tailored support for their most sensitive human challenges. Every engagement is conducted with sensitivity, transparency and method.
+**Approach:** I deeply believe that human challenges deserve attention that is both rigorous and sensitive. My role is to provide a safe, impartial and structured framework where everyone can be heard and where organizations can move forward with confidence. My support is grounded in active listening, transparency and a proven methodology.
 
-**Community involvement:** As a volunteer mediator at the Université de Sherbrooke Civil Mediation Clinic, I actively contribute to making mediation accessible to all.
+**Community involvement:** I also volunteer as a mediator at the Université de Sherbrooke Civil Mediation Clinic, driven by the conviction that mediation should be accessible to as many people as possible and that it can transform relationships in lasting ways.
 
-**Affiliations:** Ordre des CRHA · Accredited Mediator · Université de Sherbrooke · Bilingual FR / EN
+**Credentials:** Ordre des CRHA · Accredited Mediator · Université de Sherbrooke
 
 **Footer note:** 25+ years of experience
 **CTA:** Contact me

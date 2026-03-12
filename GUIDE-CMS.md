@@ -8,7 +8,7 @@ Guide d'utilisation du système de gestion de contenu pour publier et gérer les
 
 ### URL d'administration
 ```
-https://votre-site.netlify.app/admin/
+https://aurearhconseil.ca/admin/
 ```
 
 ### Première connexion
@@ -38,7 +38,7 @@ Le titre complet de l'article tel qu'affiché sur le site.
 #### Identifiant URL (slug)
 L'identifiant qui apparaîtra dans l'URL de l'article. Utilisez uniquement des **lettres minuscules**, des **chiffres** et des **tirets**. Pas d'accents, pas d'espaces.
 > Exemple : `litteratie-emotionnelle`
-> Donnera : `votre-site.com/#article-litteratie-emotionnelle`
+> Donnera : `aurearhconseil.ca/#article-litteratie-emotionnelle`
 
 #### Date de publication
 Sélectionnez la date au format **JJ/MM/AAAA**. Les articles sont triés du plus récent au plus ancien.
@@ -168,7 +168,7 @@ Séparez vos paragraphes par une ligne vide.
 ### Liens partageables
 Chaque article a un lien direct sous la forme :
 ```
-https://votre-site.com/#article-identifiant-url
+https://aurearhconseil.ca/#article-identifiant-url
 ```
 Ce lien ouvre directement l'article lorsque partagé.
 
