@@ -3462,7 +3462,7 @@ function copyArticleLink(btn) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
       }).then(() => {
-        form.style.display = 'none';
+        form.reset();
         document.getElementById('formSuccess').style.display = 'block';
       }).catch(() => {
         alert("An error occurred. Please try again or write to me directly at hugues.thibault@aurearhconseil.ca");
