@@ -3471,7 +3471,7 @@ function copyArticleLink(btn) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
       }).then(() => {
-        form.reset();
+        form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       }).catch(() => {
         alert("Une erreur est survenue. Veuillez réessayer ou m'écrire directement à hugues.thibault@aurearhconseil.ca");
