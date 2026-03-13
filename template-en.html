@@ -2,7 +2,7 @@
 <html lang="en-CA">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Auréa RH Conseil, Investigation · Mediation · Prevention · Labour Relations</title>
 <meta name="description" content="Auréa RH Conseil supports Quebec organizations with workplace harassment investigations, mediation, psychosocial risk prevention and strategic HR consulting. Independent and confidential services by Hugues Thibault, CRIA.">
 <meta name="author" content="Hugues Thibault, CRIA, Auréa RH Conseil">
@@ -146,6 +146,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -169,6 +170,7 @@ nav {
   right: 0;
   z-index: 300;
   padding: 1.25rem 3rem;
+  padding-top: max(1.25rem, env(safe-area-inset-top, 0px));
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -182,6 +184,7 @@ nav.scrolled {
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 0 rgba(26, 35, 50, 0.06);
   padding: 0.85rem 3rem;
+  padding-top: max(0.85rem, env(safe-area-inset-top, 0px));
 }
 
 .nav-logo {
