@@ -250,7 +250,7 @@ function articlePanel(a, lang) {
 function listingCard(a, lang) {
   const formattedDate = lang === 'en' ? formatDateEn(a.date) : formatDateFr(a.date);
   return `<div class="listing-card" data-modal="article-${a.slug}">
-  <div class="listing-card-img"><img src="${a.image}?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop" alt=""></div>
+  <div class="listing-card-img"><img src="${a.image}?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop" alt="${escapeAttr(a.title)}"></div>
   <div class="listing-card-body">
     <div class="listing-card-cat">${a.category}</div>
     <h4 class="listing-card-title">${a.title}</h4>
