@@ -3456,7 +3456,7 @@ function copyArticleLink(btn) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const formData = new FormData(this);
-      fetch('/', {
+      fetch('/en/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
@@ -3464,7 +3464,7 @@ function copyArticleLink(btn) {
         this.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       }).catch(() => {
-        alert('An error occurred. Please try again or write to me directly at hugues.thibault@aurearhconseil.ca');
+        alert("An error occurred. Please try again or write to me directly at hugues.thibault@aurearhconseil.ca");
       });
     });
   }
