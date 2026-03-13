@@ -3469,9 +3469,13 @@ function copyArticleLink(btn) {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
-      }).then(() => {
-        this.style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
+      }).then(response => {
+        if (response.ok) {
+          this.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          alert("Une erreur est survenue (code " + response.status + "). Veuillez réessayer ou m'écrire directement à hugues.thibault@aurearhconseil.ca");
+        }
       }).catch(() => {
         alert("Une erreur est survenue. Veuillez réessayer ou m'écrire directement à hugues.thibault@aurearhconseil.ca");
       });

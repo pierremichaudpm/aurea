@@ -3460,9 +3460,13 @@ function copyArticleLink(btn) {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData).toString()
-      }).then(() => {
-        this.style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
+      }).then(response => {
+        if (response.ok) {
+          this.style.display = 'none';
+          document.getElementById('formSuccess').style.display = 'block';
+        } else {
+          alert("An error occurred (code " + response.status + "). Please try again or write to me directly at hugues.thibault@aurearhconseil.ca");
+        }
       }).catch(() => {
         alert("An error occurred. Please try again or write to me directly at hugues.thibault@aurearhconseil.ca");
       });
