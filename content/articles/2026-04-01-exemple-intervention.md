@@ -4,12 +4,10 @@ title: "Conflit de valeurs en milieu de travail : illustration d’une démarche
 slug: exemple-intervention
 date: 2026-04-01
 category: Médiation · Émotions
-excerpt: >-
-  Cet article présente un exemple d’intervention en médiation dans un contexte
-  de conflit de valeurs en milieu de travail.  Il illustre comment une lecture
-  rigoureuse et neutre permet de clarifier des enjeux relationnels complexes.
-
-  Le cas est anonymisé et présenté à titre illustratif.
+excerpt: Cet article présente un exemple d’intervention en médiation dans un
+  contexte de conflit de valeurs en milieu de travail.  Il illustre comment une
+  lecture rigoureuse et neutre permet de clarifier des enjeux relationnels
+  complexes.
 image: /uploads/image-principale.jpg
 series: Dossier
 readTime: 5 min de lecture
