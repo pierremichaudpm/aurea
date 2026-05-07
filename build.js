@@ -22,6 +22,21 @@ function parseFrontmatter(raw) {
       data[key] = value;
       continue;
     }
+    // Double-quoted multi-line: key: "first part
+    //                              continued"
+    const openQuote = lines[i].match(/^(\w+):\s*"([^"]*)$/);
+    if (openQuote) {
+      const [, key, firstPart] = openQuote;
+      const parts = [firstPart];
+      while (i + 1 < lines.length) {
+        const next = lines[++i];
+        const closeIdx = next.indexOf('"');
+        if (closeIdx >= 0) { parts.push(next.slice(0, closeIdx).replace(/^\s+/, '')); break; }
+        parts.push(next.replace(/^\s+/, ''));
+      }
+      data[key] = parts.filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+      continue;
+    }
     const m = lines[i].match(/^(\w+):\s*"?(.*?)"?\s*$/);
     if (m) data[m[1]] = m[2];
   }
