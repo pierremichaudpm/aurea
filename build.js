@@ -91,10 +91,12 @@ function markdownToHtml(md) {
     }
   }
 
+  let listType = null; // 'ul' or 'ol'
   function flushList() {
     if (inList) {
-      result.push('</ul>');
+      result.push(`</${listType}>`);
       inList = false;
+      listType = null;
     }
   }
 
@@ -134,15 +136,19 @@ function markdownToHtml(md) {
       continue;
     }
 
-    // List item - text
-    const listMatch = trimmed.match(/^- (.+)$/);
-    if (listMatch) {
+    // List item: -, *, + (unordered) or 1. (ordered)
+    const ulMatch = trimmed.match(/^[-*+]\s+(.+)$/);
+    const olMatch = trimmed.match(/^\d+\.\s+(.+)$/);
+    if (ulMatch || olMatch) {
       flushBlockquote();
+      const wantedType = ulMatch ? 'ul' : 'ol';
+      if (inList && listType !== wantedType) flushList();
       if (!inList) {
-        result.push('<ul>');
+        result.push(`<${wantedType}>`);
         inList = true;
+        listType = wantedType;
       }
-      result.push(`<li>${inlineMarkdown(listMatch[1])}</li>`);
+      result.push(`<li>${inlineMarkdown((ulMatch || olMatch)[1])}</li>`);
       i++;
       continue;
     }
@@ -151,9 +157,10 @@ function markdownToHtml(md) {
     flushBlockquote();
     flushList();
     const paraLines = [];
+    const isListLine = (s) => /^[-*+]\s+/.test(s) || /^\d+\.\s+/.test(s);
     while (i < lines.length) {
       const pLine = lines[i].trim();
-      if (pLine === '' || pLine.startsWith('## ') || pLine.startsWith('> ') || pLine.startsWith('- ')) {
+      if (pLine === '' || pLine.startsWith('## ') || pLine.startsWith('> ') || isListLine(pLine)) {
         break;
       }
       paraLines.push(pLine);
