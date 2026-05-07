@@ -1,26 +1,22 @@
 ---
-title: "Conflit de valeurs en milieu de travail : illustration d’une démarche de
-  médiation professionnelle"
+title: Conflit de valeurs en milieu de travail
 slug: exemple-intervention
 date: 2026-05-07
 category: Médiation · Émotions
-excerpt: >-
-  Secteur : Organisation de services (anonymisée)
-
-  Contexte : Conflit de valeurs en milieu de travail
-
-  Type d’intervention : Médiation professionnelle externe, incluant une médiation tripartite
+excerpt: "Illustration pratique d’une démarche de médiation "
 image: /uploads/image-principale.jpg
 series: Article
 readTime: 5 min de lecture
 ---
-Contexte
+## Contexte
 
-Une organisation de taille moyenne a sollicité une intervention en **médiation** à la suite d’un conflit persistant entre deux employés occupant des fonctions clés au sein d’une même équipe. Bien que les désaccords se manifestaient initialement autour d’enjeux liés au travail, l’analyse de la situation a permis de constater que le conflit reposait principalement sur un désalignement de valeurs professionnelles.
+Une organisation de taille moyenne a sollicité une intervention en médiation à la suite d’un conflit persistant entre deux employés occupant des fonctions clés au sein d’une même équipe. Bien que les désaccords se manifestaient initialement autour d’enjeux liés au travail, l’analyse de la situation a permis de constater que le conflit reposait principalement sur un **désalignement de valeurs professionnelles**.
 
 Les personnes concernées exprimaient des visions différentes quant aux façons de travailler, à la priorisation des tâches, aux attentes en matière de rigueur et à la conception du respect professionnel. 
 
-> Ces divergences, peu explicitées au départ, ont graduellement contribué à une détérioration des échanges et du climat relationnel.
+Ces divergences, peu explicitées au départ, ont graduellement contribué à une détérioration des échanges et du climat relationnel.
+
+> « J’avais l’impression d’intervenir au bon moment, mais sans cadre clair, la situation s’est complexifiée. »
 
 Dans un premier temps, le supérieur immédiat a tenté d’intervenir afin de faciliter un échange entre les parties. Malgré une intention de résolution, cette démarche interne n’a pas permis d’apaiser la situation et a ajouté un inconfort lié au rôle hiérarchique.
 
@@ -35,7 +31,9 @@ Considérant la complexité du contexte et les impacts observés sur le climat d
 * Risque de cristallisation du conflit et de détérioration durable des relations de travail
 
 Les interventions internes précédentes, centrées principalement sur les comportements observables, n’ont pas permis d’aborder les enjeux sous-jacents liés aux valeurs.
-Approche de médiation
+
+
+## Approche de médiation
 
 Une médiation externe, neutre et confidentielle a été proposée et acceptée par les personnes concernées.
 
@@ -56,14 +54,14 @@ L’intervention s’est déroulée selon une démarche structurée comprenant n
 * établir des modalités de communication et de collaboration plus explicites ;
 * disposer d’un cadre commun pour la gestion de désaccords futurs.
 
-La médiation a permis d’offrir un espace structuré de dialogue et de réflexion, contribuant à une meilleure compréhension mutuelle et à un climat de travail plus fonctionnel.
+La médiation tripartite a également permis aux parties d’identifier des solutions de fonctionnement respectueuses de leurs réalités respectives, tout en étant cohérentes avec les attentes et le rôle du gestionnaire.
 
 ## Portée de l’intervention
 
 Cet exemple illustre comment une médiation professionnelle peut être utilisée pour :
 
 * aborder des conflits de valeurs en milieu de travail ;
-* offrir un cadre neutre, distinct des relations hiérarchiques ;
+* offrir un cadre neutre et multipartial;
 * soutenir les organisations dans la gestion de situations complexes, dans le respect des rôles et responsabilités de chacun.
 
 ## Mention déontologique
