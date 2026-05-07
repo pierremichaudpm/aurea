@@ -20,7 +20,9 @@
 ├── admin/
 │   ├── index.html         # Interface Decap CMS
 │   └── config.yml         # Config CMS (2 collections : articles FR + articles-en)
-├── GUIDE-CMS.md           # Guide d'utilisation CMS pour le client
+├── GUIDE-CMS.md           # Guide d'utilisation CMS pour le client (markdown source)
+├── guide-pdf-source.html  # Source HTML stylé Studio Micho pour générer le PDF du guide
+├── content/Guide-CMS-Aurea.pdf  # Livrable client, généré via weasyprint
 ├── WORKING_LOG.md         # Journal de session
 └── .gitignore             # index.html et en/index.html sont ignorés (générés)
 ```
@@ -90,6 +92,18 @@
   - **rev.2** : jaune surligné = nouveau/modifié → parser `w:highlight` avec valeur `yellow`
 - Copydeck EN rev.1 (`aurea-copydeck-EN_v2 rev1.HT.docx`) : même convention rouge/barré que rev.1 FR
 - Les articles de blogue sont gérés via le CMS, pas dans le copydeck
+
+### CMS — quirks publication via Decap
+- **Parser `parseFrontmatter` dans `build.js` est maison** (pas gray-matter). Il gère désormais : valeurs sur une ligne, block scalars YAML (`>`, `>-`, `|`, `|-`), strings double-quoted multi-lignes (CMS wrap les longs titres). Cas restants probablement non couverts : single-quoted multi-line, escape sequences `\"`, formats YAML exotiques.
+- **Parser `markdownToHtml` dans `build.js` est maison aussi**. Listes : reconnaît `-`, `*`, `+` (puces) et `1.` (numérotées). Blockquote `>`, headings `##`, gras `**`. Cas non couverts : code blocks ` ``` `, listes imbriquées, images `![]()`, liens `[]()`.
+- **Avant de blâmer Decap pour un bug d'affichage**, ouvrir l'article `.md` dans `content/articles/` et comparer YAML/markdown brut au HTML généré.
+- **Branding admin custom** dans `admin/index.html` (logo Auréa) → cassait le sticky de la nav Decap après login. Solution : JS écoute `netlifyIdentity.on('init'/'login'/'logout')` et hide la div `.cms-branding` quand connecté.
+
+### Guide CMS — PDF pour le client
+- **Source markdown** : `GUIDE-CMS.md` (référence dev, à jour)
+- **Source PDF** : `guide-pdf-source.html` (HTML autonome, logo Studio Micho en base64, styling DM Sans)
+- **Régénération** : `weasyprint guide-pdf-source.html content/Guide-CMS-Aurea.pdf`
+- **Contenu PDF doit être maintenu en parallèle** du markdown. Pas d'auto-conversion (la mise en page PDF a des choix éditoriaux).
 
 ### Domaine et DNS
 - Domaine enregistré chez WordPress.com (aurearhconseil.ca, expire 2027-01-09)

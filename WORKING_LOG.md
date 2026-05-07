@@ -335,3 +335,60 @@ fa968af Fix SEO: sync FAQ JSON-LD with HTML, add missing EN FAQ, fix alt text
 e403023 Fix mobile: nav hidden by notch, horizontal overflow white margin
 48120a7 Fix mobile modals causing right margin: 100vw → 100% (FR + EN)
 ```
+
+---
+
+## 2026-05-07 — Premier article Hugues + fix parsers + guide PDF Studio Micho
+
+Première publication réelle d'un article par Hugues via le CMS (`2026-05-07-exemple-intervention.md`). L'article a révélé plusieurs bugs latents dans le parser maison de `build.js` qui n'avaient jamais été déclenchés par les articles seed (écrits à la main avec un YAML simple).
+
+### Accompli
+
+- **3 fixes parser `build.js`** :
+  - **`parseFrontmatter`** gère maintenant les block scalars YAML (`>`, `>-`, `|`, `|-`) — Decap écrit `excerpt: >-` quand le texte fait plusieurs lignes, ce qui faisait apparaître `>-` littéralement sur la carte (commit `659683c`).
+  - **`parseFrontmatter`** gère maintenant les strings double-quoted multi-lignes — Decap wrap les titres longs sur 2 lignes, ce qui tronquait le titre à la première ligne sur les cartes (commit `db62427`).
+  - **`markdownToHtml`** reconnaît `*` et `+` (en plus de `-`) pour `<ul>`, et `1.` `2.` pour `<ol>` — la barre d'outils Decap rich-text produit `* item`, ce qui faisait apparaître toute la liste comme un paragraphe avec `*` littéraux entre les items (commit `0bad037`).
+- **Fix CMS admin** : la `<div class="cms-branding">` custom dans `admin/index.html` poussait la nav sticky Decap hors du viewport après login (la barre Contenus/Media flottait au milieu de la page). Ajout d'un JS qui hide la branding sur les events `netlifyIdentity.on('init'/'login')` et la show sur `'logout'` — branding visible uniquement sur l'écran de login (commit `bc157bf`).
+- **Guide CMS enrichi** :
+  - Section « Étape 3 — Rédiger » réécrite : tableau de la barre d'outils Decap au lieu d'exemples markdown brut (le guide précédent disait à Hugues de taper `## sous-titre` alors qu'il a un bouton H sous les yeux).
+  - Nouvelle section « Conseils éditoriaux » : règles sur la longueur du titre (6-10 mots) et l'usage de l'extrait (teaser narratif, pas fiche technique). Suite à l'article où Hugues avait mis un brief structuré « Secteur / Contexte / Type d'intervention » dans l'extrait (commit `fe74f6c`).
+- **PDF du guide pour le client** : généré dans le style Studio Micho (cover page, header/footer répétés, DM Sans, accent bleu, logo M en base64). 12 pages, livré à `content/Guide-CMS-Aurea.pdf`. Source HTML autonome dans `guide-pdf-source.html` pour régénération (commit `80b6e2a`).
+- **Cleanup** : supprimé `aurea-rh-conseil.html` (vieux prototype) et `content/Guide-CMS-Aurea.docx` (Word obsolète remplacé par PDF). Déplacé les copydecks `.docx` de la racine vers `content/` pour cohérence.
+- **Index git nettoyé** : `git status` montrait ~60 fichiers stagés en suppression au début de la session (probablement un `git rm --cached -r .` accidentel à un moment). Nettoyé via `git restore --staged .` sans toucher au disque.
+
+### Décisions techniques
+
+- **Parsers maison conservés** (pas de migration vers gray-matter / marked). Étendus à la place pour couvrir les cas que Decap génère. Justification : pas de dépendance externe, le code reste lisible, les cas non couverts sont peu probables vu l'usage par un seul auteur non-tech.
+- **PDF guide en HTML+CSS, pas en docx ou Pandoc**. Permet de matcher exactement le branding Studio Micho (cover, headers répétés, DM Sans, blockquotes dorés). WeasyPrint gère le rendu, logo en base64 = source autonome.
+- **Pas de génération auto markdown→PDF**. Le contenu du PDF (`guide-pdf-source.html`) doit être maintenu en parallèle de `GUIDE-CMS.md`. La mise en page PDF a des choix éditoriaux (callouts, exemples ✗/✓ visuels) qui ne se traduisent pas mot à mot du markdown.
+- **Branding admin caché post-login (pas retiré)**. Hugues garde son branding sur l'écran de login (mémoire visuelle « c'est bien le bon site »), mais la nav Decap fonctionne après login. Compromis.
+
+### Problèmes rencontrés
+
+- **Index git en état corrompu au démarrage** : tous les fichiers tracked stagés en suppression alors qu'ils existaient sur le disque. Cause inconnue (peut-être un workflow Decap qui fait un `git rm --cached` à un moment). À surveiller : si ça revient, investiguer le hook qui le cause.
+- **Première tentative de push rejetée** : Hugues avait publié 2 articles via Git Gateway entre temps, le local était en retard. Résolu via `git stash push CLAUDE.md WORKING_LOG.md` + `git pull --rebase` + `git stash pop`. Note : les modifs locales de CLAUDE.md/WORKING_LOG.md trainaient depuis la session de mars.
+- **Diagnostic initial trompeur** : j'ai cru que les listes à puce étaient cassées **dans le CMS** (le user a écrit « les listes ne fonctionnent pas »). En fait l'éditeur Decap les rend bien — c'est le parser markdown du build qui ne les rendait pas sur le site déployé. Toujours regarder le `.md` brut dans `content/articles/` avant de blâmer Decap.
+- **Hugues utilise mal le champ Extrait** : il y a mis un brief structuré (Secteur / Contexte / Type d'intervention) au lieu de 2-3 phrases narratives. Le champ était mal compris — corrigé via le guide enrichi.
+
+### Statut final
+
+**Site en production fonctionnel.** Fixes parser et CMS déployés. Guide PDF prêt à envoyer à Hugues. 4 commits parser + 1 fix CMS + 1 guide markdown + 1 PDF + 1 cleanup = 8 commits cette session.
+
+### Prochaines étapes
+
+1. **Envoyer le PDF guide à Hugues** (`content/Guide-CMS-Aurea.pdf`) avec mention de la nouvelle section « Conseils éditoriaux ».
+2. **Vérifier que l'article publié rend bien** sur https://aurearhconseil.ca après les déploiements (titre complet, listes à puces visibles, extrait sur une ligne).
+3. **Surveiller le `git status`** lors de prochaines sessions — si l'état corrompu revient (suppressions fantômes), investiguer la cause avant de commiter.
+4. **Si Hugues publie d'autres articles avec des constructions YAML/markdown qui cassent**, étendre les parsers (cas restants non couverts : code blocks ` ``` `, single-quoted multi-line, listes imbriquées, images markdown).
+
+### Commits de cette session
+
+```
+659683c Fix excerpt parsing for YAML block scalars from CMS
+db62427 Handle multi-line double-quoted YAML strings in frontmatter
+0bad037 Render asterisk bullet lists and numbered lists in markdown
+bc157bf Hide CMS custom branding after login to fix Decap nav layout
+fe74f6c Update CMS guide: rich text editor + title/excerpt advice
+80b6e2a Add Studio Micho-branded PDF guide for client (Hugues)
+9941398 Update project notes (CLAUDE.md + WORKING_LOG.md)
+```
