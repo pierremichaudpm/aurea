@@ -221,26 +221,117 @@ f344862 Apply copydeck rev.2 changes (FR+EN) and regenerate EN copydeck
 - **Malentendu « point 2 »** : quand l'utilisateur a dit « fait le point 2 », il référençait les 3 prochaines actions proposées en début de session (dont le nettoyage git), pas les prochaines étapes du WORKING_LOG (qui listaient la traduction du blogue). **Leçon** : toujours clarifier quelle liste est référencée quand l'utilisateur dit « point X ».
 - **Traduction blog non demandée** : les 6 articles de blogue ont été traduits par erreur (interprétation incorrecte de « point 2 »). Le travail a été conservé car utile, mais n'avait pas été demandé.
 
-### Feedback client en cours
-
-- **Bloc « Intervenir tôt, c'est économiser beaucoup »** : le client n'aime pas le gros rectangle blanc (`background: var(--cream)`) dans la section services navy. 3 options proposées :
-  - **A** (recommandée) : fond transparent, texte clair, bordure dorée — intégration subtile au navy
-  - **B** : bandeau pleine largeur avec fond semi-transparent doré
-  - **C** : supprimer le bloc, intégrer le message dans l'intro existante
-  - **En attente de décision**
-
 ### Prochaines étapes (par priorité)
 
-1. **Redesign bloc « Intervenir tôt »** : appliquer l'option choisie par le client (FR + EN)
-2. **Validation copydeck EN par le client** : envoyer `content/aurea-copydeck-EN.docx` (à regénérer si nécessaire) à Hugues Thibault pour relecture
+1. ~~**Redesign bloc « Intervenir tôt »**~~ → **fait** (supprimé, contenu intégré dans l'intro services)
+2. ~~**Domaine custom**~~ → **fait** (DNS configuré, SSL actif)
 3. **Vérifier connexion client au CMS** (`aurearhconseil.ca/admin/`)
-4. **Domaine custom** : vérifier DNS et certificat SSL pour `aurearhconseil.ca`
-5. **Tests visuels mobile** : vérifier le rendu de la bio modale, Q10 FAQ, bloc « Intervenir tôt » redesigné
-6. **SEO** : affiner meta description et OG tags avec les noms de services actuels
+4. **Tests visuels mobile** : vérifier le rendu de la bio modale, Q10 FAQ sur petit écran
+5. **SEO** : affiner meta description et OG tags avec les noms de services actuels
+6. **Migration email** : client intéressé par une alternative gratuite à Titan (ImprovMX + Gmail recommandé)
 
 ### Commits de cette session
 
 ```
 039b205 Update bio modal text, add EN blog articles, remove unused images
 4774591 Rename Affiliations to Accréditations/Credentials, remove Bilingual tag
+```
+
+---
+
+## 2026-03-13 — Copydeck EN rev.1, domaine, formulaire, ponctuation
+
+### Accompli
+
+- **Bloc « Intervenir tôt » supprimé** (FR + EN) : le gros rectangle blanc dans la section services navy déplaisait au client. Contenu condensé dans le `section-intro` existant.
+- **Tirets cadratins (—) remplacés** partout dans le contenu visible (FR + EN) par des virgules ou points-virgules selon le contexte. Commentaires CSS/JS/HTML non touchés.
+- **Copydeck EN rev.1 appliqué** : 14 modifications du client depuis `aurea-copydeck-EN_v2 rev1.HT.docx` (convention rouge/barré)
+  - Hero : "rigour" → "integrity", subtitle reformulé
+  - Philosophie : "compassionate" → "human-centered", blockquote entièrement réécrit
+  - Valeur : "R / Rigour" → "M / Method"
+  - Modal 01 : "rigour" → "thoroughness"
+  - Modal 02 : intro entièrement réécrite, 2 items de liste ajustés
+  - Card/Modal 03 : corrections mineures
+- **Intro services EN resynchronisée** avec le FR ("Intervening early protects your budget...")
+- **Domaine `aurearhconseil.ca` configuré** :
+  - Custom domain ajouté dans Netlify via API (`updateSite`)
+  - DNS modifié dans WordPress.com : A record → `75.2.60.5`, CNAME www → `aurearh.netlify.app`
+  - MX/TXT records Titan préservés (email intact)
+  - SSL Let's Encrypt provisionné automatiquement
+- **Valeur « Neutralité » → « Impartialité »** (FR) / « Neutrality » → « Impartiality » (EN) : dans hero stats, valeurs, FAQ, philosophie, JSON-LD
+- **Netlify Forms activé** via MCP (`update-forms`) + notification email créée → `hugues.thibault@aurearhconseil.ca`
+- **Bug formulaire contact corrigé** : apostrophe ASCII dans `m'écrire` cassait le JS entier (string `'...'` fermée prématurément). Le formulaire faisait un POST classique → page Netlify en anglais au lieu du message AJAX français. Corrigé en utilisant `"..."` comme délimiteur.
+- **Fetch URL EN corrigé** : `/` → `/en/` pour le formulaire EN (servi depuis `/en/index.html`)
+
+### Décisions techniques
+
+- **Suppression bloc « Intervenir tôt » plutôt que redesign** — le client a choisi l'option C (supprimer et intégrer). Le contenu ROI est maintenant un paragraphe d'intro sous le titre services.
+- **Domaine chez WordPress, DNS vers Netlify** — option 1 (modifier DNS records) plutôt que transférer les nameservers, pour préserver le courriel Titan sans interruption.
+- **Notification email formulaire** — Netlify Forms ne notifie pas par email par défaut. Hook `submission_created` créé via API pour envoyer à `hugues.thibault@aurearhconseil.ca`.
+- **Double quotes pour strings JS avec apostrophes françaises** — règle ajoutée dans CLAUDE.md pour éviter de reproduire le bug.
+
+### Problèmes rencontrés
+
+- **Formulaire contact cassé depuis toujours** : l'apostrophe dans `m'écrire` (U+0027) fermait la string JS, empêchant l'AJAX handler de s'attacher. Le formulaire tombait sur la page de confirmation Netlify en anglais. Jamais détecté car Netlify Forms n'était même pas activé jusqu'à cette session.
+- **git push rejected** : un commit via le CMS (article blog) a été poussé entre-temps sur origin/main. Résolu par `git pull --rebase`.
+- **Copydeck EN rev.1 vs FR** : certains changements du client sur le copydeck EN étaient des corrections de traduction uniquement, d'autres des changements de contenu. L'intro services a dû être resynchronisée manuellement après application du copydeck EN.
+
+### Prochaines étapes (par priorité)
+
+1. **Vérifier connexion client au CMS** (`aurearhconseil.ca/admin/`)
+2. **Tests visuels mobile** : vérifier le rendu de la bio modale, Q10 FAQ sur petit écran
+3. **SEO** : affiner meta description et OG tags avec les noms de services actuels
+4. **Migration email** : client intéressé par une alternative gratuite à Titan (ImprovMX + Gmail recommandé)
+5. **Regénérer copydeck EN** : `content/aurea-copydeck-EN.md` est désynchronisé (ne reflète pas les changements de cette session)
+
+### Accompli (suite, session 2)
+
+- **Notifications email formulaire corrigées** : le hook `submission_created` initial (sans `form_id`) n'avait jamais déclenché de notification. Recréé avec `form_id` spécifique pour chaque formulaire (contact FR + contact-en EN). Testé et fonctionnel — le client et Pierre reçoivent les courriels.
+- **Bug `formSuccess` à l'intérieur du `<form>`** : le div de confirmation était enfant du `<form>`. Quand le JS cachait le formulaire (`form.style.display = 'none'`), le message de confirmation disparaissait aussi. Déplacé le `<div id="formSuccess">` **après** le `</form>` dans les deux templates.
+- **Bug `this` perdu dans `.then()`** : sauvegardé `this` dans `const form = this` avant le `fetch()` pour garantir la référence dans le callback.
+- **Bug `response.ok` cassait la confirmation** : Netlify retourne un redirect suivi d'un 200, mais le check `response.ok` empêchait l'affichage. Retiré le check — le `.then()` suffit.
+- **Comportement final du formulaire** : le formulaire disparaît après soumission, remplacé par le message de confirmation en français (FR) ou anglais (EN).
+- **Hook notification Pierre retiré** : `pmicho@pm.me` retiré des notifications après tests concluants. Seul `hugues.thibault@aurearhconseil.ca` reste.
+
+### Décisions techniques (suite)
+
+- **`formSuccess` en dehors du `<form>`** — règle structurelle : tout élément qui doit rester visible quand le formulaire est caché doit être un sibling, pas un enfant.
+- **Hooks avec `form_id` spécifique** — les hooks sans `form_id` (null) ne semblaient pas se déclencher de manière fiable. Un hook par formulaire avec son `form_id` est plus robuste.
+- **Pas de `response.ok` check** — Netlify Forms POST retourne un redirect que `fetch` suit automatiquement. Le `.then()` seul est suffisant pour confirmer la soumission.
+
+### Problèmes rencontrés (suite)
+
+- **Notification email ne partait pas** : le premier hook avait été créé APRÈS la seule soumission existante, et sans `form_id`. Les retests du client ne généraient peut-être pas de nouvelles soumissions (ou le hook sans `form_id` ne matchait pas). Résolu en recréant les hooks avec `form_id` explicite.
+- **3 itérations pour le message de confirmation** : (1) `form.style.display = 'none'` cachait aussi le message enfant, (2) `form.reset()` montrait le message mais ne cachait pas le formulaire, (3) déplacer le div en dehors du form a permis le comportement souhaité par le client.
+- **Contexte `this` perdu** : dans `.then(() => { this.style.display... })`, `this` dans une arrow function hérite du scope parent, mais le callback fetch peut perdre le contexte. Sauvegardé dans `const form` pour fiabilité.
+
+### Accompli (suite, session 3)
+
+- **SEO vérifié et corrigé** : FAQ JSON-LD synchronisé avec le HTML (FR 9→11 questions, EN 9→11 questions), Q2 médiation mise à jour, alt text listing cards corrigé dans build.js
+- **FAQ EN complétée** : ajout de la question manquante "Can you operate throughout Quebec?" (était dans le FR mais absente du EN)
+- **Mobile corrigé** : nav cachée par le notch (ajout `viewport-fit=cover` + `env(safe-area-inset-top)`), marge blanche à droite éliminée (`overflow-x: hidden` sur html, `100vw` → `100%` sur modals/panels)
+- **CMS vérifié** : client connecté avec succès à `aurearhconseil.ca/admin/`
+- **Copydeck EN réglé**
+
+### Statut final
+
+**PROJET COMPLÉTÉ** — Site prêt pour lancement lundi 2026-03-17.
+
+Seul point restant : **migration email** (Titan → ImprovMX + Gmail). Le client s'en occupe ou sera assisté séparément.
+
+### Commits de cette session
+
+```
+0bac569 Apply EN copydeck rev.1 feedback, remove early intervention block, replace em dashes
+44fee1c Sync EN services intro with FR (Intervening early protects your budget)
+167cd47 Rename Neutralité to Impartialité, enable Netlify Forms
+a3d7a95 Fix contact form: apostrophe syntax error broke JS, fix EN fetch URL
+bb9a353 Fix form AJAX: check response.ok before showing success message
+b83db04 Fix form success message: save form ref, remove response.ok check
+5e5c70d Move formSuccess div outside form element (FR + EN)
+4ab4e78 Show confirmation below form instead of hiding form (FR + EN)
+9927dd5 Hide form on submit, show only confirmation message (FR + EN)
+fa968af Fix SEO: sync FAQ JSON-LD with HTML, add missing EN FAQ, fix alt text
+e403023 Fix mobile: nav hidden by notch, horizontal overflow white margin
+48120a7 Fix mobile modals causing right margin: 100vw → 100% (FR + EN)
 ```

@@ -31,9 +31,11 @@
 - **Build** : `node build.js` — génère `index.html` (FR) et `en/index.html` (EN) depuis les templates + articles markdown
 - **CMS** : Decap CMS (anciennement Netlify CMS) via `/admin/`
 - **Hébergement** : Netlify (site ID: `54963284-767c-41a6-9cce-1714f9443e19`, slug: `aurearh`)
-- **Domaine** : aurearhconseil.ca
+- **Domaine** : aurearhconseil.ca (enregistré chez WordPress.com, DNS pointé vers Netlify)
+- **Formulaires** : Netlify Forms activé, notification email → hugues.thibault@aurearhconseil.ca
 - **Auth** : Netlify Identity + Git Gateway (pour le CMS)
 - **Repo** : github.com/pierremichaudpm/aurea (branche main)
+- **Email client** : Titan (via WordPress.com), MX records dans WordPress DNS
 
 ## Contraintes critiques
 
@@ -67,17 +69,35 @@
 ### Voix et ton
 - Le site utilise la 1re personne du singulier (je/ma/mes) — **pas** nous/notre/nos
 - Ponctuation : points dans les phrases complètes, **pas** dans les titres/sous-titres/teasers
+- Pas de tirets cadratins (—) dans le contenu visible, utiliser des virgules ou points-virgules
 
 ### Images hero
 - Image hero actuelle : `trois.jpg` (383 KB)
 - Le cadre hero utilise un masque CSS avec fondu progressif (`mask-image` gradient 12%→88%)
 - `inset: -32px` sur `.hero-right-bg` pour élargir la zone visible
 
+### Formulaire contact
+- JS AJAX submit avec `fetch()` + message de succès in-page (FR: « Merci pour votre message... », EN: « Thank you for your message... »)
+- Le `<div id="formSuccess">` est **en dehors** du `<form>` — sinon `form.style.display = 'none'` cache aussi la confirmation
+- Le formulaire disparaît après soumission, remplacé par le message de confirmation
+- **Attention** : ne pas utiliser d'apostrophe ASCII (`'`) dans les strings JS délimitées par `'` — utiliser `"` comme délimiteur si le texte contient des apostrophes françaises
+- EN form : `fetch('/en/')` (pas `/`) car servi depuis `/en/index.html`
+- Notifications email : hooks Netlify `submission_created` → `hugues.thibault@aurearhconseil.ca` (un hook par formulaire, avec `form_id` spécifique)
+
 ### Contenu client
 - Le copydeck est fourni en `.docx` avec conventions de balisage :
   - **rev.1** : rouge = nouveau/modifié, barré = supprimé, noir = inchangé → parser `font.color.rgb` et `font.strike`
   - **rev.2** : jaune surligné = nouveau/modifié → parser `w:highlight` avec valeur `yellow`
+- Copydeck EN rev.1 (`aurea-copydeck-EN_v2 rev1.HT.docx`) : même convention rouge/barré que rev.1 FR
 - Les articles de blogue sont gérés via le CMS, pas dans le copydeck
+
+### Domaine et DNS
+- Domaine enregistré chez WordPress.com (aurearhconseil.ca, expire 2027-01-09)
+- Nameservers : WordPress.com (ns1/ns2/ns3.wordpress.com)
+- A record `@` → `75.2.60.5` (Netlify)
+- CNAME `www` → `aurearh.netlify.app`
+- MX records → Titan email (mx1/mx2.titan.email) — ne pas toucher
+- TXT records : SPF, DKIM, DMARC pour Titan — ne pas toucher
 
 ## Services actuels (6)
 
@@ -90,10 +110,14 @@
 
 ## Valeurs actuelles
 
-Écoute · Neutralité · Rigueur · Intégrité
+Écoute · Impartialité · Rigueur · Intégrité
 
 ## Client
 
 - Hugues Thibault, CRIA · Médiateur accrédité · Fondateur
 - hugues.thibault@aurearhconseil.ca
 - Netlify Identity configuré (invité 2026-03-06)
+
+## Contexte global
+Voir ~/Documents/CONTEXT.md pour le profil complet,
+les conventions transversales et la liste des clients actifs.
