@@ -8,8 +8,21 @@ function parseFrontmatter(raw) {
 
   const data = {};
   const lines = match[1].split('\n');
-  for (const line of lines) {
-    const m = line.match(/^(\w+):\s*"?(.*?)"?\s*$/);
+  for (let i = 0; i < lines.length; i++) {
+    // Block scalar: key: > | >- | | | |-  (folded or literal, optional strip)
+    const block = lines[i].match(/^(\w+):\s*([>|])(-?)\s*$/);
+    if (block) {
+      const [, key, indicator, strip] = block;
+      const collected = [];
+      while (i + 1 < lines.length && (/^\s+/.test(lines[i + 1]) || lines[i + 1].trim() === '')) {
+        collected.push(lines[++i].replace(/^\s+/, ''));
+      }
+      let value = indicator === '>' ? collected.join(' ').replace(/\s+/g, ' ').trim() : collected.join('\n');
+      if (strip === '-') value = value.replace(/\n+$/, '');
+      data[key] = value;
+      continue;
+    }
+    const m = lines[i].match(/^(\w+):\s*"?(.*?)"?\s*$/);
     if (m) data[m[1]] = m[2];
   }
   return { data, content: match[2] };
@@ -204,7 +217,7 @@ function blogCard(a) {
   <div class="blog-card-body">
     <div class="blog-card-category">${a.category}</div>
     <h3 class="blog-card-title">${a.title}</h3>
-    <p class="blog-card-excerpt">${a.excerpt}</p>
+    <p class="blog-card-excerpt">${(a.excerpt || '').replace(/\n/g, '<br>')}</p>
     <div class="blog-card-meta"><span>${a.readTime}</span></div>
   </div>
 </div>`;
