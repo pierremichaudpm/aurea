@@ -3,7 +3,9 @@ title: Conflit de valeurs en milieu de travail
 slug: exemple-intervention
 date: 2026-05-07
 category: Médiation · Émotions
-excerpt: "Illustration pratique d’une démarche de médiation "
+excerpt: L’intervention du gestionnaire visait à rétablir le
+  dialogue.  Pourtant, malgré cette démarche, la situation s’est complexifiée
+  car certains enjeux, moins visibles, continuaient d’influencer la relation.
 image: /uploads/image-principale.jpg
 series: Article
 readTime: 5 min de lecture
