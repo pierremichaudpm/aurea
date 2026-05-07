@@ -58,5 +58,18 @@
     <div class="cms-branding-sub">Administration</div>
   </div>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Hide custom branding once user is authenticated so it doesn't push Decap's
+    // sticky nav out of viewport top. Visible only on the login screen.
+    (function () {
+      var branding = document.querySelector('.cms-branding');
+      if (!branding || !window.netlifyIdentity) return;
+      var hide = function () { branding.style.display = 'none'; };
+      var show = function () { branding.style.display = ''; };
+      window.netlifyIdentity.on('init', function (user) { if (user) hide(); });
+      window.netlifyIdentity.on('login', hide);
+      window.netlifyIdentity.on('logout', show);
+    })();
+  </script>
 </body>
 </html>
