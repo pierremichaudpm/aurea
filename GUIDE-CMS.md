@@ -82,34 +82,23 @@ Estimez le temps de lecture. Format : `X min de lecture`
 
 ### Étape 3 — Rédiger le contenu
 
-L'éditeur utilise le format **Markdown**. Voici les éléments disponibles :
+L'éditeur dispose d'une **barre d'outils** en haut du champ Contenu. Vous n'avez pas à taper de code ou de symboles spéciaux : sélectionnez votre texte et cliquez sur le bouton voulu.
 
-#### Sous-titres
-```
-## Mon sous-titre
-```
-Utilisez `##` pour structurer votre article en sections.
+| Bouton | Effet |
+|--------|-------|
+| **B** | Texte en gras |
+| *I* | Texte en italique |
+| H | Sous-titre (cliquez puis choisissez H2 pour une section) |
+| ❝ | Citation mise en évidence (barre dorée à gauche) |
+| ☰ avec puces | Liste à puces |
+| 1₂ | Liste numérotée |
+| 🔗 | Insérer un lien |
 
-#### Texte en gras
-```
-**texte important**
-```
+**Conseil** : pour structurer votre article, utilisez les **sous-titres H2** entre vos sections. Séparez vos paragraphes en appuyant simplement sur Entrée deux fois.
 
-#### Citations
-```
-> Ceci est une citation mise en évidence.
-```
-Les citations apparaissent avec une barre dorée sur le côté gauche.
+#### Mode avancé (optionnel)
 
-#### Listes à puces
-```
-- Premier élément
-- Deuxième élément
-- Troisième élément
-```
-
-#### Paragraphes
-Séparez vos paragraphes par une ligne vide.
+En haut à droite de l'éditeur, un interrupteur **Texte enrichi / Markdown** permet de basculer en mode code source (Markdown). Réservé aux utilisateurs à l'aise avec cette syntaxe — par défaut, restez en mode **Texte enrichi**.
 
 ### Étape 4 — Publier
 1. Vérifiez l'aperçu de votre contenu
@@ -201,6 +190,40 @@ Ce lien ouvre directement l'article lorsque partagé.
 1. **Slug cohérent** — Utilisez des mots-clés pertinents, courts et sans accents
 2. **Images de qualité** — Une bonne image augmente l'engagement
 3. **Extraits accrocheurs** — C'est la première chose que les visiteurs lisent
-4. **Structure claire** — Utilisez des sous-titres `##` pour aérer le contenu
+4. **Structure claire** — Utilisez les sous-titres H2 (bouton H dans la barre d'outils) pour aérer le contenu
 5. **Relecture** — Vérifiez l'orthographe avant de publier
 6. **Catégorisation** — Choisissez la catégorie la plus pertinente pour faciliter la navigation
+
+---
+
+## Conseils éditoriaux : titre et extrait
+
+### Le titre — court et percutant
+
+**Visez 6 à 10 mots maximum.** Un titre trop long est tronqué visuellement sur la carte et perd son impact. Le titre doit accrocher, pas tout dire.
+
+❌ *Conflit de valeurs en milieu de travail : illustration d'une démarche de médiation professionnelle*
+
+✅ *Conflit de valeurs : une médiation tripartite*
+
+Les détails (sous-titre, contexte) ont leur place dans le **corps de l'article**, pas dans le titre.
+
+### L'extrait — un teaser narratif, pas une fiche technique
+
+Le champ **Extrait** sert à composer le texte de la carte sous le titre. C'est ce qui donne envie de cliquer. Visez **2 à 3 phrases en continu**, dans une voix narrative.
+
+❌ Évitez les listes structurées dans l'extrait :
+> *Secteur : Organisation de services. Contexte : Conflit de valeurs. Type d'intervention : Médiation tripartite.*
+
+✅ Préférez une accroche narrative :
+> *Une équipe paralysée par un désaccord profond sur les valeurs professionnelles. Le récit anonymisé d'une médiation tripartite réussie, et ce qu'elle révèle sur le rôle du gestionnaire dans la prévention des conflits.*
+
+Les éléments factuels (secteur, contexte, type d'intervention) sont mieux placés en **introduction du corps de l'article**, où ils ont la place d'être détaillés.
+
+### En résumé
+
+| Champ | Objectif | Format |
+|-------|----------|--------|
+| **Titre** | Accrocher | 6-10 mots, une idée forte |
+| **Extrait** | Donner envie de cliquer | 2-3 phrases, voix narrative |
+| **Corps** | Développer | Détails techniques, contexte, structure complète |
