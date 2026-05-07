@@ -14,7 +14,7 @@ image: /uploads/image-principale.jpg
 series: Article
 readTime: 5 min de lecture
 ---
-\##Contexte
+Contexte
 
 Une organisation de taille moyenne a sollicité une intervention en **médiation** à la suite d’un conflit persistant entre deux employés occupant des fonctions clés au sein d’une même équipe. Bien que les désaccords se manifestaient initialement autour d’enjeux liés au travail, l’analyse de la situation a permis de constater que le conflit reposait principalement sur un désalignement de valeurs professionnelles.
 
