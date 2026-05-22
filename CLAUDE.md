@@ -32,10 +32,11 @@
 - **HTML/CSS/JS** : Single-page statique, pas de framework
 - **Build** : `node build.js` — génère `index.html` (FR) et `en/index.html` (EN) depuis les templates + articles markdown
 - **CMS** : Decap CMS (anciennement Netlify CMS) via `/admin/`
-- **Hébergement** : Netlify (site ID: `54963284-767c-41a6-9cce-1714f9443e19`, slug: `aurearh`)
-- **Domaine** : aurearhconseil.ca (enregistré chez WordPress.com, DNS pointé vers Netlify)
-- **Formulaires** : Netlify Forms activé, notification email → hugues.thibault@aurearhconseil.ca
-- **Auth** : Netlify Identity + Git Gateway (pour le CMS)
+- **Hébergement** : Netlify (slug: `aureav2`, nouveau compte — ancien compte supprimé 2026-05-21, ancien slug `aurearh` / site ID `54963284-767c-41a6-9cce-1714f9443e19` invalides)
+- **URL temporaire** : `aureav2.netlify.app` (domaine custom bloqué en attente de libération par le support Netlify)
+- **Domaine** : aurearhconseil.ca (enregistré chez WordPress.com — en attente d'assignation au nouveau site `aureav2`)
+- **Formulaires** : Netlify Forms activé, notifications email configurées → hugues.thibault@aurearhconseil.ca (formulaires `contact` + `contact-en`)
+- **Auth** : Netlify Identity activé (Invite only) + Git Gateway activé → repo `pierremichaudpm/aurea`
 - **Repo** : github.com/pierremichaudpm/aurea (branche main)
 - **Email client** : Titan (via WordPress.com), MX records dans WordPress DNS
 

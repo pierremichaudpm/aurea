@@ -338,6 +338,52 @@ e403023 Fix mobile: nav hidden by notch, horizontal overflow white margin
 
 ---
 
+## 2026-05-22 — Migration Netlify (compte supprimé → nouveau compte)
+
+### Contexte
+
+L'ancien compte Netlify (slug `aurearh`, site ID `54963284-767c-41a6-9cce-1714f9443e19`) a été supprimé. Migration d'urgence vers un nouveau compte Netlify payant (`aureav2`).
+
+### Accompli
+
+- **Nouveau site Netlify créé** : slug `aureav2`, connecté au repo GitHub `pierremichaudpm/aurea`
+  - Build command : `node build.js`, publish directory : `.`, branche `main`
+  - Deploy automatique fonctionnel via GitHub
+- **Netlify Forms** : détection activée, 2 formulaires détectés (`contact` + `contact-en`)
+  - Notifications email reconfigurées → `hugues.thibault@aurearhconseil.ca` pour chaque formulaire
+  - (Chemin correct : Forms → Form notifications, pas Project configuration → Notifications)
+- **Netlify Identity** : activé, Registration = Invite only
+- **Git Gateway** : activé, connecté à `github.com/pierremichaudpm/aurea`
+- **CLAUDE.md mis à jour** : nouveau slug et état de la migration documentés
+
+### Décisions techniques
+
+- **Notifications Forms via la page Forms**, pas via Project configuration → Notifications. Les deux sections semblent similaires mais seule la page Forms a l'option « New form submission » dans le dropdown Event.
+- **Invitation Hugues différée** : volontairement reportée jusqu'à ce que le domaine custom soit rétabli — l'email d'invitation contiendra alors `aurearhconseil.ca` au lieu de `aureav2.netlify.app`.
+- **Pas de changement DNS pour l'instant** : l'A record `75.2.60.5` reste identique. Seul le CNAME `www` devra changer (`aurearh.netlify.app` → `aureav2.netlify.app`) une fois le domaine libéré.
+
+### Problèmes rencontrés
+
+- **Domaine bloqué** : `aurearhconseil.ca` reste associé à l'ancien projet fantôme dans la base Netlify. Le message « Another project is already using this domain » bloque l'assignation. Ticket support envoyé — pas de réponse après 6h+.
+- **Pas d'option TXT verification** : contrairement à d'autres plateformes, Netlify ne propose pas de vérifier la propriété du domaine via DNS TXT pour forcer la libération. Seul le support peut débloquer.
+- **DNS seul insuffisant** : même pointer les DNS vers `aureav2.netlify.app` ne suffit pas — Netlify route les requêtes par nom de domaine en interne. Sans l'assignation dans leur système, le site ne répond pas sur `aurearhconseil.ca`.
+- **Section Notifications confuse** : deux entrées « Notifications » dans l'UI Netlify (Project configuration → Notifications → Emails and webhooks, ET Forms → Form notifications). La première liste uniquement des événements de deploy — c'est la deuxième qui gère les soumissions de formulaires.
+
+### Statut
+
+Site **fonctionnel sur `aureav2.netlify.app`**. Domaine custom et invitation Hugues en attente de libération par le support Netlify.
+
+### Prochaines étapes (par priorité)
+
+1. **Attendre réponse support Netlify** (ticket en cours) pour libérer `aurearhconseil.ca`
+   - Escalade possible : `answers.netlify.com` ou `@netlify` sur Twitter/X avec numéro de ticket
+2. **Dès libération** : ajouter `aurearhconseil.ca` dans Domain management → aureav2
+3. **Mettre à jour CNAME `www`** dans WordPress.com : `aurearh.netlify.app` → `aureav2.netlify.app`
+4. **Inviter Hugues** : Identity → Invite users → `hugues.thibault@aurearhconseil.ca`
+5. **Mettre à jour CLAUDE.md** avec le site ID final une fois le domaine assigné
+
+---
+
 ## 2026-05-07 — Premier article Hugues + fix parsers + guide PDF Studio Micho
 
 Première publication réelle d'un article par Hugues via le CMS (`2026-05-07-exemple-intervention.md`). L'article a révélé plusieurs bugs latents dans le parser maison de `build.js` qui n'avaient jamais été déclenchés par les articles seed (écrits à la main avec un YAML simple).
