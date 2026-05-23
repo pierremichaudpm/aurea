@@ -2734,8 +2734,7 @@ footer {
         <div class="contact-value"><a href="https://www.linkedin.com/company/aur%C3%A9a-rh-conseil/" target="_blank">Auréa RH Conseil</a></div>
       </div>
     </div>
-    <form class="contact-form reveal" name="contact-en" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-      <input type="hidden" name="form-name" value="contact-en">
+    <form class="contact-form reveal" name="contact-en" method="POST">
       <p class="visually-hidden"><label>Do not fill in: <input name="bot-field"></label></p>
       <div class="form-row">
         <div class="form-group">
@@ -3465,18 +3464,18 @@ function copyArticleLink(btn) {
     });
   }
 
-  // Netlify Forms AJAX submit
+  // Formspree AJAX submit
   const contactForm = document.querySelector('form[name="contact-en"]');
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const form = this;
-      const formData = new FormData(form);
-      fetch('/en/', {
+      fetch('https://formspree.io/f/xgoqzkyw', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      }).then(() => {
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (!response.ok) { throw new Error('Form submission failed'); }
         form.style.display = 'none';
         document.getElementById('formSuccess').style.display = 'block';
       }).catch(() => {
