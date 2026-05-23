@@ -242,7 +242,7 @@ tr:last-child td { border-bottom: none; }
 
 <p>Ce guide vous accompagne dans l'utilisation du système de gestion de contenu (CMS) du site <strong>aurearhconseil.ca</strong>. Vous y publierez et gérerez les articles du blogue, sans avoir besoin de compétences techniques.</p>
 
-<p>Le CMS utilisé est <strong>Decap CMS</strong>, intégré directement à votre site. Toutes les modifications faites dans le CMS sont publiées automatiquement en environ 30 secondes.</p>
+<p>Le CMS utilisé est <strong>Sveltia CMS</strong>, intégré directement à votre site. Toutes les modifications faites dans le CMS sont publiées automatiquement en environ 30 secondes.</p>
 
 <!-- ─────────────── SECTION 1 ─────────────── -->
 <h1>1. Accès au CMS</h1>
@@ -253,16 +253,17 @@ tr:last-child td { border-bottom: none; }
 
 <h3>Première connexion</h3>
 <ol>
-  <li>Vous recevrez un courriel d'invitation intitulé <em>« Complete your signup »</em></li>
-  <li>Cliquez sur le lien pour définir votre mot de passe</li>
-  <li>Connectez-vous avec votre courriel et votre mot de passe</li>
+  <li>Rendez-vous à l'adresse <code>https://aurearhconseil.ca/admin/</code></li>
+  <li>Sveltia CMS affiche un écran de connexion — cliquez <strong>« Sign in with Token »</strong></li>
+  <li>Collez votre jeton d'accès GitHub (Personal Access Token) dans le champ</li>
+  <li>Cliquez <strong>« Sign in »</strong> — le CMS s'ouvre</li>
 </ol>
+<p>Le jeton est mémorisé dans votre navigateur. Vous n'aurez pas à le resaisir lors des connexions suivantes sur le même appareil.</p>
 
 <h3>Connexions suivantes</h3>
 <ol>
-  <li>Rendez-vous à l'adresse <code>/admin/</code></li>
-  <li>Cliquez sur <strong>« Login with Netlify Identity »</strong></li>
-  <li>Entrez vos identifiants</li>
+  <li>Rendez-vous à l'adresse <code>https://aurearhconseil.ca/admin/</code></li>
+  <li>Le CMS s'ouvre directement — le jeton est déjà mémorisé</li>
 </ol>
 
 <!-- ─────────────── SECTION 2 ─────────────── -->
@@ -472,17 +473,17 @@ tr:last-child td { border-bottom: none; }
 <h1>8. Résolution de problèmes</h1>
 <div class="rule"></div>
 
-<h3>« Git Gateway backend not returning valid settings »</h3>
+<h3>Le CMS demande de se reconnecter / « Sign in with Token »</h3>
 <ul>
-  <li>Vérifiez que <strong>Identity</strong> est activé dans Netlify (Site settings → Identity)</li>
-  <li>Vérifiez que <strong>Git Gateway</strong> est activé (Identity → Services → Git Gateway)</li>
+  <li>Le jeton mémorisé a peut-être expiré — collez à nouveau votre Personal Access Token GitHub</li>
+  <li>Si vous n'avez plus votre jeton, générez-en un nouveau sur GitHub : Settings → Developer settings → Personal access tokens → Generate new token (scope <code>repo</code>)</li>
 </ul>
 
 <h3>L'article ne s'affiche pas après publication</h3>
 <ul>
-  <li>Le déploiement prend environ 30 secondes</li>
+  <li>Le déploiement prend environ 30 secondes à 2 minutes</li>
   <li>Rafraîchissez la page avec <strong>Ctrl+Maj+R</strong> (ou <strong>Cmd+Maj+R</strong> sur Mac)</li>
-  <li>Vérifiez dans Netlify → Deploys que le dernier build a réussi</li>
+  <li>Vérifiez dans le tableau de bord Cloudflare Pages que le dernier build a réussi</li>
 </ul>
 
 <h3>Image non affichée</h3>
@@ -492,10 +493,10 @@ tr:last-child td { border-bottom: none; }
   <li>Les images externes (URLs) doivent être accessibles publiquement</li>
 </ul>
 
-<h3>Mot de passe oublié</h3>
+<h3>Accès refusé au CMS</h3>
 <ul>
-  <li>Sur la page de connexion, cliquez <strong>« Forgot password »</strong></li>
-  <li>Un courriel de réinitialisation sera envoyé</li>
+  <li>Vérifiez que votre compte GitHub a bien accès au dépôt du site</li>
+  <li>Contactez Pierre Michel si vous n'avez pas reçu vos accès</li>
 </ul>
 
 </body>
