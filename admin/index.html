@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Auréa RH — Administration</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <style>
     body { background: #1a2332; margin: 0; }
     .cms-branding {
@@ -57,19 +56,6 @@
     <div class="cms-branding-name">Auréa</div>
     <div class="cms-branding-sub">Administration</div>
   </div>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>
-    // Hide custom branding once user is authenticated so it doesn't push Decap's
-    // sticky nav out of viewport top. Visible only on the login screen.
-    (function () {
-      var branding = document.querySelector('.cms-branding');
-      if (!branding || !window.netlifyIdentity) return;
-      var hide = function () { branding.style.display = 'none'; };
-      var show = function () { branding.style.display = ''; };
-      window.netlifyIdentity.on('init', function (user) { if (user) hide(); });
-      window.netlifyIdentity.on('login', hide);
-      window.netlifyIdentity.on('logout', show);
-    })();
-  </script>
+  <script type="module" src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
 </body>
 </html>
