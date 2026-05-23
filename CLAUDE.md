@@ -18,7 +18,7 @@
 │   ├── aurea-copydeck rev.1-HT.docx  # Copydeck client FR rev.1 (référence)
 │   └── aurea-copydeck rev.2-HT.docx  # Copydeck client FR rev.2 (surlignage jaune = changements)
 ├── admin/
-│   ├── index.html         # Interface Decap CMS
+│   ├── index.html         # Interface Sveltia CMS
 │   └── config.yml         # Config CMS (2 collections : articles FR + articles-en)
 ├── GUIDE-CMS.md           # Guide d'utilisation CMS pour le client (markdown source)
 ├── guide-pdf-source.html  # Source HTML stylé Studio Micho pour générer le PDF du guide
@@ -31,12 +31,12 @@
 
 - **HTML/CSS/JS** : Single-page statique, pas de framework
 - **Build** : `node build.js` — génère `index.html` (FR) et `en/index.html` (EN) depuis les templates + articles markdown
-- **CMS** : Decap CMS (anciennement Netlify CMS) via `/admin/`
-- **Hébergement** : Netlify (slug: `aureav2`, nouveau compte — ancien compte supprimé 2026-05-21, ancien slug `aurearh` / site ID `54963284-767c-41a6-9cce-1714f9443e19` invalides)
-- **URL temporaire** : `aureav2.netlify.app` (domaine custom bloqué en attente de libération par le support Netlify)
-- **Domaine** : aurearhconseil.ca (enregistré chez WordPress.com — en attente d'assignation au nouveau site `aureav2`)
-- **Formulaires** : Netlify Forms activé, notifications email configurées → hugues.thibault@aurearhconseil.ca (formulaires `contact` + `contact-en`)
-- **Auth** : Netlify Identity activé (Invite only) + Git Gateway activé → repo `pierremichaudpm/aurea`
+- **CMS** : Sveltia CMS via `/admin/` — auth par GitHub Personal Access Token (PAT, scope `repo`)
+- **Hébergement** : Cloudflare Pages (migration depuis Netlify 2026-05-23) — repo GitHub `pierremichaudpm/aurea`, build command `node build.js`, output dir `.`
+- **URL temporaire** : `aurea-61m.pages.dev` (domaine custom en attente de configuration dans Cloudflare)
+- **Domaine** : aurearhconseil.ca (enregistré chez WordPress.com — DNS à rediriger vers Cloudflare Pages après validation visuelle sur `.pages.dev`)
+- **Formulaires** : Formspree — FR : `xlgvlbbz`, EN : `xgoqzkyw` → notifications → hugues.thibault@aurearhconseil.ca
+- **Auth CMS** : Sveltia CMS + backend `github` (repo `pierremichaudpm/aurea`, branche `main`) — Hugues se connecte avec un PAT GitHub
 - **Repo** : github.com/pierremichaudpm/aurea (branche main)
 - **Email client** : Titan (via WordPress.com), MX records dans WordPress DNS
 
@@ -54,7 +54,7 @@
 - Les deux templates sont autonomes (pas de système i18n partagé) — modifier l'un n'affecte pas l'autre
 - hreflang tags présents dans les deux templates pour le SEO
 - Language switcher (FR ↔ EN) dans la nav des deux templates
-- Formulaire contact EN nommé `contact-en` (soumissions séparées dans Netlify)
+- Formulaire contact EN nommé `contact-en` (endpoint Formspree séparé)
 - **Images** : chemins absolus obligatoires dans `template-en.html` (sinon résolus vers `/en/image.jpg`)
 - **Articles de blogue EN** : 6 articles traduits dans `content/articles-en/` (miroir de `content/articles/`)
 
@@ -64,10 +64,10 @@
 - Section « Accréditations » (FR) / « Credentials » (EN) — sans mention « Bilingue »
 
 ### Build et déploiement
-- Netlify build command : `node build.js`
-- Publish directory : `.` (racine)
-- Le push sur main déclenche un deploy automatique (~30 sec)
-- Si le deploy auto ne se déclenche pas, utiliser le MCP Netlify `deploy-site` avec site ID ou `npx @netlify/mcp`
+- Cloudflare Pages build command : `node build.js`
+- Publish directory : `.` (racine) — sources et output mélangés, pas de dossier `dist/`
+- Le push sur main déclenche un deploy automatique (~1-2 min)
+- NODE_VERSION = 20 configuré en variable d'environnement Cloudflare
 
 ### Voix et ton
 - Le site utilise la 1re personne du singulier (je/ma/mes) — **pas** nous/notre/nos
@@ -80,12 +80,13 @@
 - `inset: -32px` sur `.hero-right-bg` pour élargir la zone visible
 
 ### Formulaire contact
-- JS AJAX submit avec `fetch()` + message de succès in-page (FR: « Merci pour votre message... », EN: « Thank you for your message... »)
+- JS AJAX submit avec `fetch()` vers Formspree + `Accept: application/json` + `new FormData(form)` (pas URLSearchParams)
+- Test `response.ok` dans le `.then()` — throw si 4xx/5xx, catch gère les erreurs réseau et HTTP
 - Le `<div id="formSuccess">` est **en dehors** du `<form>` — sinon `form.style.display = 'none'` cache aussi la confirmation
 - Le formulaire disparaît après soumission, remplacé par le message de confirmation
 - **Attention** : ne pas utiliser d'apostrophe ASCII (`'`) dans les strings JS délimitées par `'` — utiliser `"` comme délimiteur si le texte contient des apostrophes françaises
-- EN form : `fetch('/en/')` (pas `/`) car servi depuis `/en/index.html`
-- Notifications email : hooks Netlify `submission_created` → `hugues.thibault@aurearhconseil.ca` (un hook par formulaire, avec `form_id` spécifique)
+- FR : `fetch('https://formspree.io/f/xlgvlbbz', ...)` / EN : `fetch('https://formspree.io/f/xgoqzkyw', ...)`
+- Notifications email : configurées dans le dashboard Formspree → `hugues.thibault@aurearhconseil.ca`
 
 ### Contenu client
 - Le copydeck est fourni en `.docx` avec conventions de balisage :
@@ -94,11 +95,17 @@
 - Copydeck EN rev.1 (`aurea-copydeck-EN_v2 rev1.HT.docx`) : même convention rouge/barré que rev.1 FR
 - Les articles de blogue sont gérés via le CMS, pas dans le copydeck
 
-### CMS — quirks publication via Decap
+### CMS — Sveltia CMS (depuis 2026-05-23)
+- **Backend** : `github` (repo `pierremichaudpm/aurea`, branche `main`) — plus de Netlify Identity ni Git Gateway
+- **Auth** : Personal Access Token GitHub (scope `repo`). Hugues se connecte via « Sign in with Token » sur `/admin/`. Le token est mémorisé dans le navigateur.
+- **Si token expiré** : générer un nouveau PAT sur GitHub → Settings → Developer settings → Personal access tokens (scope `repo`)
+- **Accès collaborateur** : le compte GitHub de Hugues doit avoir accès en écriture au repo `pierremichaudpm/aurea`
+
+### CMS — quirks publication via Sveltia
 - **Parser `parseFrontmatter` dans `build.js` est maison** (pas gray-matter). Il gère désormais : valeurs sur une ligne, block scalars YAML (`>`, `>-`, `|`, `|-`), strings double-quoted multi-lignes (CMS wrap les longs titres). Cas restants probablement non couverts : single-quoted multi-line, escape sequences `\"`, formats YAML exotiques.
 - **Parser `markdownToHtml` dans `build.js` est maison aussi**. Listes : reconnaît `-`, `*`, `+` (puces) et `1.` (numérotées). Blockquote `>`, headings `##`, gras `**`. Cas non couverts : code blocks ` ``` `, listes imbriquées, images `![]()`, liens `[]()`.
-- **Avant de blâmer Decap pour un bug d'affichage**, ouvrir l'article `.md` dans `content/articles/` et comparer YAML/markdown brut au HTML généré.
-- **Branding admin custom** dans `admin/index.html` (logo Auréa) → cassait le sticky de la nav Decap après login. Solution : JS écoute `netlifyIdentity.on('init'/'login'/'logout')` et hide la div `.cms-branding` quand connecté.
+- **Avant de blâmer Sveltia pour un bug d'affichage**, ouvrir l'article `.md` dans `content/articles/` et comparer YAML/markdown brut au HTML généré.
+- **Branding admin custom** dans `admin/index.html` (logo Auréa, gold) — conservé tel quel, Sveltia l'affiche sur l'écran de login. Le bloc JS `netlifyIdentity` a été retiré (inutile avec Sveltia).
 
 ### Guide CMS — PDF pour le client
 - **Source markdown** : `GUIDE-CMS.md` (référence dev, à jour)

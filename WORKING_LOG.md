@@ -438,3 +438,74 @@ fe74f6c Update CMS guide: rich text editor + title/excerpt advice
 80b6e2a Add Studio Micho-branded PDF guide for client (Hugues)
 9941398 Update project notes (CLAUDE.md + WORKING_LOG.md)
 ```
+
+---
+
+## 2026-05-23 — Migration Cloudflare Pages + Sveltia CMS + Formspree
+
+### Contexte
+
+Migration complète de l'infrastructure d'hébergement et de services tiers : Netlify → Cloudflare Pages, Decap + Netlify Identity → Sveltia CMS, Netlify Forms → Formspree.
+
+### Accompli
+
+- **Migration Cloudflare Pages** :
+  - `netlify.toml` supprimé (`git rm`)
+  - `.gitignore` mis à jour : ajout `.claude/`, `*.docx`, `content/logo-client/`
+  - Build command : `node build.js`, output dir : `.` (racine — sources et output mélangés, pas de `dist/` possible sans refacto)
+  - `NODE_VERSION = 20` à configurer en variable d'environnement Cloudflare
+  - Inventaire préalable : aucun framework (HTML statique pur), aucune incompatibilité détectée
+
+- **Migration Sveltia CMS** :
+  - `admin/index.html` : retiré `netlify-identity-widget.js`, `decap-cms.js`, bloc JS `netlifyIdentity`. Ajouté `sveltia-cms.js` (`type=module`)
+  - `admin/config.yml` : backend `git-gateway` → `github` + `repo: pierremichaudpm/aurea`
+  - Branding custom conservé intact (Sveltia l'affiche sur l'écran de login)
+  - Auth : Personal Access Token GitHub (scope `repo`) — Hugues clique « Sign in with Token » et colle son PAT
+
+- **Migration Formspree** :
+  - Retiré `data-netlify="true"`, `netlify-honeypot="bot-field"`, `<input type="hidden" name="form-name">`
+  - `fetch('/')` / `fetch('/en/')` remplacés par endpoints Formspree (`xlgvlbbz` FR, `xgoqzkyw` EN)
+  - Body : `URLSearchParams` → `FormData` directement
+  - Headers : `Content-Type: application/x-www-form-urlencoded` → `Accept: application/json`
+  - Ajout test `response.ok` dans `.then()` pour détecter les erreurs HTTP 4xx/5xx (en plus du `.catch` réseau)
+  - Honeypot `bot-field` conservé (inoffensif, protection supplémentaire)
+
+- **Guide CMS PDF mis à jour** :
+  - Intro : « Decap CMS » → « Sveltia CMS »
+  - Section 1 (login) : flux email/mot de passe Netlify → flux PAT GitHub (Sign in with Token)
+  - Section 8 (troubleshooting) : Git Gateway / Netlify Identity → token expiré + Cloudflare Pages deploy
+  - Date : 7 mai → 23 mai 2026
+  - PDF régénéré via `weasyprint` (installé pour la session : `pip install weasyprint`)
+
+### Décisions techniques
+
+- **Output dir `.`** — impossible d'isoler un `dist/` sans refactoriser `build.js` (il écrit `index.html` directement à la racine). Cloudflare Pages accepte `.`, identique à Netlify.
+- **Sveltia + PAT plutôt que Sveltia + OAuth app** — plus simple à mettre en place côté client. Pas besoin de configurer une OAuth app GitHub ou un worker d'authentification.
+- **Formspree plutôt que Cloudflare Workers** — solution la plus rapide, zéro infra à maintenir. Les endpoints sont déjà créés côté Formspree.
+- **`FormData` plutôt que `URLSearchParams`** — Formspree accepte les deux, mais `FormData` est plus propre et évite la sérialisation manuelle.
+- **Test `response.ok` ajouté** — l'ancien code Netlify n'en avait pas (les erreurs HTTP passaient dans `.then()`). Avec Formspree, un 4xx peut arriver (quota dépassé, endpoint invalide) et doit déclencher l'alert.
+
+### Problèmes rencontrés
+
+- **Push rejeté (remote ahead)** : entre le commit de migration et le push, 3 commits CMS (mises à jour d'articles via Decap) étaient sur le remote. Résolu via `git pull --rebase` sans conflit.
+- **`netlify.toml` contenait des règles de sécurité headers** (`X-Content-Type-Options`, `Cache-Control`, etc.) — ces règles ne sont plus actives sur Cloudflare Pages. À reconfigurer via un fichier `_headers` si nécessaire (hors scope pour l'instant).
+- **`content/logo-client/`** : deux logos PNG présents dans un dossier non tracké. Vérification : non référencés dans les templates ni dans `build.js` → gitignorés.
+
+### Prochaines étapes (par priorité)
+
+1. **Configurer Cloudflare Pages** : Workers & Pages → Create → Pages → Connect Git → repo `pierremichaudpm/aurea`, build `node build.js`, output `.`, `NODE_VERSION=20`
+2. **Valider visuellement** le site sur `aurea-61m.pages.dev` avant de toucher au DNS
+3. **Tester le formulaire contact** (FR + EN) : soumettre un test, vérifier réception email Hugues, vérifier dashboard Formspree
+4. **Donner accès GitHub à Hugues** : Settings → Collaborators → inviter son compte GitHub (nécessaire pour le PAT CMS)
+5. **Générer et transmettre un PAT** à Hugues (ou le guider pour créer le sien) + envoyer le nouveau PDF guide
+6. **DNS** : une fois le site validé sur `.pages.dev`, pointer `aurearhconseil.ca` vers Cloudflare Pages
+7. **Headers de sécurité** : recréer via `_headers` à la racine si nécessaire (était dans `netlify.toml`)
+
+### Commits de cette session
+
+```
+6207649 chore(deploy): prepare repo for Cloudflare Pages migration
+65e2838 chore(cms): migrate from Decap + Netlify Identity to Sveltia CMS
+b748bed feat(forms): migrate from Netlify Forms to Formspree
+c489e63 docs(guide): update CMS guide for Sveltia CMS + GitHub token auth
+```
