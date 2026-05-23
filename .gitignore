@@ -5,3 +5,10 @@ node_modules/
 
 # Local Netlify folder
 .netlify
+
+# Claude Code session files
+.claude/
+
+# Client documents (not part of the public site)
+*.docx
+content/logo-client/
