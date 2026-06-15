@@ -3,9 +3,7 @@ title: 'Harcèlement psychologique au travail : la réconciliation n’exonère 
 slug: harcelement-psychologique-reconciliation-employeur-obligation
 date: 2026-06-15
 category: Prévention
-excerpt: |-
-  Une décision récente rappelle qu’un employeur doit intervenir en cas de harcèlement psychologique, 
-  même si les employés semblent réconciliés. Découvrez vos obligations.
+excerpt: Une décision récente rappelle qu’un employeur doit intervenir en cas de harcèlement psychologique, même si les employés semblent réconciliés. Découvrez vos obligations.
 image: /uploads/flat_design_reconciliation.svg
 series: Article
 readTime: 3 min de lecture
