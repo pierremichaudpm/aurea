@@ -37,10 +37,22 @@ function parseFrontmatter(raw) {
       data[key] = parts.filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
       continue;
     }
-    const m = lines[i].match(/^(\w+):\s*"?(.*?)"?\s*$/);
-    if (m) data[m[1]] = m[2];
+    const m = lines[i].match(/^(\w+):\s*(.*)$/);
+    if (m) data[m[1]] = stripQuotes(m[2]);
   }
   return { data, content: match[2] };
+}
+
+// Strip a single layer of matching quotes ('...' or "...") from a YAML scalar,
+// un-escaping doubled '' (single-quote style) since Sveltia/js-yaml emits both forms.
+function stripQuotes(str) {
+  const trimmed = str.trim();
+  if (trimmed.length >= 2) {
+    const first = trimmed[0], last = trimmed[trimmed.length - 1];
+    if (first === '"' && last === '"') return trimmed.slice(1, -1).replace(/\\"/g, '"');
+    if (first === "'" && last === "'") return trimmed.slice(1, -1).replace(/''/g, "'");
+  }
+  return trimmed;
 }
 
 // ── Simple Markdown-to-HTML converter (no external deps) ──────────────────
