@@ -225,6 +225,14 @@ const svgFacebook = '<svg width="14" height="14" viewBox="0 0 24 24" fill="curre
 const svgLink = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
 
 // ── Read & parse articles (generic) ──────────────────────────────────────
+function slugify(str) {
+  return str
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
 function readArticles(dir) {
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
@@ -232,7 +240,8 @@ function readArticles(dir) {
     .map(file => {
       const raw = fs.readFileSync(path.join(dir, file), 'utf8');
       const { data, content } = parseFrontmatter(raw);
-      const slug = data.slug || file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+      const rawSlug = data.slug || file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+      const slug = slugify(rawSlug);
       const bodyHtml = markdownToHtml(content);
       return { ...data, slug, bodyHtml };
     })

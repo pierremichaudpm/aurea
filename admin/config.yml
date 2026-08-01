@@ -8,6 +8,11 @@ public_folder: /uploads
 
 locale: fr
 
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
 collections:
   - name: articles
     label: Articles
@@ -26,10 +31,10 @@ collections:
       - label: Identifiant URL
         name: slug
         widget: string
-        hint: "Mots séparés par des tirets, sans accents. Ex: securite-psychologique"
+        hint: "Mots séparés par des tirets. Les accents sont acceptés (é, è, à...) et seront convertis automatiquement. Ex: securite-psychologique"
         pattern:
-          - "^[a-z0-9-]+$"
-          - "Lettres minuscules et tirets uniquement"
+          - "^[a-zà-ÿ0-9-]+$"
+          - "Lettres minuscules (accents acceptés) et tirets uniquement, sans espaces"
 
       - label: Date de publication
         name: date
@@ -95,10 +100,10 @@ collections:
       - label: URL Identifier
         name: slug
         widget: string
-        hint: "Words separated by hyphens, lowercase. E.g.: psychological-safety"
+        hint: "Words separated by hyphens, lowercase. Accented characters are allowed and will be converted automatically. E.g.: psychological-safety"
         pattern:
-          - "^[a-z0-9-]+$"
-          - "Lowercase letters and hyphens only"
+          - "^[a-zà-ÿ0-9-]+$"
+          - "Lowercase letters (accents allowed) and hyphens only, no spaces"
 
       - label: Publication date
         name: date
