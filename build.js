@@ -72,7 +72,17 @@ function escapeAttr(str) {
     .replace(/>/g, '&gt;');
 }
 
+// Markdown punctuation that a backslash can escape. Sveltia escapes these on
+// its own when the author types them as literal characters, so `\*` reaching
+// the page as a visible backslash is a real authoring hazard.
+const ESCAPABLE = /\\([\\`*_{}\[\]()#+\-.!>])/g;
+const RESTORE_AS_ENTITY = { '>': '&gt;' };
+
 function inlineMarkdown(text, notes) {
+  // Stash escaped characters behind a placeholder so the rules below cannot
+  // interpret them, then put them back once every rule has run.
+  const escaped = [];
+  text = text.replace(ESCAPABLE, (m, ch) => '\u0000' + (escaped.push(ch) - 1) + '\u0000');
   // Bold+italic first, otherwise the bold rule eats ***x*** as **, *x, **.
   text = text.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
   // Bold: **text** -> <strong>text</strong>
@@ -97,6 +107,13 @@ function inlineMarkdown(text, notes) {
   // replacements above ran over the whole string including the [label] part.
   text = markdownLinks(text);
   if (notes) text = footnoteRefs(text, notes);
+  // Put the escaped characters back, now that no rule can act on them.
+  if (escaped.length > 0) {
+    text = text.replace(/\u0000(\d+)\u0000/g, (m, n) => {
+      const ch = escaped[Number(n)];
+      return RESTORE_AS_ENTITY[ch] || ch;
+    });
+  }
   return text;
 }
 

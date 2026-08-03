@@ -48,6 +48,20 @@ Corrigé en passant la puce en `position: absolute` avec `padding-left` sur le `
 
 Testé sur un article temporaire couvrant les cas limites (astérisque isolé, underscores dans un nom de fichier, lien avec query string, `javascript:`, italique dans une puce et dans une citation, italique + lien dans une note), puis supprimé.
 
+### Échappements markdown (découvert en poussant)
+
+Le push a été rejeté : Hugues avait publié `2026-08-03-enquete-harcelement` le matin même. Son article contenait une **note de bas de page bricolée à la main** — un `*` après « être entendue » et un paragraphe `*La Cour d'appel du Québec a jugé…` en fin de texte — faute de syntaxe disponible. C'est précisément ce qui a motivé son courriel.
+
+Et ça sortait cassé en production : `être entendue\*` avec le backslash visible. Le parser ne gérait aucun échappement markdown.
+
+**Ce n'est pas une faute de frappe de Hugues** : l'éditeur de Sveltia insère le backslash tout seul quand l'auteur tape un caractère de ponctuation markdown littéral. Aucune consigne au client ne pouvait éviter ça — le problème se reproduirait avec n'importe quel `*`, `_`, `#`, `+` ou `-` littéral.
+
+Corrigé dans `inlineMarkdown` : les séquences `\X` sont mises de côté derrière un sentinelle `\u0000n\u0000` avant toutes les règles, puis restaurées après, pour qu'aucune règle ne puisse les interpréter. `\>` est restauré en `&gt;` plutôt qu'en `>` brut.
+
+Vérifié : sur les 9 articles FR, un seul corps HTML change — le sien, où les deux backslashes disparaissent.
+
+**À dire à Hugues** : sa note manuelle peut maintenant devenir une vraie note de bas de page numérotée et cliquable.
+
 ### Reste à décider
 
 **Le gras est visuellement presque invisible.** `.article-body p` est en `font-weight: 300` ; `<strong>` vaut `bolder`, ce qui résout à 400 pour DM Sans. Un `**mot**` ressort donc à 400 contre 300 autour — une différence à peine perceptible. Corrigeable en une ligne (`.article-body strong { font-weight: 500; }`), mais ça change l'apparence des 6 articles déjà publiés, donc non appliqué sans validation.
