@@ -72,9 +72,18 @@ function escapeAttr(str) {
     .replace(/>/g, '&gt;');
 }
 
-function inlineMarkdown(text) {
+function inlineMarkdown(text, notes) {
+  // Bold+italic first, otherwise the bold rule eats ***x*** as **, *x, **.
+  text = text.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
   // Bold: **text** -> <strong>text</strong>
   text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  // Italic: *text* -> <em>text</em>. Runs after bold, so the only asterisks
+  // left are single ones. Requires a non-space after the opening marker so a
+  // stray asterisk stays literal.
+  text = text.replace(/\*([^\s*][^*]*?)\*/g, '<em>$1</em>');
+  // Italic, underscore form. Bounded by non-word characters so underscores
+  // inside a URL or a file name are left alone.
+  text = text.replace(/(^|[^\w])_([^\s_][^_]*?)_(?![\w])/g, '$1<em>$2</em>');
   // Escape quotes and apostrophes as HTML entities
   text = text.replace(/\u2019/g, '&#39;');  // right single quotation mark
   text = text.replace(/\u2018/g, '&#39;');  // left single quotation mark
@@ -83,11 +92,111 @@ function inlineMarkdown(text) {
   text = text.replace(/'/g, '&#39;');
   text = text.replace(/\u00AB/g, '&laquo;'); // «
   text = text.replace(/\u00BB/g, '&raquo;'); // »
+  // Links and footnotes last, so the escaping above cannot touch the markup
+  // generated here. The link label is already escaped at this point, since the
+  // replacements above ran over the whole string including the [label] part.
+  text = markdownLinks(text);
+  if (notes) text = footnoteRefs(text, notes);
   return text;
 }
 
-function markdownToHtml(md) {
-  const lines = md.split('\n');
+// Links: [texte](url). Absolute links leave the site, so they open in a new
+// tab rather than navigating the reader out of the article panel.
+function markdownLinks(text) {
+  return text.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (literal, label, url) => {
+    if (/^\s*javascript:/i.test(url)) return label;
+    const href = url.replace(/"/g, '&quot;');
+    const attrs = /^https?:\/\//i.test(url) ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return `<a href="${href}"${attrs}>${label}</a>`;
+  });
+}
+
+// -- Footnotes ------------------------------------------------------------
+// Syntax: `texte[^1]` in the body, `[^1]: la note` on its own line (usually at
+// the end of the article). A definition continues on the following lines until
+// a blank line or the next definition, so a long note wrapped by the CMS
+// editor still comes through as a single note.
+const FOOTNOTE_DEF = /^\[\^([^\]\s]+)\]:\s*(.*)$/;
+
+function extractFootnoteDefs(lines) {
+  const defs = new Map();
+  const defOrder = [];
+  const kept = [];
+  let i = 0;
+  while (i < lines.length) {
+    const match = lines[i].trim().match(FOOTNOTE_DEF);
+    if (!match) {
+      kept.push(lines[i]);
+      i++;
+      continue;
+    }
+    const key = match[1];
+    const parts = match[2].trim() ? [match[2].trim()] : [];
+    i++;
+    while (i < lines.length) {
+      const t = lines[i].trim();
+      if (t === '' || FOOTNOTE_DEF.test(t)) break;
+      parts.push(t);
+      i++;
+    }
+    defs.set(key, parts.join(' ').trim());
+    defOrder.push(key);
+  }
+  return { defs, defOrder, lines: kept };
+}
+
+function footnoteRefs(text, notes) {
+  return text.replace(/\[\^([^\]\s]+)\]/g, (literal, key) => {
+    if (!notes.defs.has(key)) {
+      // No matching definition - leave the raw `[^cle]` visible so the author
+      // can see there is something to fix.
+      notes.missing.push(key);
+      return literal;
+    }
+    const seen = notes.numbers.has(key);
+    if (!seen) {
+      notes.numbers.set(key, notes.refOrder.length + 1);
+      notes.refOrder.push(key);
+    }
+    const n = notes.numbers.get(key);
+    const id = `${notes.slug}-${n}`;
+    // Only the first reference carries the anchor the back-link returns to.
+    const anchor = seen ? '' : ` id="fnref-${id}"`;
+    return `<sup class="article-note-ref"${anchor}><a href="#fn-${id}">${n}</a></sup>`;
+  });
+}
+
+function renderNotes(notes, lang) {
+  const unreferenced = notes.defOrder.filter(k => !notes.numbers.has(k));
+  if (notes.refOrder.length === 0 && unreferenced.length === 0) return '';
+  const backLabel = lang === 'en' ? 'Back to text' : 'Retour au texte';
+  const items = notes.refOrder.map((key, idx) => {
+    const id = `${notes.slug}-${idx + 1}`;
+    return `<li id="fn-${id}">${inlineMarkdown(notes.defs.get(key))}` +
+      ` <a class="article-note-back" href="#fnref-${id}" aria-label="${backLabel}" title="${backLabel}">&#8617;</a></li>`;
+  });
+  // A note nothing points to is still content the author wrote - keep it,
+  // minus the back-link, rather than dropping it silently.
+  unreferenced.forEach(key => items.push(`<li>${inlineMarkdown(notes.defs.get(key))}</li>`));
+  return `<section class="article-notes">
+  <h2 class="article-notes-title">Notes</h2>
+  <ol class="article-notes-list">
+    ${items.join('\n    ')}
+  </ol>
+</section>`;
+}
+
+function markdownToHtml(md, slug, lang) {
+  const extracted = extractFootnoteDefs(md.split('\n'));
+  const notes = {
+    slug,
+    defs: extracted.defs,
+    defOrder: extracted.defOrder,
+    numbers: new Map(),
+    refOrder: [],
+    missing: []
+  };
+  const lines = extracted.lines;
   const result = [];
   let inList = false;
   let inBlockquote = false;
@@ -97,7 +206,7 @@ function markdownToHtml(md) {
   function flushBlockquote() {
     if (inBlockquote && blockquoteLines.length > 0) {
       const inner = blockquoteLines.join(' ').trim();
-      result.push(`<blockquote>\n<p>${inlineMarkdown(inner)}</p>\n</blockquote>`);
+      result.push(`<blockquote>\n<p>${inlineMarkdown(inner, notes)}</p>\n</blockquote>`);
       blockquoteLines = [];
       inBlockquote = false;
     }
@@ -134,7 +243,7 @@ function markdownToHtml(md) {
     if (headingMatch) {
       flushBlockquote();
       flushList();
-      result.push(`<h2>${inlineMarkdown(headingMatch[1])}</h2>`);
+      result.push(`<h2>${inlineMarkdown(headingMatch[1], notes)}</h2>`);
       i++;
       continue;
     }
@@ -160,7 +269,7 @@ function markdownToHtml(md) {
         inList = true;
         listType = wantedType;
       }
-      result.push(`<li>${inlineMarkdown((ulMatch || olMatch)[1])}</li>`);
+      result.push(`<li>${inlineMarkdown((ulMatch || olMatch)[1], notes)}</li>`);
       i++;
       continue;
     }
@@ -179,7 +288,7 @@ function markdownToHtml(md) {
       i++;
     }
     if (paraLines.length > 0) {
-      result.push(`<p>${inlineMarkdown(paraLines.join(' '))}</p>`);
+      result.push(`<p>${inlineMarkdown(paraLines.join(' '), notes)}</p>`);
     }
     continue;
   }
@@ -188,7 +297,11 @@ function markdownToHtml(md) {
   flushBlockquote();
   flushList();
 
-  return result.join('\n');
+  if (notes.missing.length > 0) {
+    console.warn(`  ! ${slug}: note(s) sans definition -> ${[...new Set(notes.missing)].map(k => `[^${k}]`).join(', ')}`);
+  }
+
+  return { body: result.join('\n'), notesHtml: renderNotes(notes, lang) };
 }
 
 // ── French date formatter ─────────────────────────────────────────────────
@@ -233,7 +346,7 @@ function slugify(str) {
     .replace(/^-+|-+$/g, '');
 }
 
-function readArticles(dir) {
+function readArticles(dir, lang) {
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir)
     .filter(f => f.endsWith('.md'))
@@ -242,14 +355,14 @@ function readArticles(dir) {
       const { data, content } = parseFrontmatter(raw);
       const rawSlug = data.slug || file.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
       const slug = slugify(rawSlug);
-      const bodyHtml = markdownToHtml(content);
-      return { ...data, slug, bodyHtml };
+      const { body: bodyHtml, notesHtml } = markdownToHtml(content, slug, lang);
+      return { ...data, slug, bodyHtml, notesHtml };
     })
     .sort((a, b) => (b.date || '').localeCompare(a.date || '')); // newest first
 }
 
-const articles = readArticles(path.join(__dirname, 'content', 'articles'));
-const articlesEn = readArticles(path.join(__dirname, 'content', 'articles-en'));
+const articles = readArticles(path.join(__dirname, 'content', 'articles'), 'fr');
+const articlesEn = readArticles(path.join(__dirname, 'content', 'articles-en'), 'en');
 
 // ── HTML generators ───────────────────────────────────────────────────────
 function blogCard(a) {
@@ -290,7 +403,7 @@ function articlePanel(a, lang) {
       <span class="byline-creds">${bylineCreds}</span>
     </div>
     <div class="article-body">${a.bodyHtml}</div>
-
+${a.notesHtml}
     <div class="article-share">
       <span class="share-label">${shareLabel}</span>
       <div class="share-buttons">

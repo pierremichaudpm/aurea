@@ -1,5 +1,57 @@
 # Auréa RH Conseil — Journal de travail
 
+## 2026-08-03 — Notes de bas de page dans les articles
+
+### Contexte
+
+Hugues demande par courriel si le CMS peut gérer une note de bas de page dans un article. Réponse : non — ni le parser markdown maison de `build.js`, ni le CSS des panneaux d'article ne connaissaient la syntaxe. Un `[^1]` tapé dans Sveltia se retrouvait littéralement dans la page.
+
+### Accompli
+
+- **Parser** (`build.js`) : ajout de `extractFootnoteDefs()`, `footnoteRefs()` et `renderNotes()`.
+  - Syntaxe standard : appel `[^cle]` dans le texte, définition `[^cle]: texte` sur sa propre ligne.
+  - Les définitions sont retirées du flux avant le parsing du corps, puis rendues dans une `<section class="article-notes">` placée entre `.article-body` et `.article-share`.
+  - Numérotation automatique par ordre de première apparition, pas par ordre de définition.
+  - Un même appel répété réutilise le numéro ; seule la première occurrence porte l'ancre `id="fnref-…"` (pas d'ID dupliqué).
+  - Une continuation de note (ligne suivante non vide, pas une nouvelle définition) est recollée — nécessaire parce que le CMS enveloppe les longues notes.
+  - Appel sans définition : le `[^cle]` reste visible + `console.warn` au build (erreur d'écriture visible plutôt que silencieuse).
+  - Note jamais appelée : rendue quand même, sans lien de retour.
+  - `markdownToHtml(md, slug, lang)` retourne maintenant `{ body, notesHtml }` au lieu d'une string.
+- **IDs préfixés par le slug** (`fn-<slug>-1`) : tous les articles cohabitent comme panneaux dans le même `index.html`, un `fn-1` global aurait collisionné.
+- **CSS** (les 2 templates) : `.article-note-ref`, `.article-notes`, `.article-notes-title`, `.article-notes-list`, `.article-note-back`, `.note-flash`.
+- **JS** (les 2 templates) : handler délégué sur `.article-note-ref a, .article-note-back`. Défilement interne au panneau via `panel.scrollTo()` + flash de 1,2 s sur la note ciblée.
+- **Doc** : section « Notes de bas de page » dans `GUIDE-CMS.md` et `guide-pdf-source.html`, PDF client régénéré ; hints du champ Contenu mis à jour dans `admin/config.yml` (FR + EN).
+
+### Bug préexistant corrigé au passage
+
+`.article-body ul li` était en `display: flex` avec `gap: 0.9rem` et une puce en `::before`. En flexbox, **tout élément enfant devient son propre item flex** — seuls les runs de texte sont regroupés anonymement. Donc un `<strong>` ou un `<sup>` dans une puce était éjecté en colonne séparée avec 0,9 rem de gouttière au milieu de la phrase.
+
+Visible en production sur les 6 articles ayant des puces du type `- **Sécurité d'inclusion** — se sentir accepté…` : espace anormal après le segment gras. Jamais signalé, mais bien réel.
+
+Corrigé en passant la puce en `position: absolute` avec `padding-left` sur le `li`, ce qui redonne au `li` un contexte inline normal. Rendu des listes existantes inchangé par ailleurs.
+
+### Vérifications
+
+- Article de test avec 4 cas (appel répété, note multi-lignes, appel orphelin, note non appelée) : rendu conforme, warning de build correct, puis supprimé.
+- Captures headless Chrome avant/après sur `#article-securite-psychologique` : gouttière parasite disparue.
+- Test de clic simulé : le hash reste `#article-<slug>` après clic sur l'appel **et** sur le retour — le deep-link et le bouton « Copier le lien » ne sont pas cassés.
+
+### Italique et liens (même session, après validation)
+
+`inlineMarkdown` ne gérait ni `*italique*` ni `[texte](url)`, alors que la barre d'outils Sveltia offre les deux boutons et que le guide client les documentait comme fonctionnels. Un italique tapé par Hugues ressortait avec ses astérisques visibles. Implémentés :
+
+- `***gras italique***` traité **avant** `**gras**` — sinon la règle du gras découpe `***x***` en `**` + `*x` + `**` et produit `<strong>*x</strong>*`.
+- `*italique*` exige un caractère non blanc après le marqueur ouvrant, pour qu'un astérisque isolé (`3 * 4`) reste littéral.
+- `_italique_` borné par des caractères non alphanumériques, pour ne pas casser `nom_de_fichier.pdf`.
+- Liens placés après l'échappement des guillemets : le libellé est donc déjà échappé quand la balise `<a>` est construite. Les URL absolues reçoivent `target="_blank" rel="noopener noreferrer"` (un lien de citation ne doit pas faire perdre l'article ouvert dans la modale) ; les ancres internes non. Les URL `javascript:` sont neutralisées et rendues en texte simple.
+- CSS : `.article-body a` en doré souligné, et `.article-body blockquote em { font-style: normal; }` — les citations sont déjà composées en italique, une emphase à l'intérieur devait basculer en romain pour se voir.
+
+Testé sur un article temporaire couvrant les cas limites (astérisque isolé, underscores dans un nom de fichier, lien avec query string, `javascript:`, italique dans une puce et dans une citation, italique + lien dans une note), puis supprimé.
+
+### Reste à décider
+
+**Le gras est visuellement presque invisible.** `.article-body p` est en `font-weight: 300` ; `<strong>` vaut `bolder`, ce qui résout à 400 pour DM Sans. Un `**mot**` ressort donc à 400 contre 300 autour — une différence à peine perceptible. Corrigeable en une ligne (`.article-body strong { font-weight: 500; }`), mais ça change l'apparence des 6 articles déjà publiés, donc non appliqué sans validation.
+
 ## 2026-03-06 ~13h–16h — Application du copydeck client rev.1
 
 ### Accompli

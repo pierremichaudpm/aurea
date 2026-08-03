@@ -81,7 +81,7 @@ collections:
       - label: Contenu
         name: body
         widget: markdown
-        hint: "Utilisez ## pour les sous-titres, **texte** pour le gras, > pour les citations"
+        hint: "Utilisez ## pour les sous-titres, **texte** pour le gras, > pour les citations. Notes de bas de page (mode Markdown) : appel [^1] dans le texte, definition [^1]: la note en fin d'article."
 
   - name: articles-en
     label: Articles (English)
@@ -150,4 +150,4 @@ collections:
       - label: Content
         name: body
         widget: markdown
-        hint: "Use ## for subtitles, **text** for bold, > for quotes"
+        hint: "Use ## for subtitles, **text** for bold, > for quotes. Footnotes (Markdown mode): [^1] in the text, [^1]: the note at the end of the article."

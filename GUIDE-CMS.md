@@ -96,9 +96,37 @@ L'éditeur dispose d'une **barre d'outils** en haut du champ Contenu. Vous n'ave
 
 **Conseil** : pour structurer votre article, utilisez les **sous-titres H2** entre vos sections. Séparez vos paragraphes en appuyant simplement sur Entrée deux fois.
 
+**Liens** : un lien vers un site externe s'ouvre automatiquement dans un nouvel onglet, pour que le lecteur ne perde pas l'article en cours.
+
+#### Notes de bas de page
+
+La barre d'outils n'a pas de bouton pour les notes. Il faut passer en mode **Markdown** (voir ci-dessous) et taper deux choses.
+
+**1. L'appel de note**, collé au mot, sans espace avant :
+
+```
+Le tribunal a retenu une obligation de moyens[^1] dans ce dossier.
+```
+
+**2. La note elle-même**, sur sa propre ligne, tout à la fin de l'article :
+
+```
+[^1]: Commission des normes c. Untel, 2024 QCCS 1234, par. 45.
+```
+
+Sur le site, le lecteur voit un petit chiffre en exposant doré. Un clic l'amène à la section **Notes** en bas de l'article ; la flèche ↩ à côté de la note le ramène exactement où il était.
+
+À retenir :
+
+- L'étiquette entre `[^ ]` peut être ce que vous voulez (`[^1]`, `[^cnesst]`, `[^arret-2024]`), tant qu'elle est identique dans l'appel et dans la note, et sans espace.
+- **La numérotation est automatique** et suit l'ordre de lecture. Si vous insérez une nouvelle note au milieu du texte, tout se renumérote au prochain déploiement — pas besoin d'y toucher.
+- Vous pouvez appeler la même note à plusieurs endroits : elle garde le même numéro.
+- Une note peut être longue et tenir sur plusieurs lignes : continuez à la ligne, sans laisser de ligne vide.
+- Si un appel `[^1]` reste visible tel quel sur le site, c'est que la note correspondante est absente ou que l'étiquette ne correspond pas.
+
 #### Mode avancé (optionnel)
 
-En haut à droite de l'éditeur, un interrupteur **Texte enrichi / Markdown** permet de basculer en mode code source (Markdown). Réservé aux utilisateurs à l'aise avec cette syntaxe — par défaut, restez en mode **Texte enrichi**.
+En haut à droite de l'éditeur, un interrupteur **Texte enrichi / Markdown** permet de basculer en mode code source (Markdown). Réservé aux utilisateurs à l'aise avec cette syntaxe — par défaut, restez en mode **Texte enrichi**, sauf pour les notes de bas de page.
 
 ### Étape 4 — Publier
 1. Vérifiez l'aperçu de votre contenu

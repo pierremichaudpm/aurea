@@ -349,8 +349,30 @@ tr:last-child td { border-bottom: none; }
 
 <div class="callout"><strong>Conseil :</strong> pour structurer votre article, utilisez les <strong>sous-titres H2</strong> entre vos sections. Séparez vos paragraphes en appuyant simplement sur Entrée deux fois.</div>
 
+<div class="callout"><strong>Liens :</strong> un lien vers un site externe s'ouvre automatiquement dans un nouvel onglet, pour que le lecteur ne perde pas l'article en cours.</div>
+
+<h3>Notes de bas de page</h3>
+<p>La barre d'outils n'a pas de bouton pour les notes. Il faut passer en mode <strong>Markdown</strong> (voir ci-dessous) et taper deux choses.</p>
+
+<p><strong>1. L'appel de note</strong>, collé au mot, sans espace avant :</p>
+<pre>Le tribunal a retenu une obligation de moyens[^1] dans ce dossier.</pre>
+
+<p><strong>2. La note elle-même</strong>, sur sa propre ligne, tout à la fin de l'article :</p>
+<pre>[^1]: Commission des normes c. Untel, 2024 QCCS 1234, par. 45.</pre>
+
+<p>Sur le site, le lecteur voit un petit chiffre en exposant doré. Un clic l'amène à la section <strong>Notes</strong> en bas de l'article ; la flèche de retour à côté de la note le ramène exactement où il était.</p>
+
+<p><strong>À retenir :</strong></p>
+<ul>
+  <li>L'étiquette entre crochets peut être ce que vous voulez (<code>[^1]</code>, <code>[^cnesst]</code>, <code>[^arret-2024]</code>), tant qu'elle est identique dans l'appel et dans la note, et sans espace.</li>
+  <li><strong>La numérotation est automatique</strong> et suit l'ordre de lecture. Si vous insérez une nouvelle note au milieu du texte, tout se renumérote au prochain déploiement.</li>
+  <li>Vous pouvez appeler la même note à plusieurs endroits : elle garde le même numéro.</li>
+  <li>Une note peut tenir sur plusieurs lignes : continuez à la ligne, sans laisser de ligne vide.</li>
+  <li>Si un appel comme <code>[^1]</code> reste visible tel quel sur le site, c'est que la note correspondante est absente ou que l'étiquette ne correspond pas.</li>
+</ul>
+
 <h3>Mode avancé (optionnel)</h3>
-<p>En haut à droite de l'éditeur, un interrupteur <strong>Texte enrichi / Markdown</strong> permet de basculer en mode code source. Réservé aux utilisateurs à l'aise avec cette syntaxe — par défaut, restez en mode <strong>Texte enrichi</strong>.</p>
+<p>En haut à droite de l'éditeur, un interrupteur <strong>Texte enrichi / Markdown</strong> permet de basculer en mode code source. Réservé aux utilisateurs à l'aise avec cette syntaxe — par défaut, restez en mode <strong>Texte enrichi</strong>, sauf pour les notes de bas de page.</p>
 
 <h2>Étape 4 — Publier</h2>
 <ol>
