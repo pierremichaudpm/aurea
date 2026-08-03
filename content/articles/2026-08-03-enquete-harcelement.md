@@ -33,7 +33,7 @@ L'enquêteur qui entame son travail sans être suffisamment préparé et documen
 
 ## Les entrevues avec plaignant, mis en cause, témoins
 
-Les entrevues se déroulent généralement de façon individuelle, en commençant par la personne plaignante, puis la personne mise en cause, puis les témoins. Chacune de ces personnes a des droits précis: être entendue[^equite], être accompagnée, bénéficier de la discrétion sur sa participation, et exercer un contrôle sur la fidélité du compte rendu de ses propres déclarations. La personne mise en cause a par ailleurs le droit d'être informée par écrit, dans un délai raisonnable, des faits qui lui sont reprochés avant son entrevue, sans que cela oblige nécessairement l'enquêteur à révéler l'identité des témoins.
+Les entrevues se déroulent généralement de façon individuelle, en commençant par la personne plaignante, puis la personne mise en cause, puis les témoins. Chacune de ces personnes a des droits précis: être entendue[^1], être accompagnée, bénéficier de la discrétion sur sa participation, et exercer un contrôle sur la fidélité du compte rendu de ses propres déclarations. La personne mise en cause a par ailleurs le droit d'être informée par écrit, dans un délai raisonnable, des faits qui lui sont reprochés avant son entrevue, sans que cela oblige nécessairement l'enquêteur à révéler l'identité des témoins.
 
 Ce n'est pas un exercice de confrontation mais une reconstitution méthodique des faits. C'est aussi l'étape où l'impartialité de l'enquêteur est le plus mise à l'épreuve, pas dans l'intention, mais dans la manière de poser des questions ouvertes plutôt que suggestives, de pondérer les versions, et de résister aux premières impressions.
 
@@ -67,4 +67,4 @@ Si une situation dans votre organisation vous semble dépasser le cadre de la ge
 
 Ce texte est informatif et ne constitue pas un avis juridique. Chaque situation appelle une analyse propre.
 
-[^equite]: La Cour d'appel du Québec a jugé qu'un enquêteur en matière de harcèlement psychologique n'est pas tenu de respecter les règles strictes d'équité procédurale du droit administratif ni de transformer l'enquête en processus contradictoire, mais que la personne mise en cause doit tout de même être informée des allégations portées contre elle avant son entrevue.
+[^1]: La Cour d'appel du Québec a jugé qu'un enquêteur en matière de harcèlement psychologique n'est pas tenu de respecter les règles strictes d'équité procédurale du droit administratif ni de transformer l'enquête en processus contradictoire, mais que la personne mise en cause doit tout de même être informée des allégations portées contre elle avant son entrevue.
