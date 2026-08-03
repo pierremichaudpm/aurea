@@ -4,7 +4,7 @@ slug: enquête-harcèlement
 date: 2026-07-29
 category: Enquête · Rigueur
 excerpt: Un processus rigoureux, pas une improvisation.
-image: /uploads/pexels-photo-3184360.avif
+image: /uploads/image-principale.jpg
 series: Article
 readTime: 7 min de lecture
 ---
@@ -66,9 +66,5 @@ Une enquête bien menée ne se juge pas seulement à ses conclusions. Elle se ju
 Si une situation dans votre organisation vous semble dépasser le cadre de la gestion courante, un échange initial permet souvent d'y voir plus clair, sans engagement.
 
 Ce texte est informatif et ne constitue pas un avis juridique. Chaque situation appelle une analyse propre.
-
-
-
-
 
 [[1]](#_ftnref1) La Cour d'appel du Québec a jugé qu'un enquêteur en matière de harcèlement psychologique n'est pas tenu de respecter les règles strictes d'équité procédurale du droit administratif ni de transformer l'enquête en processus contradictoire, mais que la personne mise en cause doit tout de même être informée des allégations portées contre elle avant son entrevue.
