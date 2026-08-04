@@ -3,11 +3,13 @@ title: "Obligations de l'employeur en matière de harcèlement psychologique : c
 slug: harcèlement-conformité
 date: 2026-07-22
 category: Prévention
-excerpt: « J'ignore si ma politique de harcèlement est à jour. ». C'est une hésitation que peu de gestionnaires admettent à voix haute, et pourtant elle est plus révélatrice qu'une absence totale de politique. Une politique qu'on ne sait plus situer, qu'on n'a jamais révisée depuis sa rédaction ou dont on ignore si elle couvre encore ce que la loi exige aujourd'hui n'offre pas une protection tellement plus solide qu'une politique qui n'existe pas.
+excerpt: « J'ignore si ma politique de harcèlement est à jour. ». C'est une hésitation que peu de gestionnaires admettent à voix haute, et pourtant elle est plus révélatrice qu'une absence totale de politique.
 image: https://picsum.photos/id/5/1920/1280.webp
 series: Article
 readTime: 5 min de lecture
 ---
+
+Une politique qu'on ne sait plus situer, qu'on n'a jamais révisée depuis sa rédaction ou dont on ignore si elle couvre encore ce que la loi exige aujourd'hui n'offre pas une protection tellement plus solide qu'une politique qui n'existe pas.
 
 ## L'obligation de prévenir et de faire cesser
 
