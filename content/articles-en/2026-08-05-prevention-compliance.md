@@ -1,5 +1,5 @@
 ---
-title: 'Bill 27 and the Prevention Program: What Employers Need to Know Ahead of 2026'
+title: 'Bill 27 and the prevention program: what employers need to know ahead of 2026'
 slug: prevention-compliance
 date: 2026-08-05
 category: Prevention
