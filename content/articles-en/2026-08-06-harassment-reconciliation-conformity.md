@@ -9,7 +9,7 @@ series: Article
 readTime: 5 min read
 ---
 
-**Psychological Harassment: A Real Case That Sets a Precedent**
+**Psychological harassment: a real case that sets a precedent**
 
 In this case, an employee alleged having experienced **psychological harassment in the workplace**, including demeaning remarks and a far more serious event: a **physical assault by a coworker**.
 
@@ -17,7 +17,7 @@ Following the incident, the employer was informed but chose not to intervene. Wh
 
 Several months later, however, a complaint was filed. The Tribunal then had to determine whether this inaction met the obligations set out under the **Act respecting labour standards**.
 
-**A Single Serious Incident Can Constitute Harassment**
+**A single serious incident can constitute harassment**
 
 The TAT reaffirmed a key principle of labour law: a single incident can be enough to establish **psychological harassment**, provided it is serious.
 
@@ -31,7 +31,7 @@ In this case, the Tribunal concluded that:
 
 Even in the absence of repeated incidents, psychological harassment can therefore be recognized when a single event is particularly serious.
 
-**Employer’s Obligation: Act Without Delay**
+**Employer’s obligation: act without delay**
 
 The central issue in this decision concerns **employers’ obligations regarding psychological harassment**.
 
@@ -53,7 +53,7 @@ In this case, the employer took **no action** following the assault. The Tribuna
 
 **Inaction is never an option.**
 
-**Reconciliation Between Employees: Beware a False Sense of Security**
+**Reconciliation between employees: beware a false sense of security**
 
 One of the most important lessons from this decision concerns the notion of **reconciliation in the workplace**.
 
@@ -67,7 +67,7 @@ The TAT specified that:
 
 In other words, an apparent reconciliation between employees does not relieve the employer of its responsibilities.
 
-**Legal Risks for Employers**
+**Legal risks for employers**
 
 Failing to act on a harassment situation can lead to significant consequences:
 
@@ -81,7 +81,7 @@ Failing to act on a harassment situation can lead to significant consequences:
 
 The decision also underscores that the analysis does not turn on the employer’s intentions, but on the **concrete actions actually taken**.
 
-**HR Best Practices to Prevent Disputes**
+**HR best practices to prevent disputes**
 
 To avoid this type of situation, employers should adopt a proactive approach:
 
@@ -97,7 +97,7 @@ To avoid this type of situation, employers should adopt a proactive approach:
 
 Even where an apology has been made or things appear to have improved, a formal intervention remains essential.
 
-**Conclusion: When in Doubt, Act**
+**Conclusion: when in doubt, act**
 
 This TAT decision sends a clear message: when it comes to **psychological harassment in Quebec**, employers must act quickly, even when a situation appears to have settled down.
 
