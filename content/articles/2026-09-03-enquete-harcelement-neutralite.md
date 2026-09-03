@@ -3,7 +3,7 @@ title: Enquête interne ou externe ? Comment savoir quand un regard externe devi
 slug: enquête-harcèlement-neutralité
 date: 2026-09-03
 category: Enquête · Rigueur
-excerpt: 'Une plainte de harcèlement est déposée : faut-il confier l’enquête à l’interne ou faire appel à un regard externe?  Avant de trancher, une question devrait guider la décision : l’enquête sera-t-elle perçue comme neutre, crédible et indépendante une fois le résultat connu?'
+excerpt: Découvrez dans quelles situations une enquête en milieu de travail menée à l'interne est appropriée et quand le recours à un enquêteur externe indépendant constitue la meilleure option pour préserver la crédibilité, la neutralité et la confiance envers l'organisation.
 image: /uploads/enquête interne externe.jpg
 series: Article
 readTime: 5 min de lecture
