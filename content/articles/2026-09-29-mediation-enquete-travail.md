@@ -17,12 +17,7 @@ Ce choix n'est pas toujours exclusif. Dans certains dossiers, une enquête doit 
 
 ## Différences fondamentales entre médiation et enquête
 
-|  | Médiation | Enquête |
-| Objectif | Rétablir la communication et trouver une entente | Établir les faits et statuer sur un manquement allégué |
-| Nature | Volontaire, les parties gardent la maîtrise de l'issue | Imposée par l'employeur, l'issue relève de l'enquêteur |
-| Cadre légal | Processus consensuel, souvent confidentiel | Encadrée par les obligations de l'employeur en matière de santé psychologique et de harcèlement (LNT, LSST) |
-| Issue | Une entente négociée entre les parties | Un rapport avec constats, parfois des recommandations disciplinaires |
-| Rôle du professionnel | Facilitateur impartial, sans pouvoir de décision | Enquêteur indépendant, tenu à la rigueur probatoire |
+La médiation et l’enquête se distinguent d’abord par leur objectif : la médiation vise à rétablir la communication et à permettre aux parties de trouver une entente, tandis que l’enquête sert à établir les faits et à statuer sur un manquement allégué. Leur nature diffère également. La médiation est une démarche volontaire dans laquelle les parties conservent la maîtrise de l’issue, alors que l’enquête est imposée par l’employeur et que ses conclusions relèvent de l’enquêteur. Sur le plan juridique, la médiation constitue un processus consensuel, souvent confidentiel, tandis que l’enquête s’inscrit dans les obligations de l’employeur en matière de santé psychologique et de harcèlement, notamment en vertu de la LNT et de la LSST. L’issue de la médiation prend la forme d’une entente négociée entre les parties; celle de l’enquête consiste en un rapport présentant des constats et, parfois, des recommandations disciplinaires. Enfin, le professionnel n’assume pas le même rôle dans les deux démarches : en médiation, il agit comme facilitateur impartial sans pouvoir décisionnel, tandis qu’en enquête, il intervient comme enquêteur indépendant tenu à la rigueur probatoire.
 
 Ces deux approches partagent un même fondement, soit l'impartialité du professionnel mandaté. Elles se distinguent toutefois par la finalité recherchée, ce qui explique pourquoi le choix de l'une ou l'autre doit être fait avec soin dès le début du dossier.
 
@@ -30,17 +25,12 @@ Ces deux approches partagent un même fondement, soit l'impartialité du profess
 
 Plusieurs facteurs orientent le choix entre médiation et enquête. Aucun critère n'est à lui seul déterminant, mais leur combinaison dessine assez rapidement la voie à privilégier.
 
-1.      Nature des allégations : Un désaccord relationnel ou un conflit de personnalités oriente vers la médiation. Des allégations de harcèlement, de discrimination ou d'abus d'autorité exigent une enquête.
-
-2.      Rapport de force entre les parties : Lorsqu'il existe un déséquilibre marqué, par exemple entre un gestionnaire et une personne salariée sous sa supervision directe, la médiation risque de reproduire ce déséquilibre plutôt que de le résoudre.
-
-3.      Volonté des parties : La médiation exige l'adhésion libre et éclairée des deux parties. Si l'une d'elles refuse d'y participer ou craint des représailles, l'enquête devient la voie appropriée.
-
-4.      Obligations légales de l'employeur : Lorsque la plainte touche une obligation prévue à la LNT ou à la LSST, l'employeur doit documenter une démarche rigoureuse, ce que seule une enquête permet d'assurer.
-
-5.      Gravité et répétition des faits allégués : Un incident isolé et de faible gravité se prête souvent à la médiation. Des faits répétés ou une atteinte sérieuse à la dignité d'une personne appellent une enquête.
-
-6.      Objectif recherché par l'organisation : Restaurer une relation de travail viable oriente vers la médiation. Établir la responsabilité d'une personne et prendre une décision éclairée sur des mesures disciplinaires exige une enquête.
+1.      Nature des allégations : Un désaccord relationnel ou un conflit de personnalités oriente vers la médiation. Des allégations de harcèlement, de discrimination ou d'abus d'autorité exigent une enquête.
+2.      Rapport de force entre les parties : Lorsqu'il existe un déséquilibre marqué, par exemple entre un gestionnaire et une personne salariée sous sa supervision directe, la médiation risque de reproduire ce déséquilibre plutôt que de le résoudre.
+3.      Volonté des parties : La médiation exige l'adhésion libre et éclairée des deux parties. Si l'une d'elles refuse d'y participer ou craint des représailles, l'enquête devient la voie appropriée.
+4.      Obligations légales de l'employeur : Lorsque la plainte touche une obligation prévue à la LNT ou à la LSST, l'employeur doit documenter une démarche rigoureuse, ce que seule une enquête permet d'assurer.
+5.      Gravité et répétition des faits allégués : Un incident isolé et de faible gravité se prête souvent à la médiation. Des faits répétés ou une atteinte sérieuse à la dignité d'une personne appellent une enquête.
+6.      Objectif recherché par l'organisation : Restaurer une relation de travail viable oriente vers la médiation. Établir la responsabilité d'une personne et prendre une décision éclairée sur des mesures disciplinaires exige une enquête.
 
 ## Quand les deux approches se combinent
 
@@ -61,7 +51,7 @@ Dans les deux cas, la personne chargée du dossier doit rester attentive aux sig
 **Qui peut agir comme médiateur ou enquêteur en milieu de travail?** Dans les deux cas, il est recommandé de faire appel à une personne indépendante, formée à cette fin et sans lien hiérarchique avec les parties concernées, souvent une personne CRIA ou CRHA accréditée comme médiatrice par l'Ordre. La personne qui a agi comme enquêteur dans un dossier ne peut pas ensuite agir comme médiateur dans cette même situation, puisqu'elle a déjà pris position sur les faits, ce qui compromet l'impartialité requise pour la médiation.
 
 **Combien de temps prend chacun de ces processus?** Une médiation se conclut généralement en une ou deux rencontres, sur quelques semaines. Une enquête demande davantage de temps, puisqu'elle implique la collecte de témoignages, l'analyse de la preuve et la rédaction d'un rapport, un processus qui s'étend généralement sur plusieurs semaines selon la complexité du dossier.
- 
+
 Pour en savoir plus sur la marche à suivre lorsqu'une plainte de harcèlement psychologique est reçue, consultez [notre article sur le sujet](https://aureahconseil.ca). Pour discuter d'un dossier de médiation ou d'enquête, visitez [Auréa RH Conseil](https://aureahconseil.ca).
 
 Hugues Thibault, CRIA, médiateur accrédité, fondateur, Auréa RH Conseil Investigation de harcèlement psychologique, diagnostic organisationnel et médiation en milieu de travail aureahconseil.ca
