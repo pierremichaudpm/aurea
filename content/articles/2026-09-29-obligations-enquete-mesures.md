@@ -1,7 +1,7 @@
 ---
 title: Que faire quand on reçoit une plainte de harcèlement psychologique au travail?
 slug: obligations-enquête-mesures
-date: 2026-02-13
+date: 2026-09-29
 category: Enquête · Rigueur
 excerpt: 'Plainte de harcèlement psychologique au travail au Québec : découvrez les obligations de l’employeur, les premières mesures à prendre et quand déclencher une enquête.'
 image: /uploads/Image quand déclencer.jpg
