@@ -1,7 +1,7 @@
 ---
 title: 'Médiation ou enquête : comment choisir la bonne approche pour un conflit au travail?'
 slug: médiation-enquête-travail
-date: 2026-09-29
+date: 2026-03-13
 category: Médiation
 excerpt: 'Médiation ou enquête : quelle approche choisir face à un conflit au travail? Découvrez les critères essentiels pour distinguer un différend relationnel d’une situation exigeant une enquête, respecter les obligations de l’employeur et intervenir de façon juste, rigoureuse et adaptée.'
 image: /uploads/Image médiation ou enquête.jpg
