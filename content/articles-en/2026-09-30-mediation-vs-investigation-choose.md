@@ -17,12 +17,7 @@ This choice is not always mutually exclusive. In some cases, an investigation sh
 
 ## Key differences between mediation and investigation
 
-|  | Mediation | Investigation |
-| Objective | Restore communication and reach an agreement | Establish the facts and determine whether an alleged breach occurred |
-| Nature | Voluntary; parties retain control over the outcome | Directed by the employer; outcome determined by the investigator |
-| Legal framework | Consensual process, often confidential | Governed by employer obligations regarding psychological health and harassment |
-| Outcome | Negotiated agreement between the parties | Report containing findings and sometimes disciplinary recommendations |
-| Professional role | Impartial facilitator with no decision-making authority | Independent investigator held to evidentiary rigor |
+Mediation aims to restore communication and help the parties reach an agreement, whereas an investigation seeks to establish the facts and determine whether an alleged breach occurred. Mediation is voluntary, and the parties retain control over the outcome; an investigation, by contrast, is directed by the employer, and its outcome is determined by the investigator. From a legal standpoint, mediation is a consensual and often confidential process, while an investigation is governed by the employer’s obligations regarding psychological health and harassment. Mediation results in an agreement negotiated between the parties, whereas an investigation produces a report containing findings and, in some cases, disciplinary recommendations. The mediator acts as an impartial facilitator without decision-making authority, while the investigator is independent and held to evidentiary rigor.
 
 ## Decision-making criteria
 
