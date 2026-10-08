@@ -1,7 +1,7 @@
 ---
 title: What should you do when you receive a workplace psychological harassment complaint?
 slug: psychological-harassment-complaint-employer-response
-date: 2026-02-13
+date: 2026-10-08
 category: Prevention
 excerpt: Respond with diligence, protect with fairness, and establish the facts with impartiality.
 image: /uploads/Image quand déclencer.jpg
