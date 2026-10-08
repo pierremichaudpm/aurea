@@ -1,12 +1,12 @@
 ---
-title: "What Your Harassment Policies Aren't Telling You"
+title: What Your Harassment Policies Aren't Telling You
 slug: harassment-policies
-date: 2024-03-01
-category: "Prevention · Legislation"
-excerpt: "Most organizations have a harassment policy. It's in the employee handbook. It's been approved by a lawyer. And yet — the complaints keep coming."
-image: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg"
-series: "Article"
-readTime: "4 min read"
+date: 2026-09-25
+category: Prevention · Legislation
+excerpt: Most organizations have a harassment policy. It's in the employee handbook. It's been approved by a lawyer. And yet — the complaints keep coming.
+image: https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg
+series: Article
+readTime: 4 min read
 ---
 
 Most organizations have a harassment policy. It's in the employee handbook. It's been approved by a lawyer. It defines prohibited behaviours. It outlines the available recourses. And yet — the complaints keep coming. Tensions persist. People suffer in silence.
