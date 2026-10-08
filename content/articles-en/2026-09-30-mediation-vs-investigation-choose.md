@@ -1,7 +1,7 @@
 ---
 title: Mediation or investigation, or how to choose the right approach for a workplace conflict?
 slug: mediation-vs-investigation-choose
-date: 2026-03-13
+date: 2026-10-08
 category: Prevention
 excerpt: Mediation or workplace investigation? Learn which approach fits conflict, harassment or misconduct, and when combining both supports a fair resolution.
 image: /uploads/Image médiation ou enquête.jpg
