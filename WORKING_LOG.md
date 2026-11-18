@@ -1,5 +1,59 @@
 # Auréa RH Conseil — Journal de travail
 
+## 2026-11-18 — Safari iOS : « Un problème récurrent est survenu »
+
+### Contexte
+
+Un client envoie une capture de Safari sur iPhone affichant « Un problème
+récurrent est survenu sur "https://aurearhconseil.ca/" ». Le site fonctionne sur
+Android et sur desktop. Ce message n'est pas une erreur HTTP (pas de 4xx/5xx) :
+c'est la page d'erreur de Safari quand le processus WebContent de la page
+crashe de façon répétée (quota mémoire dépassé, en général).
+
+### Constat (analyse du code, pas de reproduction sur iPhone)
+
+- 15 `.blog-article-panel`, 8 `.modal-panel` et le panneau de liste sont tous
+  `position: fixed`, quasi pleine hauteur, et portaient un `will-change`
+  permanent : chaque panneau garde une couche composée d'environ 20 Mo en 3x.
+  Sur iOS, WebKit tue l'onglet quand la mémoire graphique dépasse le quota, ce
+  qui donne exactement ce message au bout de quelques rechargements.
+- `will-change` aussi sur `.reveal` (13 éléments), `.service-card`, `.blog-card`
+  et ses images, plus un `backdrop-filter: blur(20px)` sur `nav.scrolled` dont
+  le fond est déjà opaque à 95 %.
+- Image hero servie en 3840×2160 (33 Mo une fois décodée sur desktop retina).
+
+### Correctifs
+
+- Tous les `will-change` statiques retirés ; le navigateur promeut les couches
+  pendant les transitions, pas besoin de les garder à vie.
+- `visibility: hidden` sur les panneaux fermés, avec `visibility` dans la
+  `transition` et un délai égal à la durée de sortie : WebKit ne peint plus ni
+  ne compose les panneaux inactifs. Aucun changement visuel.
+- `backdrop-filter` retiré de `nav.scrolled` (visuellement invisible, coûteux).
+- `srcset` sur l'image hero : `trois-1280.jpg` (98 Ko) et `trois-1920.jpg`
+  (179 Ko) générés depuis l'original, `sizes="(max-width: 1024px) 100vw, 45vw"`.
+- `loading="lazy"` + `decoding="async"` sur les images générées par `build.js`
+  (panneaux d'articles, liste), `decoding="async"` sur les cartes de blogue.
+
+### Vérifié
+
+- `node build.js` : 15 articles FR, 13 EN, aucun `will-change` restant.
+- Test headless Chrome : 15 panneaux en `visibility: hidden` au chargement,
+  ouverture d'un article → `visible` + `opacity: 1` + `body overflow: hidden`,
+  fermeture → `hidden` et scroll rendu au body, modale de service OK, zéro
+  erreur console.
+
+### À faire
+
+- Déployer (`git push` → rebuild Cloudflare Pages) puis revalider sur un iPhone,
+  idéalement un modèle ancien : accueil, ouverture d'un article, modale de
+  service, défilement.
+- Si le crash persiste : demander le modèle et la version d'iOS au client, puis
+  bisecter le grain SVG du hero (`feTurbulence`) et le double masque
+  `-webkit-mask-composite` du hero (tous deux masqués sous 1024 px).
+
+---
+
 ## 2026-08-03 — Notes de bas de page, italique et liens dans les articles
 
 ### Contexte

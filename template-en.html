@@ -179,9 +179,9 @@ nav {
 }
 
 nav.scrolled {
+  /* The background is already 95 % opaque: the blur was invisible but cost a
+     full-width composited layer repainted on every frame on iOS. */
   background: rgba(250, 248, 244, 0.95);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 0 rgba(26, 35, 50, 0.06);
   padding: 0.85rem 3rem;
   padding-top: max(0.85rem, env(safe-area-inset-top, 0px));
@@ -997,7 +997,6 @@ section.hero {
   transition: transform 0.5s var(--transition), border-color 0.5s var(--transition), box-shadow 0.5s var(--transition);
   position: relative;
   overflow: hidden;
-  will-change: transform;
 }
 
 .service-card::before {
@@ -1196,7 +1195,6 @@ section.hero {
   text-decoration: none;
   color: inherit;
   display: block;
-  will-change: transform;
 }
 
 .blog-card:hover {
@@ -1218,7 +1216,6 @@ section.hero {
   height: 100%;
   object-fit: cover;
   transition: transform 0.7s var(--transition);
-  will-change: transform;
 }
 
 .blog-card:hover .blog-card-image img {
@@ -1372,14 +1369,16 @@ section.hero {
   border-radius: 0;
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.55s var(--transition), opacity 0.5s var(--ease-gentle);
+  transition: transform 0.55s var(--transition), opacity 0.5s var(--ease-gentle), visibility 0s linear 0.55s;
   box-shadow: 0 30px 90px rgba(15, 23, 32, 0.35);
-  will-change: transform, opacity;
+  visibility: hidden;
 }
 .blog-article-panel.active {
   transform: translateX(-50%) scale(1);
   opacity: 1;
   pointer-events: all;
+  visibility: visible;
+  transition: transform 0.55s var(--transition), opacity 0.5s var(--ease-gentle), visibility 0s;
 }
 .article-hero {
   position: relative;
@@ -1650,14 +1649,18 @@ section.hero {
   background: var(--cream);
   z-index: 250;
   transform: translateX(100%);
-  transition: transform 0.6s var(--transition);
+  transition: transform 0.6s var(--transition), visibility 0s linear 0.6s;
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   box-shadow: -8px 0 40px rgba(15, 23, 32, 0.1);
-  will-change: transform;
 }
-.articles-listing-panel.active { transform: translateX(0); }
+.articles-listing-panel.active {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.6s var(--transition), visibility 0s;
+}
 .listing-header {
   background: var(--navy);
   padding: 1.75rem 2.5rem;
@@ -2060,7 +2063,6 @@ footer {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity 0.9s var(--transition), transform 0.9s var(--transition);
-  will-change: opacity, transform;
 }
 
 .reveal.visible {
@@ -2228,14 +2230,19 @@ footer {
   background: var(--cream);
   z-index: 250;
   transform: translateX(100%);
-  transition: transform 0.6s var(--transition);
-  will-change: transform;
+  /* visibility flips after the transition: a closed panel is no longer painted
+     or composited by WebKit (iPhones kill the process when too many large
+     fixed layers stay in memory). */
+  transition: transform 0.6s var(--transition), visibility 0s linear 0.6s;
+  visibility: hidden;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 .modal-panel.active {
   transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.6s var(--transition), visibility 0s;
 }
 .modal-header {
   background: var(--navy);
@@ -2506,7 +2513,10 @@ footer {
     </div>
     <div class="hero-right">
       <div class="hero-right-bg">
-        <img src="/trois.jpg" alt="Workplace mediation, Auréa RH Conseil">
+        <img src="/trois-1280.jpg"
+             srcset="/trois-1280.jpg 1280w, /trois-1920.jpg 1920w, /trois.jpg 3840w"
+             sizes="(max-width: 1024px) 100vw, 45vw"
+             alt="Workplace mediation, Auréa RH Conseil" decoding="async">
       </div>
     </div>
   </div>

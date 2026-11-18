@@ -385,7 +385,7 @@ const articlesEn = readArticles(path.join(__dirname, 'content', 'articles-en'), 
 function blogCard(a) {
   return `<div class="blog-card reveal" data-modal="article-${a.slug}">
   <div class="blog-card-image">
-    <img src="${a.image}?auto=compress&cs=tinysrgb&w=600&h=340&fit=crop" alt="${escapeAttr(a.title)}">
+    <img src="${a.image}?auto=compress&cs=tinysrgb&w=600&h=340&fit=crop" alt="${escapeAttr(a.title)}" decoding="async">
   </div>
   <div class="blog-card-body">
     <div class="blog-card-category">${a.category}</div>
@@ -403,7 +403,7 @@ function articlePanel(a, lang) {
   const copyLabel = lang === 'en' ? 'Copy link' : 'Copier le lien';
   return `<div class="blog-article-panel" id="article-${a.slug}">
   <div class="article-hero">
-    <img src="${a.image}?auto=compress&cs=tinysrgb&w=760&h=428&fit=crop" alt="${escapeAttr(a.title)}">
+    <img src="${a.image}?auto=compress&cs=tinysrgb&w=760&h=428&fit=crop" alt="${escapeAttr(a.title)}" loading="lazy" decoding="async">
     <div class="article-hero-overlay">
       <span class="article-category-badge">${a.category}</span>
       <button class="blog-modal-close" aria-label="${closeLabel}">\u2715</button>
@@ -436,7 +436,7 @@ ${a.notesHtml}
 function listingCard(a, lang) {
   const formattedDate = lang === 'en' ? formatDateEn(a.date) : formatDateFr(a.date);
   return `<div class="listing-card" data-modal="article-${a.slug}">
-  <div class="listing-card-img"><img src="${a.image}?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop" alt="${escapeAttr(a.title)}"></div>
+  <div class="listing-card-img"><img src="${a.image}?auto=compress&cs=tinysrgb&w=400&h=225&fit=crop" alt="${escapeAttr(a.title)}" loading="lazy" decoding="async"></div>
   <div class="listing-card-body">
     <div class="listing-card-cat">${a.category}</div>
     <h4 class="listing-card-title">${a.title}</h4>
