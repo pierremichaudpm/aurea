@@ -1,11 +1,9 @@
 ---
 title: Ce que vos politiques contre le harcèlement ne vous disent pas
 slug: politiques-harcelement
-date: 2024-03-01
+date: 2026-09-25
 category: Prévention · RH
-excerpt: La plupart des organisations ont une politique contre le harcèlement.
-  Elle est dans le manuel de l'employé. Elle a été approuvée par un avocat. Et
-  pourtant, les plaintes continuent.
+excerpt: La plupart des organisations ont une politique contre le harcèlement. Elle est dans le manuel de l'employé. Elle a été approuvée par un avocat. Et pourtant, les plaintes continuent.
 image: https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg
 series: Article
 readTime: 4 min de lecture
